@@ -10,6 +10,7 @@ tags: []
 For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support.apple.com/en-us/HT201236).
 
 ## Common
+
 ### Program
 * **Quit**: Command + Q
 * **Force Quit**: Command + Option + ESC
