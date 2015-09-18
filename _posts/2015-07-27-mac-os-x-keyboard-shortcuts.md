@@ -9,6 +9,8 @@ tags: []
 
 For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support.apple.com/en-us/HT201236).
 
+---
+
 ## Common
 
 ### Program
@@ -32,10 +34,14 @@ For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support
 * **Find**: Command + F
 * **Spotlight Search**: Control + Space Bar
 
+---
+
 ## Caret Movement
 * **Move to the End of the current line**: Command + Right Arrow(->)
 * **Move to the Start of the current line**: Command + Left Arrow(<-)
 ## Range Selection
+
+----
 
 ## Finder
 * **Show/Hide Status Bar**: Command + /
@@ -43,14 +49,21 @@ For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support
 * **File Information**: Command + I
 * **Cut & Paste Files**: "Command + C" then "Option + Command + V"
 * **Delete**: fn + delete
+
 ### Multiple File Selection
-	* **Select Indivisual Files**: Hold Command down then click the files that you want to select.
-	* **Select Files within a Range**: 
+* **Select Indivisual Files**: Hold Command down then click the files that you want to select.
+* **Select Files within a Range**: 
+
+----
 
 ## Safari
 * **New Tab**: Command + T
 
-## Screen Capture as an Image File
+----
+
+## Capture
+
+### Screen Capture as an Image File
 * **Capture**: Command + Shift + 4
 
-## Screen Activity Capture as a Movie File
+### Screen Activity Capture as a Movie File
