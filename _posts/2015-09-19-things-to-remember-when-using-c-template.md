@@ -1,13 +1,11 @@
 ---
 layout: post
 title: "Things to Remember when using C++ Template"
-description: ""
+description: "쉽게 잊어버리는, 하지만 기억해야할만한 사항들에 대해서 정리한다."
 category: Computer Programming
 tags: [C++, C++ TMP]
 ---
 {% include JB/setup %}
-
-잘 잊어버리게되는 기억해야할 사항들에 대해서 정리하도록한다.
 
 **Template argument deduction시에는 automatic type conversion은 고려되지 않는다.**
 
@@ -17,4 +15,4 @@ tags: [C++, C++ TMP]
 
 **Class template내에 정의된 overload된 assignment operator는 default assignment operator를 대체하지 않는다.**
 
-
+**인자순서, perfect match**
