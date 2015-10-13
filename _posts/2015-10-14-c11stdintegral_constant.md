@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[C++11]std::integral_constant"
+title: "[C++11] std::integral_constant"
 description: ""
 category: Computer Programming
 tags: [C++, C++11, C++ TMP]
