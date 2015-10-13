@@ -8,6 +8,7 @@ tags: [C++, C++11, C++ TMP]
 {% include JB/setup %}
 
 정수형 타입의 값을 type화 할 수 있도록 해주는 wrapper 클래스 템플릿이다:
+
 * [cppreference std::integral_constant](http://en.cppreference.com/w/cpp/types/integral_constant)
 * [std::integral_constant test sample code](https://github.com/ghjang/personal_study/blob/master/cpp/integral_constant/main.cpp)
 
