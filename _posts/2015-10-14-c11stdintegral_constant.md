@@ -42,6 +42,7 @@ void doSomething(T t, std::integral_constant<int, 2>)
 </code>
 </pre>
 
+
 ## 참고
 + [cppreference std::integral_constant](http://en.cppreference.com/w/cpp/types/integral_constant)
 + [std::integral_constant test sample code](https://github.com/ghjang/personal_study/blob/master/cpp/integral_constant/main.cpp)
