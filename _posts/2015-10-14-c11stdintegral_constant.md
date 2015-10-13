@@ -11,7 +11,12 @@ tags: [C++, C++11, C++ TMP]
 
 '1', '2'와 같은 정수형 값만을 가지고는 (멤버)함수 오버로딩을 할 수가 없다. 정수형 값을 type화 시키면 아래와 같은 코드가 가능하게 된다:
 
-```c++
+<link rel="stylesheet" href="~/highlight/styles/default.css">
+<script src="~/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<pre>
+<code class='cpp'>
 template <typename T, int N>
 void doSomething(T t, std::integral_constant<int, N>)
 {
@@ -34,8 +39,9 @@ void doSomething(T t, std::integral_constant<int, 2>)
 	doSomething(s(), integral_constant<int, 2>()); // the second function is called.
 	doSomething(s(), integral_constant<int, 3>());
 }
-```
+</code>
+</pre>
 
 ## 참고
-+ http://en.cppreference.com/w/cpp/types/integral_constant
-+ https://github.com/ghjang/personal_study/blob/master/cpp/integral_constant/main.cpp
++ [cppreference std::integral_constant](http://en.cppreference.com/w/cpp/types/integral_constant)
++ [std::integral_constant test sample code](https://github.com/ghjang/personal_study/blob/master/cpp/integral_constant/main.cpp)
