@@ -10,6 +10,7 @@ tags: [C++, C++11, C++ TMP]
 정수형 타입의 값을 type화 할 수 있도록 해주는 wrapper 클래스 템플릿이다.
 
 '1', '2'와 같은 정수형 값만을 가지고는 (멤버)함수 오버로딩을 할 수가 없다. 정수형 값을 type화 시키면 아래와 같은 코드가 가능하게 된다:
+
 ```cpp
 template <typename T, int N>
 void doSomething(T t, std::integral_constant<int, N>)
