@@ -112,3 +112,6 @@ static_assert(is_same<long, ReturnTypeOfFoo<NonDefault>>::value, "");
 // but it's not ok. a compile error.
 //static_assert(is_same<long, decltype(NonDefault().foo())>::value, "");
 {% endhighlight %}
+
+## 참고
++ https://github.com/ghjang/personal_study/blob/master/cpp/decltype/main.cpp
