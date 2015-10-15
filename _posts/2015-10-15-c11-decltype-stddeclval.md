@@ -122,4 +122,4 @@ static_assert(is_same<long, ReturnTypeOfFoo<NonDefault>>::value, "");
 ---
 
 ## 참고
-+ https://github.com/ghjang/personal_study/blob/master/cpp/decltype/main.cpp
++ [https://github.com/ghjang/personal_study/blob/master/cpp/decltype/main.cpp](https://github.com/ghjang/personal_study/blob/master/cpp/decltype/main.cpp)
