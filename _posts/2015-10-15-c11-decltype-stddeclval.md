@@ -35,7 +35,7 @@ static_assert(is_same<int, decltype(1 + 1)>::value, "");
 ## decltype 사용에 있어서 유의해야할 점
 
 ### 인자로 넘겨지는 것이 무엇이냐에 따라서 생성되는 type의 형태가 달라진다.
-자세한 사항은 다음 URL을 참조하도록 할 것. 예상한 타입을 얻지 못하는 상황이 있을 수 있겠다:  
+자세한 사항은 다음 URL을 참조하도록 할 것. 예상한 타입을 얻지 못하는 상황이 있을 수 있겠다.
 + [cppreference decltype](http://en.cppreference.com/w/cpp/language/decltype): lambda expression으로 생성되는 컴파일러가 내부적으로 다루는 type을 얻어내고 사용하는 예제가 추가적으로 있다. 
 + [cppreference value category](http://en.cppreference.com/w/cpp/language/value_category): lvalue, rvalue, prvalue, xvalue 같은 개념들에 대해서 설명하고 있다.
 
@@ -83,7 +83,7 @@ static_assert(is_same<int, decltype(doSomething(CompleteType()))>::value, "");
 {% endhighlight %}
 
 ---
-declval은 선언만 있고 정의가 없다. 공용의 생성자는 없고 동일한 이름의 멤버함수가 존재할 경우 해당 멤버함수의 리턴값의 타입을 얻어내는데 사용한다고 함:  
+declval은 선언만 있고 정의가 없다. 공용의 생성자는 없고 동일한 이름의 멤버함수가 존재할 경우 해당 멤버함수의 리턴값의 타입을 얻어내는데 사용한다고 함.
 + [cppreference std::declval](http://en.cppreference.com/w/cpp/utility/declval)
 
 위 레퍼런스에서 제공되는 코드보다 약간 복잡한 사용예는 다음과 같겠다:
