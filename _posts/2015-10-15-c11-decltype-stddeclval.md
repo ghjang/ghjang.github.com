@@ -32,6 +32,7 @@ std::cout << "k: " << k << std::endl;   // 0    <== THINK: how to detect somethi
 static_assert(is_same<int, decltype(1 + 1)>::value, "");
 {% endhighlight %}
 
+---
 ## decltype 사용에 있어서 유의해야할 점
 
 ### 인자로 넘겨지는 것이 무엇이냐에 따라서 생성되는 type의 형태가 달라진다.
@@ -117,5 +118,6 @@ static_assert(is_same<long, ReturnTypeOfFoo<NonDefault>>::value, "");
 //static_assert(is_same<long, decltype(NonDefault().foo())>::value, "");
 {% endhighlight %}
 
+---
 ## 참고
 + https://github.com/ghjang/personal_study/blob/master/cpp/decltype/main.cpp
