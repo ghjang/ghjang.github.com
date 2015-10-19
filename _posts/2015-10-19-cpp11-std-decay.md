@@ -48,9 +48,16 @@ assert(aa[1][0] == 44);
 ---
 
 ## function-to-pointer decay
-늘상 사용하는 당연히 생각되는 또다른 decay는 function-to-pointer decay이다. C++에는 function pointer type이외에 function type이 존재한다. function pointer type은 알아도 function type에 대해서 모는 경우들이 있다:
+늘상 사용하는 당연히 생각되는 또다른 decay는 function-to-pointer decay이다. C++에는 function pointer type이외에 function type과 function reference type이 존재한다. function pointer type은 알아도 나머지 것들에 대해서 잘 모르는 경우들이 있다:
 {% highlight cpp %}
-
+auto pf = f;
+int (&rf) (int) = f;
+int (*pf1) (int) = f;
+static_assert(is_same<int (int), decltype(f)>::value, "");                  // function type
+static_assert(is_same<int (&) (int), decltype(rf)>::value, "");             // function reference type
+static_assert(is_same<int (*) (int), decltype(pf)>::value, "");             // function pointer type
+static_assert(is_same<int (*) (int), decay<decltype(f)>::type>::value, "");
+static_assert(is_same<int (*) (int), decay_t<decltype(f)>>::value, "");
 {% endhightlight %}
 
 ---
@@ -60,6 +67,5 @@ assert(aa[1][0] == 44);
 
 ---
 
-###
-참고
-+ 
+### 참고
++ [cppreference std::decay][http://en.cppreference.com/w/cpp/types/decay]
