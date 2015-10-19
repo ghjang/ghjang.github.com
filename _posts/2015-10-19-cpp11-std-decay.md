@@ -62,7 +62,7 @@ static_assert(is_same<int (&) (int), decltype(rf)>::value, "");             // f
 static_assert(is_same<int (*) (int), decltype(pf)>::value, "");             // function pointer type
 static_assert(is_same<int (*) (int), decay<decltype(f)>::type>::value, "");
 static_assert(is_same<int (*) (int), decay_t<decltype(f)>>::value, "");
-{% endhightlight %}
+{% endhighlight %}
 
 ---
 
