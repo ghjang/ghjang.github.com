@@ -7,7 +7,7 @@ tags: [C++, C++11, C++ TMP]
 ---
 {% include JB/setup %}
 
-decay는 사전적으로 '부식'이라는 의미이다. C++에서 decay란 특정 context에서 type이 원래 고유의 것이 아닌 다른 type으로 변질되는 것을 말한다.
+decay는 사전적으로 '부식'이라는 의미이다. C++에서 decay란 특정 context에서 type이 원래 고유의 것이 아닌 다른 type으로 변질되는 것을 말한다. std::decay는 decay가 일어나는 문맥에서의 type을 계산해주는 meta function.
 
 ---
 
@@ -48,7 +48,10 @@ assert(aa[1][0] == 44);
 ---
 
 ## function-to-pointer decay
-늘상 사용하는 당연히 생각되는 또다는 decay는 function-to-pointer decay이다. 
+늘상 사용하는 당연히 생각되는 또다른 decay는 function-to-pointer decay이다. C++에는 function pointer type이외에 function type이 존재한다. function pointer type은 알아도 function type에 대해서 모는 경우들이 있다:
+{% highlight cpp %}
+
+{% endhightlight %}
 
 ---
 
