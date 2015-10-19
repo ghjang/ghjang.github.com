@@ -38,7 +38,7 @@ int aa[2][3] = {
 		{ 1, 2, 3 },
 		{ 4, 5, 6 }
 };
-int (* paa) [3] = aa; // looses top-level dimension size information, 2.
+int (* paa) [3] = aa; // loses top-level dimension size information, 2.
 static_assert(is_same<decltype(aa), int [2][3]>::value, "");
 static_assert(is_same<decltype(paa), int (*) [3]>::value, ""); // pointer to 'int [3]'
 paa[1][0] = 44;
