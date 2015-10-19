@@ -116,5 +116,5 @@ static_assert(is_same<int (&) (int), decltype(ReturnDecayedValue3(f))>::value, "
 ---
 
 ### 참고
-+ [cppreference std::decay][http://en.cppreference.com/w/cpp/types/decay]: 좀더 세부적인 내용에 대해서 확인하도록 할 것. implicit conversion 관련 내용의 링크도 내용 파악하는 것이 좋을 것임.
++ [cppreference std::decay](http://en.cppreference.com/w/cpp/types/decay): 좀더 세부적인 내용에 대해서 확인하도록 할 것. implicit conversion 관련 내용의 링크도 내용 파악하는 것이 좋을 것임.
 + [https://github.com/ghjang/personal_study/blob/master/cpp/decay/main.cpp](https://github.com/ghjang/personal_study/blob/master/cpp/decay/main.cpp)
