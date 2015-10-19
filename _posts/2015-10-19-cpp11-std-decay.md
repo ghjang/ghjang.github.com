@@ -48,8 +48,12 @@ assert(aa[1][0] == 44);
 ---
 
 ## function-to-pointer decay
-늘상 사용하는 당연히 생각되는 또다른 decay는 function-to-pointer decay이다. C++에는 function pointer type이외에 function type과 function reference type이 존재한다. function pointer type은 알아도 나머지 것들에 대해서 잘 모르는 경우들이 있다:
+늘상 사용하는 당연히 생각되는 또다른 decay는 function-to-pointer decay이다. C++에는 function pointer type이외에 function type과 function reference type이 존재한다. function pointer type은 알아도 나머지 것들에 대해서 잘 생각하지 못하는 경우들이 있다:
 {% highlight cpp %}
+int f(int i) { return i + 1; }
+
+// ...
+
 auto pf = f;
 int (&rf) (int) = f;
 int (*pf1) (int) = f;
@@ -63,9 +67,54 @@ static_assert(is_same<int (*) (int), decay_t<decltype(f)>>::value, "");
 ---
 
 ## Function template에 인자로 전달시 decay
+template을 통한 generic한 코드를 작성시에는 이런 decay 상황에 대해서 대비해야 할 것이다. 원하지 않는 함수가 호출 되거나, 제대로 동작하지 않거나 하는 상황이 발생할 수 있을 것이다. 적절한 함수 오버로딩을 추가하거나, type trait과 std::enable_if와 같은 도구를 활용해야할 필요가 있을지도 모르겠다.
+{% highlight cpp %}
+template <typename T>
+auto ReturnDecayedValue(T t)
+{
+    return t;
+}
 
+template <typename T>
+auto ReturnDecayedValue1(T t) -> decltype(t)
+{
+    return t;
+}
+
+template <typename T>
+auto ReturnDecayedValue2(T & t)
+{
+    return t;
+}
+
+template <typename T>
+auto ReturnDecayedValue3(T & t) -> decltype(t)
+{
+    return t;
+}
+
+// ...
+
+static_assert(is_same<int *, decltype(ReturnDecayedValue(a))>::value, "");
+static_assert(is_same<int (*) [3], decltype(ReturnDecayedValue(aa))>::value, "");
+static_assert(is_same<int (*) (int), decltype(ReturnDecayedValue(f))>::value, "");
+
+static_assert(is_same<int *, decltype(ReturnDecayedValue1(a))>::value, "");
+static_assert(is_same<int (*) [3], decltype(ReturnDecayedValue1(aa))>::value, "");
+static_assert(is_same<int (*) (int), decltype(ReturnDecayedValue1(f))>::value, "");
+
+// ???
+static_assert(is_same<int *, decltype(ReturnDecayedValue2(a))>::value, "");
+static_assert(is_same<int (*) [3], decltype(ReturnDecayedValue2(aa))>::value, "");
+static_assert(is_same<int (*) (int), decltype(ReturnDecayedValue2(f))>::value, "");
+
+static_assert(is_same<int (&) [3], decltype(ReturnDecayedValue3(a))>::value, "");       // reference to 'int [3]'
+static_assert(is_same<int (&) [2][3], decltype(ReturnDecayedValue3(aa))>::value, "");   // reference to 'int [2][3]'
+static_assert(is_same<int (&) (int), decltype(ReturnDecayedValue3(f))>::value, "");     // reference to 'int (int)'
+{% endhighlight %}
 
 ---
 
 ### 참고
-+ [cppreference std::decay][http://en.cppreference.com/w/cpp/types/decay]
++ [cppreference std::decay][http://en.cppreference.com/w/cpp/types/decay]: 좀더 세부적인 내용에 대해서 확인하도록 할 것. implicit conversion 관련 내용의 링크도 내용 파악하는 것이 좋을 것임.
++ [https://github.com/ghjang/personal_study/blob/master/cpp/decay/main.cpp](https://github.com/ghjang/personal_study/blob/master/cpp/decay/main.cpp)
