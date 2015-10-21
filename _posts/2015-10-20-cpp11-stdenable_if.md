@@ -13,7 +13,10 @@ enable_if를 제대로 이해하기 위해서는 SFINAE(Substitution Failure Is 
 
 SFINAE를 간단하게 설명하면 'template관련 코드에서 특정 부분만을 보면 잘못된(ill-formed) 컴파일이 실패하는 코드이나, 대체 방안이 있을 경우 문제된 코드부분은 무시되고 정상적으로 컴파일된다.'라고 할 수 있겠다.
 
-enable_if의 적절한 활용예제를 생각해내기 쉽지 않았다. (실제 유용성은 그다지 없어보이는) 작위적으로라도 만들어본 예제는 다음과 같다. 주어진 컨테이너의 카테고리에 따라서 컨테이너내의 중간 위치에 값을 리턴해주는 구현을 달리 해본 함수이다.
+enable_if의 적절한 활용예제를 생각해내기 쉽지 않았다. (실제 유용성은 그다지 없어보이는) 작위적으로라도 예제를 만들어 보겠다.
+
+## Function template에서 사용
+아래는 주어진 컨테이너의 카테고리에 따라서 컨테이너 내의 중간 위치에 있는 값을 리턴해주는 함수를 구현한 것이다.
 {% highlight cpp %}
 template <
         typename Container,
@@ -121,7 +124,7 @@ template <
 >
 auto medianValue(Container const& c)
 ...
-{%표현의 endhighlight %}
+{% endhighlight %}
 
 위 표현은 RandomAccessIterator를 제공하지 않는 컨테이너에 대해서 다음과 같은 형태로 내부적으로 바뀔 것이고 유효한(well-formed) 코드이다.
 {% highlight cpp %}
