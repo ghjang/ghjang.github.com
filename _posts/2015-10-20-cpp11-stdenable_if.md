@@ -15,6 +15,8 @@ SFINAE를 간단하게 설명하면 'template관련 코드에서 특정 부분�
 
 enable_if의 적절한 활용예제를 생각해내기 쉽지 않았다. (실제 유용성은 그다지 없어보이는) 작위적으로라도 예제를 만들어 보겠다.
 
+---
+
 ## Function template에서 사용
 아래는 주어진 컨테이너의 카테고리에 따라서 컨테이너 내의 중간 위치에 있는 값을 리턴해주는 함수를 구현한 것이다.
 {% highlight cpp %}
@@ -159,6 +161,12 @@ template <typename Container>
 auto medianValue(Container const& c, void ** = nullptr)
 ...
 {% endhighlight %} 
+
+---
+
+## Class Template Specialization에서 사용
+{% highlight cpp %}
+{% endhighlight %}
 
 ---
 
