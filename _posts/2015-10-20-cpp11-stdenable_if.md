@@ -166,7 +166,69 @@ auto medianValue(Container const& c, void ** = nullptr)
 
 ## Class Template Specialization에서 사용
 {% highlight cpp %}
+template <typename T, typename = void>
+struct Actor
+{
+    void doSomething()
+    {
+        std::cout << "did some work." << std::endl;
+    }
+};
+
+template <typename T>
+struct Actor<T, std::enable_if_t<std::is_integral<T>::value>>
+{
+    void doSomething()
+    {
+        std::cout << "did some work for integral type." << std::endl;
+    }
+};
+
+template <typename T>
+struct Actor<T, std::enable_if_t<std::is_floating_point<T>::value>>
+{
+    void doSomething()
+    {
+        std::cout << "did some work for floating point type." << std::endl;
+    }
+};
+
+// ...
+
+using std::string;
+
+// ...
+
+Actor<string> as;
+as.doSomething(); // 'did some work.'
+
+Actor<int> ai;
+ai.doSomething(); // 'did some work for integral type.'
+
+Actor<double> ad;
+ad.doSomething(); // 'did some work for floating point type.'
 {% endhighlight %}
+
+Actor<int>를 예를 들어서 설명하면 내부적으로 다음과 같은 형태로 처리된다고 볼 수 있겠다.
+{% highlight cpp %}
+// primary template
+template <typename T, typename = void>
+struct Actor
+...
+
+// first specialization
+template <typename T>
+struct Actor<T, void>
+...
+
+// second specialization
+template <typename T>
+struct Actor<T, >
+...
+{% endhighlight %}
+두번째 specialization은 잘못된 코드임으로 무시된다. 나머지 primary template과 first specialization 사이에서 선택이 일어나야 하겠다. 이때 primary template의 두번째 template parameter에 지정된 default template argument보다 first specialization에서 명시적으로 두번째 template argument에 지정된 것이 우선시 되어 first specialization이 선택된다.
+
+(Function template보다는 class template specialization에서 좀더 쓰임새가 있을것 같다...)
 
 ---
 
