@@ -123,7 +123,7 @@ auto medianValue(Container const& c)
 ...
 {%표현의 endhighlight %}
 
-위 표현은 RandomAccessIterator를 제공하지 않는 컨테이너에 대해서 다음과 같은 형태로 내부적으로 바뀔 것이다.
+위 표현은 RandomAccessIterator를 제공하지 않는 컨테이너에 대해서 다음과 같은 형태로 내부적으로 바뀔 것이고 유효한(well-formed) 코드이다.
 {% highlight cpp %}
 template <
         typename Container,
@@ -149,7 +149,13 @@ auto medianValue(Container const& c, std::enable_if_t<
 )
 ...
 {% endhighlight %}
-'void **'와 같이 '**'를 이용한 것은 별다른 이유라기 보다는 최대한 사용자의 실수를 방지하기 위한 것이다. 
+
+위 표현은 RandomAccessIterator를 제공하지 않는 컨테이너에 대해서 다음과 같은 형태로 내부적으로 바뀔 것이고 역시 유효한(well-formed) 코드가 된다. 'void **'와 같이 '**'를 이용한 것은 별다른 이유라기 보다는 최대한 사용자의 실수를 방지하기 위한 것이다. 
+{% highlight cpp %}
+template <typename Container>
+auto medianValue(Container const& c, void ** = nullptr)
+...
+{% endhighlight %} 
 
 ---
 
