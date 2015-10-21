@@ -48,7 +48,7 @@ assert(aa[1][0] == 44);
 ---
 
 ## function-to-pointer decay
-늘상 사용하는 당연히 생각되는 또다른 decay는 function-to-pointer decay이다. C++에는 function pointer type이외에 function type과 function reference type이 존재한다. function pointer type은 알아도 나머지 것들에 대해서 잘 생각하지 못하는 경우들이 있다:
+늘상 사용하는 당연히 생각되는 또다른 decay는 function-to-pointer decay이다. C++에는 function pointer type이외에 function type과 function reference type이 존재한다. function pointer type은 알아도 나머지 것들에 대해서 잘 생각하지 못하는 경우들이 있다. 함수는 int와 같은 primitive type처럼 함수의 인자등으로 전달될 수 있는 first class type이라서 '&', '*' 등을 붙여서 compound type을 구성하는 것이 가능하다.
 {% highlight cpp %}
 int f(int i) { return i + 1; }
 
@@ -95,6 +95,21 @@ auto ReturnDecayedValue3(T & t) -> decltype(t)
 
 // ...
 
+int f(int i) { return i + 1; }
+
+// ...
+
+int a[3] = { 1, 2, 3 };
+
+// ...
+
+int aa[2][3] = {
+		{ 1, 2, 3 },
+		{ 4, 5, 6 }
+};
+
+// ...
+
 static_assert(is_same<int *, decltype(ReturnDecayedValue(a))>::value, "");
 static_assert(is_same<int (*) [3], decltype(ReturnDecayedValue(aa))>::value, "");
 static_assert(is_same<int (*) (int), decltype(ReturnDecayedValue(f))>::value, "");
@@ -112,6 +127,8 @@ static_assert(is_same<int (&) [3], decltype(ReturnDecayedValue3(a))>::value, "")
 static_assert(is_same<int (&) [2][3], decltype(ReturnDecayedValue3(aa))>::value, "");   // reference to 'int [2][3]'
 static_assert(is_same<int (&) (int), decltype(ReturnDecayedValue3(f))>::value, "");     // reference to 'int (int)'
 {% endhighlight %}
+
+array에도 (당연한 것인데) 'array type, array reference type, array pointer type'이 있다는 것을 기억하는게 좋겠다.
 
 ---
 
