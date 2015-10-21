@@ -209,7 +209,7 @@ Actor<double> ad;
 ad.doSomething(); // 'did some work for floating point type.'
 {% endhighlight %}
 
-Actor<int>를 예를 들어서 설명하면 내부적으로 다음과 같은 형태로 처리된다고 볼 수 있겠다.
+Actor< int >를 예를 들어서 설명하면 내부적으로 다음과 같은 형태로 처리된다고 볼 수 있겠다.
 {% highlight cpp %}
 // primary template
 template <typename T, typename = void>
