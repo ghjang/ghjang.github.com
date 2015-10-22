@@ -225,7 +225,7 @@ runShapeTest 함수 자체는 다루고자하는 도형을 template parameter ty
 
 variant는 heterogeneous type의 객체를 한번에 1개씩 다룰 수 있게해주는 도구이다. 최근 CppCon2015 동영상 강좌에서 variant가 다음번 표준(C++ 17?)에 들어가게될 것이라는 언급이 있었다. boost에 있는 variant구현이 표준에 포함되게될 것인지, 다른 형태의 구현이 포함되게 될것인지는 알 수 없는 것 같다.
 
-위의 static polymorphism 예제에서 볼 수 있는 것처럼 runShapeTest 함수내에서 heterogeneous한 객체를 다룰 수 없다는 것은 단점이다. variant를 static polymorphism과 같이 사용하면 dynamic 버전에서와 같은 효과를 낼 수 있게된다. 클라이언트측 코드를 아래와 같이 수정하여 사용할 수 있겠다.
+위의 static polymorphism 예제에서 볼 수 있는 것처럼 runShapeTest 함수내에서 heterogeneous한 객체를 다룰 수 없다는 것은 단점이다. variant class template을 사용하면 dynamic 버전에서와 같은 효과를 낼 수 있게된다. 클라이언트측 코드를 아래와 같이 수정하여 사용할 수 있겠다.
 {% highlight cpp %}
 struct CallArea: public boost::static_visitor<double>
 {
