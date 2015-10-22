@@ -3,7 +3,7 @@ layout: post
 title: "[C++] Polymorphism and Variant"
 description: ""
 category: Computer Programming
-tags: [C++]
+tags: [C++, Visitor Pattern, Design Pattern]
 ---
 {% include JB/setup %}
 
