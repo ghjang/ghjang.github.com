@@ -272,7 +272,7 @@ void runShapeTestByUsingVariant()
 
 ## When They Are All Mixed Together
 
-정말로 재미있어지는 부분은 dynamic버전과 static버전이 혼동될때 볼 수 있는 강력함이라할 수 있겠다.
+정말로 재미있어지는 부분은 dynamic버전과 static버전이 혼용될때 볼 수 있는 강력함이라할 수 있겠다.
 
 ---
 
