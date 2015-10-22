@@ -272,7 +272,48 @@ void runShapeTestByUsingVariant()
 
 ## When They Are All Mixed Together
 
-정말로 재미있어지는 부분은 dynamic버전과 static버전이 혼용될때 볼 수 있는 강력함이라할 수 있겠다.
+정말로 재미있어지는 부분은 dynamic버전과 static버전이 적절히 혼용될때 볼 수 있는 강력함이라할 수 있겠다.
+
+(좀 작위적이긴 하다만,) 예를 들어서 본 글에서 설명한 dynamic polymorphism 버전의 도형 계층을 이용한다고 하자. 시간이 흘러서 추가적인 도형들이 많이 늘어났고 어느 정도 안정화되었다. 도형을 그릴 수 있는 기능에 대한 추가요구사항이 발생했다.
+
+문제해결 방법으로 먼저 생각해볼 수 있는 것은 Shape 클래스에 그리는 것과 관련된 virtual function을 추가하고 필요한 자식 클래스들을 모두 수정해 주는 것이다. 하지만 어떤 이유로 인해서 그려야할 자식 클래스의 수정이 부담스럽거나 불가능할 수도 있겠다(이미 충분히 안정화 되었거나, 소스코드는 없고 라이브러리 형태로만 존재한다던지,...).
+
+또다른 해결법은 visitor pattern을 고려해보는 것 이겠다. static polymorphism 예제에서 설명한 boost::variant와 visitor를 이용하면 visitor pattern을 쉽게 구현할 수 있다. member function template을 잘 활용하면 virtual function으로 구현했을 때의 동일한 내용으로 구현이 가능하겠다.
+
+대략, 다음과 같은 식이 될 수 있을 것 같다. (이 부분에 대해서는 실제로 코드를 작성해서 테스트하지 않았다.)
+{% highlight cpp %}
+struct CallDraw: public boost::static_visitor<>
+{
+	// some graphics object could be placed as member variable here.
+	Graphics & g_;
+	
+	CallDraw(Graphics & g) : g_(g) { }
+	
+	// ...
+	
+	template <typename T>
+	void operator () (T s) const
+	{
+		// default implementation. draw nothing.		
+	}
+	
+	// added drawing implementation for Circle only.
+	void operator () (std::shared_ptr<Circle> c)
+	{
+		// assumed that the Circle class provides enough interfaces to draw the circle.
+		// pt = c.center();
+		// r = c.radius();
+		// ...
+		// g_.draw(...); 
+	}
+};
+
+// ...
+
+for (auto s : sv) {
+	boost::apply_visitor(CallDraw(g), s);  // assumed that the 'g' is a kind of graphics object.
+}
+{% endhighlight %}
 
 ---
 
