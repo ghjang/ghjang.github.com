@@ -113,7 +113,7 @@ for (auto s : sv) {
               << std::endl;
 }
 {% endhighlight %}
-부모 클래스의 인터페이스, 그러니까 포인터를 가지고 이종의 자식 객체들을 단일한 방식으로 다룰 수 있게 된다. 부모 클래스의 인터페이스로 다루기에 해당 부분에서는 실제 다루는 객체의 정보를 알 수가 없다. concrete type 정보를 잃었다는 것이다. 경우에 따라서는 그다지 보기 좋지 않은 가능하면 피하라고 가이드되는 dynamic down-cast를 해야할 수도 있다.
+부모 클래스의 인터페이스, 그러니까 포인터를 가지고 이종의 자식 객체들을 단일한 방식으로 다룰 수 있게 된다. 부모 클래스의 인터페이스로 다루기에 해당 부분에서는 실제 다루는 객체의 정보를 알 수가 없다. concrete type 정보를 잃었다는 것이다. 경우에 따라서는 그다지 보기 좋지 않은 가능하면 피하라고 가이드되는 dynamic down-cast와 같은 RTTI를 이용해야할 수도 있다.
 
 ---
 
@@ -223,7 +223,7 @@ runShapeTest 함수 자체는 다루고자하는 도형을 template parameter ty
 
 ### Variant
 
-variant는 heterogeneous type의 객체를 한번에 1개씩 다룰 수 있게해주는 도구이다. 최근 CppCon2015 동영상 강좌에서 variant가 다음번 표준(C++ 17?)에 들어가게될 것이라는 언급이 있었다. boost에 있는 variant구현이 표준에 포함되게될 것인지, 다른 형태의 구현이 포함되게 될것인지는 알 수 없는 것 같다.
+variant는 heterogeneous type의 객체를 한번에 1개씩 다룰 수 있게해주는 도구이다. 이를 'smart union type'이라고 부르기도 하느 것 같다. 최근 CppCon2015 동영상 강좌에서 variant가 다음번 표준(C++ 17?)에 들어가게될 것이라는 언급이 있었다. boost에 있는 variant구현이 표준에 포함되게될 것인지, 다른 형태의 구현이 포함되게 될것인지는 알 수 없는 것 같다.
 
 위의 static polymorphism 예제에서 볼 수 있는 것처럼 runShapeTest 함수내에서 heterogeneous한 객체를 다룰 수 없다는 것은 단점이다. variant class template을 사용하면 dynamic 버전에서와 같은 효과를 낼 수 있게된다. 클라이언트측 코드를 아래와 같이 수정하여 사용할 수 있겠다.
 {% highlight cpp %}

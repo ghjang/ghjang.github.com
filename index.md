@@ -5,6 +5,9 @@ tagline: Supporting tagline
 ---
 {% include JB/setup %}
 
+For those who want to learn more about C++, refer to [C++ Study Resources](/pages/cpp-study-resource.html).
+
+---
 Here's a "posts list":
 
 <ul class="posts">
