@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Welcome to My Blog!
-tagline: Supporting tagline
+title: Welcome to My Workshop!
+tagline: Computer Programming and Music
 ---
 {% include JB/setup %}
 
@@ -15,4 +15,3 @@ Here's a "posts list":
     <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
-
