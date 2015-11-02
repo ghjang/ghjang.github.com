@@ -3,7 +3,7 @@ layout: post
 title: "Mac OS X Keyboard Shortcuts"
 description: ""
 category: 
-tags: []
+tags: [Mac OS X]
 ---
 {% include JB/setup %}
 
