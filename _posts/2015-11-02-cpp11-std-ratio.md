@@ -50,6 +50,143 @@ ratio 내부에서 사용하게되는 compile-time GCD를 구하는 구현부는
 
 ---
 
+### How to Create a Compile-time Constant String from a std::ratio
+
+std::cout등에 출력하기 위한 std::ratio string 값을 생성하는 모듈을 만드는 것이 목적이다.
+
+간단할 줄 알고 도전했는데, 구현이 생각보다 매우 복잡하다. --; 다음의 CppCon2015 자료를 참고하였다.
++ [Variable Templates - C++14 compile-time computation - Peter Sommerlad](https://github.com/CppCon/CppCon2015/tree/master/Presentations/Variable%20Templates%20-%20C%2B%2B14%20compile-time%20computation)
+
+완전히 동일한 코드를 사용할 수는 없었고 나름 좀더 살을 붙였다. 일부는 재사용이 가능할 것도 같다. 일단 여기서는 상세 설명은 배제하고 구현 코드만 붙이도록 하겠다. 전체 코드는 하단의 참고의 링크를 참고하도록 할 것.
+
+다음번에 **constexpr** 관련 포스트를 별도로 작성하여 설명하는 것이 맞을 것으로 보인다.
+
+{% highlight cpp %}
+constexpr uint8_t get_number_of_digit(intmax_t i)
+{
+    if (i < 0) {
+        i = -i;
+    }
+    if (i < 10) {
+        return 1;
+    }
+    uint8_t n = 1;
+    for ( ; ; ) {
+        ++n;
+        if (i / 10 < 10) {
+            break;
+        }
+        i /= 10;
+    }
+    return n;
+}
+
+constexpr char get_digit_char(intmax_t n, uint8_t numOfDigit, uint8_t digitIndex)
+{
+    intmax_t modNum = 1;
+    for (uint8_t i = 0; i < digitIndex; ++i) {
+        modNum *= 10;
+    }
+    n %= modNum;
+
+    for (uint8_t i = 0; i < digitIndex - 1; ++i) {
+        n /= 10;
+    }
+
+    return n + '0';
+}
+
+constexpr intmax_t get_abs(intmax_t i)
+{
+    return (i < 0) ? -i : i;
+}
+
+
+template <char... s>
+constexpr static char const char_array[] = { s..., '\0' };
+
+template <char... s>
+using char_sequence = std::integer_sequence<char, s...>;
+
+
+template <intmax_t n, typename IndexSequence>
+struct make_char_sequence;
+
+template <intmax_t n, std::size_t... indices>
+struct make_char_sequence<n, std::index_sequence<indices...>>
+{
+    using type = char_sequence<
+                    get_digit_char(n, get_number_of_digit(n), sizeof...(indices) - indices)...
+                 >;
+};
+
+
+template <char... s>
+constexpr auto make_char_array(char_sequence<s...>, bool isNegative)
+{
+    if (isNegative) {
+        return char_array<'-', s...>;
+    }
+    return char_array<s...>;
+}
+
+
+//...
+
+
+template <typename Sequence1, typename Sequence2>
+struct concat_sequence;
+
+template <char... s1, char... s2>
+struct concat_sequence<char_sequence<s1...>, char_sequence<s2...>>
+{
+    using type = char_sequence<s1..., s2...>;
+};
+
+
+template <std::intmax_t Num, std::intmax_t Denom>
+constexpr auto to_str(std::ratio<Num, Denom>)
+{
+    using num_indices_t = std::make_index_sequence<get_number_of_digit(Num)>;
+    using num_char_sequence_t = typename make_char_sequence<get_abs(Num), num_indices_t>::type;
+
+    using denom_indices_t = std::make_index_sequence<get_number_of_digit(Denom)>;
+    using denom_char_sequence_t = typename make_char_sequence<get_abs(Denom), denom_indices_t>::type;
+
+    using temp_char_array_t = typename concat_sequence<num_char_sequence_t, char_sequence<'/'>>::type;
+    using final_char_array_t = typename concat_sequence<temp_char_array_t, denom_char_sequence_t>::type;
+
+    return make_char_array(final_char_array_t(), (Num < 0 && Denom > 0) || (Num > 0 && Denom < 0));
+}
+
+
+//...
+
+using std::ratio;
+using std::string;
+using std::cout;
+using std::endl;
+
+//...
+
+using two_third = ratio<2, 3>;
+constexpr auto two_third_str = to_str(two_third());
+cout << two_third_str << endl;
+assert(string("2/3") == two_third_str);
+
+using minus_two_third = ratio<-2, 3>;
+constexpr auto minus_two_third_str = to_str(minus_two_third());
+cout << minus_two_third_str << endl;
+assert(string("-2/3") == minus_two_third_str);
+
+using minus_two_third1 = ratio<2, -3>;
+constexpr auto minus_two_third_str1 = to_str(minus_two_third1());
+cout << minus_two_third_str1 << endl;
+assert(string("-2/3") == minus_two_third_str1);
+{% endhighlight %}
+
+---
+
 ## 참고
 + [cppreference std::ratio](http://en.cppreference.com/w/cpp/numeric/ratio/ratio)
 + [cppreference std::experimental::gcd](http://en.cppreference.com/w/cpp/experimental/gcd)
