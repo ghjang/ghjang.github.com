@@ -54,7 +54,7 @@ ratio 내부에서 사용하게되는 compile-time GCD를 구하는 구현부는
 
 std::cout등에 출력하기 위한 std::ratio의 string 값을 생성하는 모듈을 만드는 것이 목적이다.
 
-간단할 줄 알고 도전했는데, 구현이 생각보다 매우 복잡하다. --; 다음의 CppCon2015 자료를 참고하였다.
+간단할 줄 알고 도전했는데, 구현이 생각보다 매우 복잡하다. :-( 다음의 CppCon2015 자료를 참고하였다.
 
 + [Variable Templates - C++14 compile-time computation - Peter Sommerlad](https://github.com/CppCon/CppCon2015/tree/master/Presentations/Variable%20Templates%20-%20C%2B%2B14%20compile-time%20computation)
 
