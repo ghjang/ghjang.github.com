@@ -22,7 +22,8 @@ description: "C++ 공부에 유용한 리소스들을 간략하게 정리한다.
 ### Herb Sutter
 + [Sutter's Mill](http://herbsutter.com)
 
-### Eric
+### Eric Niebler
++ [http://ericniebler.com](http://ericniebler.com)
 
 ---
 ### [WikiDocs C++ Template Note](https://wikidocs.net/book/54)
