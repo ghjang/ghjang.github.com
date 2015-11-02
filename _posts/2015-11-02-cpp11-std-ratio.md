@@ -58,7 +58,7 @@ std::cout등에 출력하기 위한 std::ratio의 string 값을 생성하는 모
 
 + [Variable Templates - C++14 compile-time computation - Peter Sommerlad](https://github.com/CppCon/CppCon2015/tree/master/Presentations/Variable%20Templates%20-%20C%2B%2B14%20compile-time%20computation)
 
-완전히 동일한 코드를 사용할 수는 없었고 나름 좀더 살을 붙였다. 일부는 재사용이 가능할 것도 같다. 일단 여기서는 상세 설명은 배제하고 구현 코드만 붙이도록 하겠다. 전체 코드는 하단의 참고의 링크를 참고하도록 할 것.
+완전히 동일한 코드를 사용할 수는 없었고 나름 좀더 살을 붙였다. 일부는 재사용이 가능할 것도 같다. 일단 여기서는 상세 설명은 배제하고 구현 코드만 붙이도록 하겠다. 전체 코드는 하단의 참고 링크를 살펴보도록 할 것.
 
 다음번에 **constexpr** 관련 포스트를 별도로 작성하여 설명하는 것이 맞을 것으로 보인다.
 
