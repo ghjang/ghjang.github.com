@@ -2,7 +2,7 @@
 layout: post
 title: "[C++11] std::initializer_list"
 description: ""
-category: 
+category: Computer Programming
 tags: [C++, C++11]
 ---
 {% include JB/setup %}
