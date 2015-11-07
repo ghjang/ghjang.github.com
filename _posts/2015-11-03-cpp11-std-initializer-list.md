@@ -10,6 +10,7 @@ tags: [C++, C++11]
 C++11의 brace initialization 표기법의 결과물이 std::initializer_list라고 함. 이때 리스트의 원소 타입은 자동으로 deduction된다 함. 내용이 간단한 편이기 때문에 하단의 레퍼런스 링크를 참고하면 되겠다.
 
 간단히 기억해야할만한 사항은 다음과 같다.
+
 + initializer_list 인스턴스 내부에 배열이 생성되는 형태라고 함. 인스턴스내 배열의 lifetime은 해당 initializer_list보다 길다고 보면 안되겠음.
 + STL 컨테이너와 같이 copy-by-value 개념임.
 + 표준 STL 컨테이너는 물론이고 많은 라이브러리 부분에 initializer_list를 인자로 받도록 overloading되어 있음.
