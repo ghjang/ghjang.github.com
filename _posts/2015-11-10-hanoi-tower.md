@@ -75,11 +75,11 @@ plate-1, (0 => 2)
 
 ---
 
-## Compile-time Hanoi Tower
+## Compile-time Tower of Hanoi
 
-TODO: 탑의 높이가 정해지면 이동 경로는 정해져있다고 볼 수 있을 것 같다. 따라서, 이동 경로 시퀀스를 compile-time을로 끌어내릴 수 있을 것도 같다. 이렇게 하는 것이 가능한지 좀더 생각해보고 가능하다면 구현까지 해보도록 할 것.
+TODO: 탑의 높이가 정해지면 이동 경로는 정해져있다고 볼 수 있을 것 같다. 따라서, 이동 경로 시퀀스를 compile-time으로 끌어내릴 수 있을 것도 같다. 이렇게 하는 것이 가능한지 좀더 생각해보고 가능하다면 구현까지 해보도록 할 것.
 
 ---
 
 ## 참고
-+ [https://github.com/ghjang/personal_study/blob/master/cpp/hanoi_tower/main.cpp](https://github.com/ghjang/personal_study/blob/master/cpp/hanoi_tower/main.cpp)
++ <https://github.com/ghjang/personal_study/blob/master/cpp/hanoi_tower/main.cpp>
