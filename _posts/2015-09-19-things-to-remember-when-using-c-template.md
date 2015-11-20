@@ -59,3 +59,9 @@ valid expression. implicit하게 구성되는 요구 인터페이스들로 컴�
 
 ### friend
 friend가 definition이 되어버리는 상황등에 대해서 정리.
+
+### full class template specialization에서는 상수값을 직접 적을 수 있으나, partial class template specialization에서는 type만 적을 수 있다(???). constant value라면 무엇이든 적을 수 있다(?).
+rocky/meta/ReverseTuple.h에서 확인할 것.
+TODO: 매번 혼동하게되는 부분으로 예제를 작성하는게 좋겠다.
+
+### partial class template specialization의 template parameter에는 default argument를 설정할 수 없다.
