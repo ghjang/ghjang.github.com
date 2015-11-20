@@ -31,6 +31,10 @@ description: "C++ 공부에 유용한 리소스들을 간략하게 정리한다.
 ### [WikiDocs C++ Template Note](https://wikidocs.net/book/54)
 [C++ Templates - The Complete Guide](http://www.josuttis.com/tmplbook/) 책을 기본으로하고 다른 C++ 명저들을 공부하면서 내용들을 함께 정리 해놓은 곳. 나름 깔끔하게 정리되어 있어서 좋다. 한글 내용이다. 한글이다보니 용어 설명이 와닿지 않고 혼동될 수 있는 부분들이 있다. 가능하면 영문과 같이 익히는게 좋겠다.
 
+### [What Does Haskell Have to Do with C++?](http://bartoszmilewski.com/2009/10/21/what-does-haskell-have-to-do-with-c/)
+
+### [Haskellizing C++ template metaprogramming](http://manu343726.github.io/c++/haskellizing-tmp/)
+
 ---
 
 ## C++ IDE
