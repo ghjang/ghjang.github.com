@@ -3,7 +3,7 @@ layout: post
 title: "About ForEachArgument Function Template"
 description: ""
 category: Computer Programming
-tags: [C++, C++ TMP]
+tags: [C++, C++11, C++14, C++17, C++ TMP]
 ---
 {% include JB/setup %}
 
@@ -66,7 +66,7 @@ auto ForEachArgument(F f, Args... args)
 
 하지만 위의 세가지 경우 모두 이전과 같이 parameter pack을 확장할 수 없다는 동일 컴파일 오류를 발생시킨다.
 
-brace initialization내에서 확장도 시도해본다.
+다음으로 brace initialization내에서 확장도 시도해본다.
 
 {% highlight cpp %}
 // parameter pack expansion by using brace initialization - 1
@@ -88,7 +88,7 @@ auto ForEachArgument(F f, Args... args)
 }
 {% endhighlight %}
 
-이 경우는 정상적으로 컴파일된다. 두번째 코드에서 `std::initializer_list<int>`를 명시적으로 사용한 것은 최초에 ForEachArgument 테스트로 작성한 코드가 대략 다음과 같기 때문이다.
+이 경우는 정상적으로 컴파일된다. brace initialization에서 parameter pack의 확장이 허용된다. 두번째 코드에서 `int`를 인자로 하는 `std::initializer_list<int>`를 명시적으로 사용한 것은 최초에 ForEachArgument 테스트로 작성한 코드가 대략 다음과 같기 때문이다.
 
 {% highlight cpp %}
 struct Sum
@@ -245,7 +245,7 @@ void for_each_element(F f, Args&&... args) {
 이 것은 두부분으로 나누어서 생각하면되겠다.
 
 1. `[](...){}`: 가변인자를 받아서 아무것도 하지 않는 lambda 표현
-1. `(f(args), 0)...`: 앞서 `std::initializer_list`를 사용한 버전에서 언급한 내용과 동일. parameter pack 확장. lambda 함수의 인자로 넘기게되는데, 이와 같은 '함수호출문맥'에서 parameter pack 확장이 허용된다.
+1. `(f(args), 0)...`: 앞서 `std::initializer_list`를 사용한 버전에서 언급한 내용과 동일. parameter pack 확장. lambda 함수의 인자로 넘기게되는데, 이와 같은 '함수호출인자리스트' context에서 parameter pack 확장이 허용된다.
 
 종합하면 parameter pack이 확장되서 `args`부분에 해당하는 인자 개수만큼 얻어지는 결과 `0`들의 값들을 아무것도 하지 않는 lambda에 전부 넘긴다는 것이다. 결과적으로 `std::initializer_list` 구현과정에서 언급한 `f`의 리턴값 문제와 컴파일러 경고 문제를 말끔히 해결한다.
 
