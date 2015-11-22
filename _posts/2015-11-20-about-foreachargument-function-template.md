@@ -254,6 +254,7 @@ void for_each_element(F f, Args&&... args) {
 ---
 
 ## 참고
-+ [Variadic Templates are Funadic](https://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Variadic-Templates-are-Funadic): Andrei Alexandrescu가 진행하는 강연이다. Parameter pack expansion rule에 대해서 자세히 설명되어 있다.  
++ [Variadic Templates are Funadic](https://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Variadic-Templates-are-Funadic): Andrei Alexandrescu가 진행하는 강연이다. Parameter pack expansion rule에 대해서 자세히 설명되어 있다.
++ [Using Variadic Templates cleanly](http://florianjw.de/en/variadic_templates.html): `std::initializer_list`와 variadic template을 적절히 활용하는 방법이 자세히 설명되어 있다. 맨 하단의 `sequential_foreach`는 거의 `ForEachArgument`와 동일하다.   
 + <https://github.com/ghjang/rocky/blob/master/rocky/meta/ForEachArgument.h>
 + <https://github.com/ghjang/rocky/blob/master/rocky/test/ForEachArgumentTest.cpp>
