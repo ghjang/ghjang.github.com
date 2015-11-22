@@ -192,6 +192,7 @@ static_assert(is_same<integer_sequence<std::size_t, 1, 1, 2, 6, 24>, factorial_i
 + '홀수/짝수' 인덱스열을 생성하고 variadic template arguments에서 '홀수/짝수'번째 것만 뽑아서 처리
 + 역순의 인덱스열을 생성해서 reverse된 tuple type 생성하기. 예를 들면 `std::tuple<char, int, float>`로부터 `std::tuple<float, int, char>` type을 생성.
 + variadic template arguments에 대해서 boolean 형태의 정수열을 생성하고 true 형태인 것만 처리. 'type list filter'같은 것을 만드는데 이용할 수 있겠다는 것이다.
++ Music Theory의 Scale개념을 수의 열로 추상화해서 특정 Scale에 해당하는 Musical Note들의 열을 구하거나 하는 따위의 일도 가능할 것 같다.
 + ...
 
 ---
