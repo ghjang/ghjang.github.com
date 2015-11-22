@@ -41,6 +41,10 @@ description: "C++ 공부에 유용한 리소스들을 간략하게 정리한다.
 ### Scott Meyers
 + [THE VIEW FROM ARISTEIA: SCOTT MEYERS' PROFESSIONAL ACTIVITIES AND INTERESTS](http://scottmeyers.blogspot.kr) 
 
+### Dave Abrahams
++ [http://daveabrahams.com](http://daveabrahams.com): personal web page
++ [https://twitter.com/DaveAbrahams](https://twitter.com/DaveAbrahams): Twitter
+
 ### Eric Niebler
 + [http://ericniebler.com](http://ericniebler.com)
 
