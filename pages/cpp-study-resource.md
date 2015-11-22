@@ -35,6 +35,12 @@ description: "C++ 공부에 유용한 리소스들을 간략하게 정리한다.
 
 ### [Haskellizing C++ template metaprogramming](http://manu343726.github.io/c++/haskellizing-tmp/)
 
+### [Variadic Templates are Funadic](https://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Variadic-Templates-are-Funadic)
+Andrei Alexandrescu가 진행하는 강연이다. Parameter pack expansion rule에 대해서 자세히 설명되어 있다.
+
+### [Using Variadic Templates cleanly](http://florianjw.de/en/variadic_templates.html)
+`std::initializer_list`와 variadic template을 적절히 활용하는 방법이 자세히 설명되어 있다.
+
 ---
 
 ## C++ IDE
