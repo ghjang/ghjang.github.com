@@ -200,3 +200,5 @@ static_assert(is_same<integer_sequence<std::size_t, 1, 1, 2, 6, 24>, factorial_i
 ## 참고
 + [cppreference std::integer_sequence](http://en.cppreference.com/w/cpp/utility/integer_sequence): 예제 포함 전체 내용을 숙지하는 것이 좋겠다. 예제가 좋다.
 + <https://github.com/ghjang/personal_study/blob/master/cpp/integer_sequence/main.cpp>
++ <https://github.com/ghjang/rocky/blob/master/rocky/meta/IntegerSequenceUtility.h>
++ <https://github.com/ghjang/rocky/blob/master/rocky/test/IntegerSequenceUtilityTest.cpp>
