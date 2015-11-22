@@ -5,6 +5,12 @@ description: "C++ 공부에 유용한 리소스들을 간략하게 정리한다.
 ---
 {% include JB/setup %}
 
+## C++ Standard
++ [https://isocpp.org](https://isocpp.org)
++ [http://cppreference.com](http://cppreference.com)
+
+---
+
 ## Developer Conference
 
 ### CppCon
@@ -16,6 +22,12 @@ description: "C++ 공부에 유용한 리소스들을 간략하게 정리한다.
 
 ### C++ Now
 
+### C++ Going Native
+
+### BoostCon
+
+### Meeting C++
+
 ---
 
 ## C++ Experts
@@ -23,10 +35,21 @@ description: "C++ 공부에 유용한 리소스들을 간략하게 정리한다.
 ### Herb Sutter
 + [Sutter's Mill](http://herbsutter.com)
 
+### Andrei Alexandrescu
++ [http://erdani.com](http://erdani.com) 
+
+### Scott Meyers
++ [THE VIEW FROM ARISTEIA: SCOTT MEYERS' PROFESSIONAL ACTIVITIES AND INTERESTS](http://scottmeyers.blogspot.kr) 
+
 ### Eric Niebler
 + [http://ericniebler.com](http://ericniebler.com)
 
+### Peter Dimov
++ [http://pdimov.com](http://pdimov.com)
+
 ---
+
+## Article and Lecture
 
 ### [WikiDocs C++ Template Note](https://wikidocs.net/book/54)
 [C++ Templates - The Complete Guide](http://www.josuttis.com/tmplbook/) 책을 기본으로하고 다른 C++ 명저들을 공부하면서 얻은 내용들이 함께 정리된 곳. 나름 깔끔하게 정리되어 있어서 좋다. 한글 내용이다. 한글이다보니 용어 설명이 와닿지 않고 혼동될 수 있는 부분들이 있다. 가능하면 영문과 같이 익히는게 좋겠다.
@@ -36,7 +59,7 @@ description: "C++ 공부에 유용한 리소스들을 간략하게 정리한다.
 ### [Haskellizing C++ template metaprogramming](http://manu343726.github.io/c++/haskellizing-tmp/)
 
 ### [Variadic Templates are Funadic](https://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Variadic-Templates-are-Funadic)
-Andrei Alexandrescu가 진행하는 강연이다. Parameter pack expansion rule에 대해서 자세히 설명되어 있다.
+Andrei Alexandrescu가 진행하는 C++ Going Native 강연이다. Parameter pack expansion rule에 대해서 자세히 설명되어 있다.
 
 ### [Using Variadic Templates cleanly](http://florianjw.de/en/variadic_templates.html)
 `std::initializer_list`와 variadic template을 적절히 활용하는 방법이 자세히 설명되어 있다.
