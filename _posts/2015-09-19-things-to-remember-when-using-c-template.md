@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Things to Remember when using C++ Template"
+title: "Things to Remember when Using C++ Template"
 description: "쉽게 잊어버리는, 하지만 기억해야할만한 사항들에 대해서 정리한다."
 category: Computer Programming
 tags: [C++, C++ TMP]
