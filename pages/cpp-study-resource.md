@@ -59,6 +59,13 @@ description: "C++ 공부에 유용한 리소스들을 간략하게 정리한다.
 [C++ Templates - The Complete Guide](http://www.josuttis.com/tmplbook/) 책을 기본으로하고 다른 C++ 명저들을 공부하면서 얻은 내용들이 함께 정리된 곳. 나름 깔끔하게 정리되어 있어서 좋다. 한글 내용이다. 한글이다보니 용어 설명이 와닿지 않고 혼동될 수 있는 부분들이 있다. 가능하면 영문과 같이 익히는게 좋겠다.
 
 ### [What Does Haskell Have to Do with C++?](http://bartoszmilewski.com/2009/10/21/what-does-haskell-have-to-do-with-c/)
+C++ Template Metaprogramming(C++ TMP) 시작용으로도 괜찮은 글이다.
+
+C++ TMP를 ‘maximally obfuscated (subset of) Haskell’이라고 생각하라고 글 초반에 언급하고 있다. run-time Haskell 예제코드가 compile-time C++ TMP 코드로 어떻게 매핑이 되는지를 보이는 식으로 설명하고 있다. ‘fold, list comprehension, map, continuation’등과 같은 유용한 개념도 적절히 설명하고 있다. :-)
+
+기존의 imperative programming 방식에만 익순한 C++ 프로그래머는 당연히 C++ 언어의 functional programming 측면인 C++ TMP가 어렵게 느껴지게된다. 익숙해질려면 시간이 걸리겠다.
+
+C++ TMP에 잘 적응되지 않게 방해하는 요소중 하나는 번잡한 template 사용문법이다. 글 마무리 부분에서도 언급되는데, C++ TMP가 이렇게 번잡한 것은 C++ 언어설계시에 TMP가 고려된 것이 아니라, 나중에 ‘발견’된 탓이다. C++ template은 참 강력함은 물론이거니와 오묘하다… :-)
 
 ### [Haskellizing C++ template metaprogramming](http://manu343726.github.io/c++/haskellizing-tmp/)
 
