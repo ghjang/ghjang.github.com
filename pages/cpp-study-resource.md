@@ -8,6 +8,12 @@ description: "C++ 공부에 유용한 리소스들을 간략하게 정리한다.
 ## C++ Standard
 + [https://isocpp.org](https://isocpp.org)
 + [http://cppreference.com](http://cppreference.com)
++ [SGI Standard Template Library Programmer's Guide](https://www.sgi.com/tech/stl/): 좀 오래된 사이트. C++11과 같은 근래의 표준이 나오기 전에 만들어진 사이트임. 하지만 내용물이 깔끔하고 여전히 유용하다.
+
+---
+
+### [CppCast](http://cppcast.com)
+주단위로 업데이트되는 English podcast. 일주일간 있었던 C++ 관련 최신 뉴스를 먼저 간략하게 리뷰한 후에 초대된 C++ 전문가와 특정 주제에 대해서 이야기하는 방식임. 
 
 ---
 
@@ -63,7 +69,7 @@ C++ Template Metaprogramming(C++ TMP) 시작용으로도 괜찮은 글이다.
 
 C++ TMP를 ‘maximally obfuscated (subset of) Haskell’이라고 생각하라고 글 초반에 언급하고 있다. run-time Haskell 예제코드가 compile-time C++ TMP 코드로 어떻게 매핑이 되는지를 보이는 식으로 설명하고 있다. ‘fold, list comprehension, map, continuation’등과 같은 유용한 개념도 적절히 설명하고 있다. :-)
 
-기존의 imperative programming 방식에만 익순한 C++ 프로그래머는 당연히 C++ 언어의 functional programming 측면인 C++ TMP가 어렵게 느껴지게된다. 익숙해질려면 시간이 걸리겠다.
+기존의 imperative programming 방식에만 익숙한 C++ 프로그래머는 당연히 C++ 언어의 functional programming 측면인 C++ TMP가 어렵게 느껴지게된다. 익숙해질려면 시간이 걸리겠다.
 
 C++ TMP에 잘 적응되지 않게 방해하는 요소중 하나는 번잡한 template 사용문법이다. 글 마무리 부분에서도 언급되는데, C++ TMP가 이렇게 번잡한 것은 C++ 언어설계시에 TMP가 고려된 것이 아니라, 나중에 ‘발견’된 탓이다. C++ template은 참 강력함은 물론이거니와 오묘하다… :-)
 
