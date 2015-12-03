@@ -12,6 +12,8 @@ description: "C++ 공부에 유용한 리소스들을 간략하게 정리한다.
 
 ---
 
+## Podcast
+
 ### [CppCast](http://cppcast.com)
 주단위로 업데이트되는 English podcast. 일주일간 있었던 C++ 관련 최신 뉴스를 먼저 간략하게 리뷰한 후에 초대된 C++ 전문가와 특정 주제에 대해서 이야기하는 방식임. 
 
