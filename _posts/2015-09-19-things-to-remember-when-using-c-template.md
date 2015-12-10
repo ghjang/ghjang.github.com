@@ -9,7 +9,7 @@ tags: [C++, C++ TMP]
 
 쉽게 잊어버리는, 하지만 기억해야할만한 사항들에 대해서 정리한다.
 
-### Template argument deduction시에는 automatic type conversion은 고려되지 않는다.
+### Template type deduction시에는 automatic type conversion은 고려되지 않는다.
 function template이 아닌 일반 함수의 경우에는 해당 사항이 없다. rank에서 밀려 function template이 배제되는 상황이 발생해 일반 함수가 선택될 수 있다.
 
 생성자를 통한 type conversion, type conversion operator overloading 그리고 derived-to-base implicit type conversion 같은 것이 고려되지 않는다는 것이다.
