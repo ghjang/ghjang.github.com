@@ -98,7 +98,7 @@ template <int i>
 using int_c_t = std::integral_constant<int, i>;
 {% endhighlight %}
 
-특정 plate의 이동값을 나타내는 type alias를 추가했다.
+특정 plate의 이동값을 나타내는 type alias를 추가했다. 여기서 `NthPlate`, `FromIndex`, `ToIndex`는 `std::integral_constant`의 특정 instance이다.
 {% highlight cpp %}
 template <typename NthPlate, typename FromIndex, typename ToIndex>
 using plate_movement_t = std::tuple<NthPlate, FromIndex, ToIndex>;
