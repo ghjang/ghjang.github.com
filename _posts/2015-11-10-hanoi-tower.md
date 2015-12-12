@@ -92,7 +92,7 @@ using tower_movement_sequence_t = typename MoveTower<
 PrintTowerMovementSequence(tower_movement_sequence_t());
 {% endhighlight %}
 
-코딩 편의를 위해서 int_c_t type alias를 추가했다.
+코딩 편의를 위해서 `int_c_t` type alias를 추가했다.
 {% highlight cpp %}
 template <int i>
 using int_c_t = std::integral_constant<int, i>;
