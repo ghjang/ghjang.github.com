@@ -77,7 +77,134 @@ plate-1, (0 => 2)
 
 ## Compile-time Tower of Hanoi
 
-TODO: 탑의 높이가 정해지면 이동 경로는 정해져있다고 볼 수 있을 것 같다. 따라서, 이동 경로 시퀀스를 compile-time으로 끌어내릴 수 있을 것도 같다. 이렇게 하는 것이 가능한지 좀더 생각해보고 가능하다면 구현까지 해보도록 할 것.
+탑의 높이가 정해지면 전체 이동 경로 시퀀스는 정해져있다고 볼 수 있다. 따라서, 이동 경로 시퀀스 계산을 compile-time으로 끌어내릴 수 있다. 물론 이방식은 탑의 높이를 사용자의 입력으로 동적으로 받아 처리하는 상황등에서는 사용할 수 없다.
+
+아래는 runtime 버전 코드의 개념을 그데로 compile-time으로 옮겨본 것이다.
+
+compile-time MoveTower metafunction을 호출하고 이로부터 계산된 경로를 콘솔에 출력하는 코드를 먼저 적어보면 아래와 같다.
+{% highlight cpp %}
+using tower_movement_sequence_t = typename MoveTower<
+                                                int_c_t<towerHeight>,
+                                                int_c_t<0>,
+                                                int_c_t<2>,
+                                                int_c_t<1>
+                                            >::type;
+PrintTowerMovementSequence(tower_movement_sequence_t());
+{% endhighlight %}
+
+코딩 편의를 위해서 int_c_t type alias를 추가했다.
+{% highlight cpp %}
+template <int i>
+using int_c_t = std::integral_constant<int, i>;
+{% endhighlight %}
+
+특정 plate의 이동값을 나타내는 type alias를 추가했다.
+{% highlight cpp %}
+template <typename NthPlate, typename FromIndex, typename ToIndex>
+using plate_movement_t = std::tuple<NthPlate, FromIndex, ToIndex>;
+{% endhighlight %}
+
+'이동값 type'들을 담을 'type container'용 type alias를 추가했다. 
+{% highlight cpp %}
+template <typename... Sequence>
+struct TowerMovementSequence
+{ };
+{% endhighlight %}
+
+이동값 type들의 sequence를 병합하기위한 도우미성 metafunction을 추가했다.
+{% highlight cpp %}
+template <typename TowerMovementSequence, typename... Movement>
+struct JoinTowerMovementSequence;
+
+template <typename TowerMovementSequence, typename Head, typename... Tail>
+struct JoinTowerMovementSequence<TowerMovementSequence, Head, Tail...>
+{
+    using type = typename JoinTowerMovementSequence<
+                                typename JoinTowerMovementSequence<TowerMovementSequence, Head>::type,
+                                Tail...
+                            >::type;
+};
+
+template <typename... Sequence, typename NthPlate, typename FromIndex, typename ToIndex>
+struct JoinTowerMovementSequence
+        <
+            TowerMovementSequence<Sequence...>,
+            plate_movement_t<NthPlate, FromIndex, ToIndex>
+        >
+{
+    using type = TowerMovementSequence<Sequence..., plate_movement_t<NthPlate, FromIndex, ToIndex>>;
+};
+
+template <typename... Sequence1, typename... Sequence2>
+struct JoinTowerMovementSequence
+        <
+            TowerMovementSequence<Sequence1...>,
+            TowerMovementSequence<Sequence2...>
+        >
+{
+    using type = TowerMovementSequence<Sequence1..., Sequence2...>;
+};
+{% endhighlight %}
+
+실제 이동 시퀀스를 계산하는 metafunction을 추가했다. template 문법이 번잡해보이기는 하겠지만, runtime 버전의 내용과 개념이 동일하겠다.
+{% highlight cpp %}
+template <typename NthPlateIndex, typename FromIndex, typename ToIndex, typename RemainingIndex>
+struct MoveTower
+{
+    using upper_plate_movement_sequence_1_t = typename MoveTower<
+                                                            int_c_t<NthPlateIndex::value - 1>,
+                                                            FromIndex,
+                                                            RemainingIndex,
+                                                            ToIndex
+                                                        >::type;
+    using current_plate_movement_t = plate_movement_t<
+                                            NthPlateIndex,
+                                            FromIndex,
+                                            ToIndex
+                                        >;
+    using upper_plate_movement_sequence_2_t = typename MoveTower<
+                                                            int_c_t<NthPlateIndex::value - 1>,
+                                                            RemainingIndex,
+                                                            ToIndex,
+                                                            FromIndex
+                                                        >::type;
+    using type = typename JoinTowerMovementSequence<
+                                upper_plate_movement_sequence_1_t,
+                                current_plate_movement_t,
+                                upper_plate_movement_sequence_2_t
+                            >::type;
+};
+
+template <typename FromIndex, typename ToIndex, typename RemainingIndex>
+struct MoveTower<int_c_t<1>, FromIndex, ToIndex, RemainingIndex>
+{
+    using type = TowerMovementSequence<plate_movement_t<int_c_t<1>, FromIndex, ToIndex>>;
+};
+{% endhighlight %}
+
+계산된 compile-time 이동 시퀀스의 값을 콘솔에 출력해주는 도우미성 함수를 추가했다.
+{% highlight cpp %}
+template <typename PlateMovement>
+void PrintTowerMovementSequence(TowerMovementSequence<PlateMovement>)
+{
+    std::cout << "plate-" << std::tuple_element_t<0, PlateMovement>::value << ","
+                << " (" << std::tuple_element_t<1, PlateMovement>::value
+                << " => " << std::tuple_element_t<2, PlateMovement>::value << ")"
+                << std::endl;
+}
+
+template <typename PlateMovement, typename Head, typename... Tail>
+void PrintTowerMovementSequence(TowerMovementSequence<PlateMovement, Head, Tail...>)
+{
+    std::cout << "plate-" << std::tuple_element_t<0, PlateMovement>::value << ","
+                << " (" << std::tuple_element_t<1, PlateMovement>::value
+                << " => " << std::tuple_element_t<2, PlateMovement>::value << ")"
+                << std::endl;
+    PrintTowerMovementSequence(TowerMovementSequence<Head, Tail...>());
+}
+{% endhighlight %} 
+
+출력된 결과를 확인하여 정상적인 이동경로가 계산된 것을 확인할 수 있었다.
 
 ---
 
