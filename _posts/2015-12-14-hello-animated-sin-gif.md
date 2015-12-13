@@ -3,7 +3,7 @@ layout: post
 title: "Hello! Animated Sin GIF"
 description: ""
 category: Computer Programming
-tags: [Wolfram Language, Math, Animated GIF]
+tags: [Wolfram Language, Functional Programming, Math, Animated GIF]
 ---
 {% include JB/setup %}
 
