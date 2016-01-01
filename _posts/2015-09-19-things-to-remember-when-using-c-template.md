@@ -65,3 +65,5 @@ rocky/meta/ReverseTuple.h에서 확인할 것.
 TODO: 매번 혼동하게되는 부분으로 예제를 작성하는게 좋겠다.
 
 ### partial class template specialization의 template parameter에는 default argument를 설정할 수 없다.
+
+### array element type은 'void, reference, function'이 될 수 없다.
