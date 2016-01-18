@@ -202,4 +202,4 @@ static_assert(is_same<integer_sequence<std::size_t, 1, 1, 2, 6, 24>, factorial_i
 + <https://github.com/picanumber/CODEine/blob/master/integer_sequence.h>: Variadic Template를 이용한 Recursive Inheritance를 통해서 Compile-time Integer Sequence를 생성해내는 소스이다. 기억해둘만한 기법이다.
 + <https://github.com/ghjang/personal_study/blob/master/cpp/integer_sequence/main.cpp>
 + <https://github.com/ghjang/rocky/blob/master/rocky/meta/IntegerSequenceUtility.h>
-+ <https://github.com/ghjang/rocky/blob/master/rocky/test/IntegerSequenceUtilityTest.cpp>
++ <https://github.com/ghjang/rocky/blob/master/rocky/test/meta/IntegerSequenceUtilityTest.cpp>
