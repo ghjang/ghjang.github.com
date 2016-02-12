@@ -83,6 +83,14 @@ Andrei Alexandrescu가 진행하는 C++ Going Native 강연이다. Parameter pac
 ### [Using Variadic Templates cleanly](http://florianjw.de/en/variadic_templates.html)
 `std::initializer_list`와 variadic template을 적절히 활용하는 방법이 자세히 설명되어 있다.
 
+### About ScopeGuard
++ [Generic: Change the Way You Write Exception-Safe Code — Forever](http://www.drdobbs.com/cpp/generic-change-the-way-you-write-excepti/184403758?pgno=2)
++ [Loki ScopeGuard](http://loki-lib.sourceforge.net/html/a00667.html)
++ [Facebook folly C++11 ScopeGuard](https://github.com/facebook/folly/blob/master/folly/ScopeGuard.h)
++ [CppCon 2015: Andrei Alexandrescu “Declarative Control Flow"](https://www.youtube.com/watch?v=WjTrfoiB0MQ)
++ [Using shared_ptr to execute code on block exit](http://www.boost.org/doc/libs/1_55_0/libs/smart_ptr/sp_techniques.html#on_block_exit)
++ [Exception Safety](https://dlang.org/exception-safe.html): D언어 관련내용 
+
 ---
 
 ## C++ IDE
