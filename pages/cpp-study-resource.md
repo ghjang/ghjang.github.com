@@ -93,6 +93,13 @@ Andrei Alexandrescu가 진행하는 C++ Going Native 강연이다. Parameter pac
 
 ---
 
+## Interesting C++ Library
+
++ [emscripten](http://kripken.github.io/emscripten-site/): C++코드를 JavaScript로 변형하는데 사용된다.
++ [SWIG](http://www.swig.org/exec.html): Simplified Wrapper and Interface Generator. C++코드를 .NET 등에서 사용할 수 있도록 Wrapper를 자동으로 만들어주는데 사용할 수 있는 것 같음.
+
+---
+
 ## C++ IDE
 
 ### [Microsoft Visual Studio Community Edition](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx)
