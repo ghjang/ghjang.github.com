@@ -87,6 +87,7 @@ Andrei Alexandrescu가 진행하는 C++ Going Native 강연이다. Parameter pac
 + [Generic: Change the Way You Write Exception-Safe Code — Forever](http://www.drdobbs.com/cpp/generic-change-the-way-you-write-excepti/184403758?pgno=2)
 + [Loki ScopeGuard](http://loki-lib.sourceforge.net/html/a00667.html)
 + [Facebook folly C++11 ScopeGuard](https://github.com/facebook/folly/blob/master/folly/ScopeGuard.h)
++ [C++ and Beyond 2012: Andrei Alexandrescu - Systematic Error Handling in C++](https://channel9.msdn.com/Shows/Going+Deep/C-and-Beyond-2012-Andrei-Alexandrescu-Systematic-Error-Handling-in-C)
 + [CppCon 2015: Andrei Alexandrescu “Declarative Control Flow"](https://www.youtube.com/watch?v=WjTrfoiB0MQ)
 + [Using shared_ptr to execute code on block exit](http://www.boost.org/doc/libs/1_55_0/libs/smart_ptr/sp_techniques.html#on_block_exit)
 + [Writing an exception safe code in generic way.](http://www.codeproject.com/Articles/16752/Writing-an-exception-safe-code-in-generic-way): 최재욱님의 글. 이분이 유사내용의 글들을 오래전 데브피아에 올리셔서 ScopeGuard 개념에 대해서 알게되었다.
