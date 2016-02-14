@@ -9,7 +9,7 @@ tags: [C++, C++11]
 
 std::ratio는 C++11 표준에 추가된 Rational Number(유리수)의 compile-time 계산지원이다. run-time 계산이 아니라는 것에 유의할 것. ratio 내부에 표현되는 분모, 분자 값은 약분된 형태로 값이 유지된다.
 
-{% highlight cpp %}
+```cpp
 using std::is_same;
 using std::ratio;
 using std::ratio_add;
@@ -40,7 +40,7 @@ static_assert(ratio_equal<four_third, ratio<4, 3>>::value, "");
 using eight_sixth = ratio_multiply<four_sixth, ratio<2>>;
 static_assert(is_same<eight_sixth, ratio<4, 3>>::value, ""); // reduced to the lowest terms.
 static_assert(ratio_equal<eight_sixth, ratio<4, 3>>::value, "");
-{% endhighlight %}
+```
 
 위 예제에서 볼 수 있는 것과 같이 ratio class template에 넘겨지는 argument값과 ratio 내부에 유지되는 값이 다를 수 있다는 것에 혼동하지 말아야 하겠다. ratio 인스턴스의 타입 자체는 달라도 비율값 자체는 같을 수 있는 상황인 것이다.
 
@@ -62,7 +62,7 @@ std::cout등에 출력하기 위한 std::ratio의 string 값을 생성하는 모
 
 다음번에 **constexpr** 관련 포스트를 별도로 작성하여 설명하는 것이 맞을 것으로 보인다.
 
-{% highlight cpp %}
+```cpp
 constexpr uint8_t get_number_of_digit(intmax_t i)
 {
     if (i < 0) {
@@ -184,7 +184,7 @@ using minus_two_third1 = ratio<2, -3>;
 constexpr auto minus_two_third_str1 = to_str(minus_two_third1());
 cout << minus_two_third_str1 << endl;
 assert(string("-2/3") == minus_two_third_str1);
-{% endhighlight %}
+```
 
 ---
 

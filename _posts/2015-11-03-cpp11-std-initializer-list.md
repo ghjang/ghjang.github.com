@@ -16,7 +16,7 @@ C++11의 brace initialization 표기법의 결과물이 std::initializer_list라
 + 표준 STL 컨테이너는 물론이고 많은 라이브러리 부분에 initializer_list를 인자로 받도록 overloading되어 있음.
 + (지금 시점에서는 정확한 이유를 설명을 할 수 없으나, auto가 사용되는 context에서는 문제가될 수 있는 상황이 있는가 봄. 다음번 표준에 수정을 한다던가 그러함. auto context에서는 사용을 피하는 것이 좋겠음.)
 
-{% highlight cpp %}
+```cpp
 template <typename T>
 void print(std::initializer_list<T> const& l)
 {
@@ -79,7 +79,7 @@ c.add({ 13, 14, 15 });
 for (auto i: c.data_) {
 	cout << i << endl;
 }
-{% endhighlight %}
+```
 
 ---
 

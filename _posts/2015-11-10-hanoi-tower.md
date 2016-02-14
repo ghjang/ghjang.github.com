@@ -9,7 +9,7 @@ tags: [C++, C++ TMP, Algorithm]
 
 C++ Template Meta-programming에서 recursion의 이해는 필수사항이다. Hanoi Tower는 이 recursion과 관련하여 생각해볼만한 문제이다. Hanoi Tower 문제는 결과코드만 보면 단순하다. 하지만, (해답을 보지 않고) 결과에 다다르는 생각을 해내는 것이 쉽지만은 않을 수도 있다. 이런 방식의 사고방식을 좀 고민해볼 필요가 있겠다.
 
-{% highlight cpp %}
+```cpp
 void move_tower(int nthPlate, int fromIndex, int toIndex, int remainingIndex)
 {
     if (1 == nthPlate) { // if top plate,
@@ -26,7 +26,7 @@ void move_tower(int nthPlate, int fromIndex, int toIndex, int remainingIndex)
 constexpr int towerHeight = 5;
 
 move_tower(towerHeight, 0, 2, 1);
-{% endhighlight %}
+```
 
 세개의 위치점을 각각 '0', '1', '2' 정수 인덱스 값으로 표현하고 있다. 탑의 높이가 5일 경우 맨위의 제일 작은 판의 인덱스는 1이고 맨 아래의 제일 큰 판의 인덱스는 5이다. 다음과 같은 식의 사고방식이다.
 
@@ -82,7 +82,7 @@ plate-1, (0 => 2)
 아래는 runtime 버전 코드의 개념을 그데로 compile-time으로 옮겨본 것이다.
 
 compile-time MoveTower metafunction을 호출하고 이로부터 계산된 경로를 콘솔에 출력하는 코드를 먼저 적어보면 아래와 같다.
-{% highlight cpp %}
+```cpp
 using tower_movement_sequence_t = typename MoveTower<
                                                 int_c_t<towerHeight>,
                                                 int_c_t<0>,
@@ -90,29 +90,29 @@ using tower_movement_sequence_t = typename MoveTower<
                                                 int_c_t<1>
                                             >::type;
 PrintTowerMovementSequence(tower_movement_sequence_t());
-{% endhighlight %}
+```
 
 코딩 편의를 위해서 `int_c_t` type alias를 추가했다.
-{% highlight cpp %}
+```cpp
 template <int i>
 using int_c_t = std::integral_constant<int, i>;
-{% endhighlight %}
+```
 
 특정 plate의 이동값을 나타내는 type alias를 추가했다. 여기서 `NthPlate`, `FromIndex`, `ToIndex`는 `std::integral_constant`의 특정 instance이다.
-{% highlight cpp %}
+```cpp
 template <typename NthPlate, typename FromIndex, typename ToIndex>
 using plate_movement_t = std::tuple<NthPlate, FromIndex, ToIndex>;
-{% endhighlight %}
+```
 
 '이동값 type'들을 담을 'type container'용 type alias를 추가했다. 
-{% highlight cpp %}
+```cpp
 template <typename... Sequence>
 struct TowerMovementSequence
 { };
-{% endhighlight %}
+```
 
 이동값 type들의 sequence를 병합하기위한 도우미성 metafunction을 추가했다.
-{% highlight cpp %}
+```cpp
 template <typename TowerMovementSequence, typename... Movement>
 struct JoinTowerMovementSequence;
 
@@ -144,10 +144,10 @@ struct JoinTowerMovementSequence
 {
     using type = TowerMovementSequence<Sequence1..., Sequence2...>;
 };
-{% endhighlight %}
+```
 
 실제 이동 시퀀스를 계산하는 metafunction을 추가했다. template 문법이 번잡해보이기는 하겠지만, runtime 버전의 내용과 개념이 동일하겠다.
-{% highlight cpp %}
+```cpp
 template <typename NthPlateIndex, typename FromIndex, typename ToIndex, typename RemainingIndex>
 struct MoveTower
 {
@@ -180,10 +180,10 @@ struct MoveTower<int_c_t<1>, FromIndex, ToIndex, RemainingIndex>
 {
     using type = TowerMovementSequence<plate_movement_t<int_c_t<1>, FromIndex, ToIndex>>;
 };
-{% endhighlight %}
+```
 
 계산된 compile-time 이동 시퀀스의 값을 콘솔에 출력해주는 도우미성 함수를 추가했다.
-{% highlight cpp %}
+```cpp
 template <typename PlateMovement>
 void PrintTowerMovementSequence(TowerMovementSequence<PlateMovement>)
 {
@@ -202,7 +202,7 @@ void PrintTowerMovementSequence(TowerMovementSequence<PlateMovement, Head, Tail.
                 << std::endl;
     PrintTowerMovementSequence(TowerMovementSequence<Head, Tail...>());
 }
-{% endhighlight %} 
+``` 
 
 출력된 결과를 확인하여 정상적인 이동경로가 계산된 것을 확인할 수 있었다.
 

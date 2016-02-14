@@ -15,7 +15,7 @@ C++14에 추가된 `std::integer_sequence`는 C++ Template metaprogramming에 �
 
 ## Basic Usage
 
-{% highlight cpp %}
+```cpp
 using std::is_same;
 using std::integer_sequence;
 using std::make_integer_sequence;
@@ -28,7 +28,7 @@ using index_seq = make_index_sequence<3>;
 static_assert(is_same<integer_sequence<std::size_t, 0, 1, 2>, int_seq>(), "");
 static_assert(is_same<integer_sequence<std::size_t, 0, 1, 2>, index_seq>(), "");
 static_assert(is_same<int_seq, index_seq>(), "");
-{% endhighlight %}
+```
 
 `std::integer_sequence`는 이름처럼 특정 integral type의 일정한 개수의 integer sequence를 나타내는 기능을 한다. `std::index_sequence`는 `std::integer_sequence`의 type alias로 integral type이 `std::size_t`로 지정되어있다.
 
@@ -38,7 +38,7 @@ static_assert(is_same<int_seq, index_seq>(), "");
 
 `constexpr` 함수는 constant expression이 요구되는 context에서 사용할 수 있기 때문에 다음과 같은 식의 표현이 가능하다.
 
-{% highlight cpp %}
+```cpp
 constexpr int IdentityInt(int i) { return i; }
 constexpr int SquareInt(int i) { return i * i; }
 
@@ -54,7 +54,7 @@ static_assert(is_same<integer_sequence<int, 0, 1, 2>, identity_int_seq>(), "");
 
 using square_int_seq = integer_sequence<int, SquareInt(0), SquareInt(1), SquareInt(2), SquareInt(3)>;
 static_assert(is_same<integer_sequence<int, 0, 1, 4, 9>, square_int_seq>(), "");
-{% endhighlight %}
+```
 
 여기서 예로든 `IdentityInt`, `SquareInt`는 매우 단순하기 때문에 해당 부분을 `constexpr` function이 아닌 전통적인 class template을 사용한 수치계산방법을 사용해도 전혀 무리가 없겠다. 하지만 원하는 시퀀스의 값을 계산하는 부분이 복잡해질수록 class template을 이용한 방법은 불편하기는 물론이고 가독성이 너무 떨어지게될 것이다.
 
@@ -64,7 +64,7 @@ static_assert(is_same<integer_sequence<int, 0, 1, 4, 9>, square_int_seq>(), "");
 
 앞의 예제와 같이 `constexpr` 함수를 원하는 수만큼 일일이 적어주는 것은 실용적이지 못하다. `std::make_index_sequence<4>`와 같은 사용법으로 원하는 수만큼의 squared된 integer sequence를 생성해주는 metafunction을 작성해보면 아래와 같다.
 
-{% highlight cpp %}
+```cpp
 constexpr int SquareInt(int i) { return i * i; }
 
 // ...
@@ -92,7 +92,7 @@ using std::integer_sequence;
 
 using square_int_seq = typename SquareIntegerSequence<4>::type;
 static_assert(is_same<integer_sequence<std::size_t, 0, 1, 4, 9>, square_int_seq>(), "");
-{% endhighlight %}
+```
 
 `SquareIntegerSequence<4>::type`와 같은 표현은 0~3까지의 4개 integer에 대해서 각각 제곱한 integer를 가지는 `std::integer_sequence` type을 리턴하는 것이다.
 
@@ -104,7 +104,7 @@ static_assert(is_same<integer_sequence<std::size_t, 0, 1, 4, 9>, square_int_seq>
 
 앞에서 설명한 `SquareIntegerSequence` 예의 경우는 제곱된 integer sequence만을 다루는 것이다. 이를 좀더 일반화해서 다시 작성해본 것이 아래이다.
 
-{% highlight cpp %}
+```cpp
 constexpr int SquareInt(int i) { return i * i; }
 
 template <std::size_t i>
@@ -148,7 +148,7 @@ static_assert(is_same<integer_sequence<std::size_t, 0, 1, 4, 9>, square_int_seq>
 using square_int_seq_1 = MakeCustomIntegerSequence<4, SquareIntGenerator>;
 static_assert(is_same<integer_sequence<std::size_t, 0, 1, 4, 9>, square_int_seq_1>(), "");
 static_assert(is_same<square_int_seq, square_int_seq_1>(), "");
-{% endhighlight %}
+```
 
 여기서 `MakeCustomIntegerSequence<4, SquareIntGenerator>`와 같은 표현은 0~3 범위의 4개 정수에 대해서 template template parameter로 넘겨진 `SquareIntGenerator`를 이용하여 제곱한 값으로 구성된 `std::integer_sequence` type을 리턴하는 것이다.
 
@@ -156,7 +156,7 @@ static_assert(is_same<square_int_seq, square_int_seq_1>(), "");
 
 다른 정수열을 생성하는 예제를 보이기 위해서 아래 코드를 추가로 작성해 보았다.
 
-{% highlight cpp %}
+```cpp
 constexpr int Factorial(int i)
 {
     if (i == 0) {
@@ -175,7 +175,7 @@ struct FactorialGenerator
 
 using factorial_int_seq = MakeCustomIntegerSequence<5, FactorialGenerator>;
 static_assert(is_same<integer_sequence<std::size_t, 1, 1, 2, 6, 24>, factorial_int_seq>(), "");
-{% endhighlight %}
+```
 
 `Factorial` 함수 정도는 class template으로 수치계산용 metafunction으로 작성하는 것이 간단하기는 하지만 가독성면에서는 `constexpr` 함수형태가 훨씬 좋다.
 

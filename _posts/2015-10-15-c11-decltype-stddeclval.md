@@ -12,7 +12,7 @@ decltype은 언어 키워드이고 std::declval은 function template이다.
 ---
 decltype은 'declared type'의 약자로 볼 수 있다. 인자로 넘겨진 entity나 expression의 type을 compile time에 생성한다. 기본적으로는 다음과 같이 사용이 가능하다:
 
-{% highlight cpp %}
+```cpp
 using std::is_same;
 
 int i = 1024;
@@ -30,7 +30,7 @@ std::cout << "j: " << j << std::endl;   // 1048576
 std::cout << "k: " << k << std::endl;   // 0    <== THINK: how to detect something like this?
 
 static_assert(is_same<int, decltype(1 + 1)>::value, "");
-{% endhighlight %}
+```
 
 ---
 
@@ -47,7 +47,7 @@ decltype내부에 사용되는 괄호 사용여부에 따라서 전달되는 표
 
 ### decltype에 전달된 표현식내의 중첩된 서브표현식에 포함된 객체는 complete type이어야 한다.
 sizeof 키워드와 같이 decltype에 전달되는 표현은 evaluation이 되는 것이 아니기 때문에 완전한 정의가 필요하지 않다. 하지만 서브표현식에 대해서는 예외라는 것이다.
-{% highlight cpp %}
+```cpp
 // declaration only
 int f(int);
 int g();
@@ -83,7 +83,7 @@ static_assert(is_same<int, decltype(doSomething(CompleteType()))>::value, "");
 // but it's not ok. it's compile-time errors.
 //decltype(doSomething(IncompleteType())) it;
 //static_assert(is_same<int, decltype(doSomething(IncompleteType()))>::value, "");
-{% endhighlight %}
+```
 
 ---
 declval은 선언만 있고 정의가 없다. 공용의 생성자는 없고 동일한 이름의 멤버함수가 존재할 경우 해당 멤버함수의 리턴값의 타입을 얻어내는데 사용한다고 함:
@@ -91,7 +91,7 @@ declval은 선언만 있고 정의가 없다. 공용의 생성자는 없고 동�
 + [cppreference std::declval](http://en.cppreference.com/w/cpp/utility/declval)
 
 위 레퍼런스에서 제공되는 코드보다 약간 복잡한 사용예는 다음과 같겠다:
-{% highlight cpp %}
+```cpp
 struct Default
 {
     int foo() const { return 1; }
@@ -117,7 +117,7 @@ static_assert(is_same<long, ReturnTypeOfFoo<NonDefault>>::value, "");
 
 // but it's not ok. a compile error.
 //static_assert(is_same<long, decltype(NonDefault().foo())>::value, "");
-{% endhighlight %}
+```
 
 ---
 
