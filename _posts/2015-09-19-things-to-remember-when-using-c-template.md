@@ -7,6 +7,10 @@ tags: [C++, C++ TMP]
 ---
 {% include JB/setup %}
 
+**NOTE: 정리가 제대로되어 있지 않음. 틀린 내용도 포함되어 있을 수 있음.**
+
+---
+
 쉽게 잊어버리는, 하지만 기억해야할만한 사항들에 대해서 정리한다.
 
 ### Template type deduction시에는 automatic type conversion은 고려되지 않는다.
@@ -67,3 +71,18 @@ TODO: 매번 혼동하게되는 부분으로 예제를 작성하는게 좋겠다
 ### partial class template specialization의 template parameter에는 default argument를 설정할 수 없다.
 
 ### array element type은 'void, reference, function'이 될 수 없다.
+
+### type을 요구하는 곳에 template을 넘길 수 없다.
+
+### metafunction class를 사용하면 template의 유용성이 좀더 높아진다(?).
++ metafunction class는 Apply라는 이름의 member class template을 가지고 있는 class type을 말한다.
++ metafunction class 자체가 class template일 수도 있다. 이 경우 metafunction class에 넘겨지는 parameter가 내부 member class template과 연계되는게 일반적이다. 새로운 동작을 하는 template을 return하는 효과를 나타낸다.
++ Quote helper metafunction class 는 std::is_integral과 같은 일반 metafunction을 metafunction class로 바꾸어주는 일을 한다. Quote를 사용하지 않는다면 해당 metafuncion을 wrapping하는 일반 class type을 일일이 작성해 주어야 한다. 호출자측에서 약간 코딩이 늘어나는(?) 측이 있기는 하다. 
++ template template paramete를 일반 type parameter로 바꿀 수 있기 때문에 template parameter 표기부분이 짧아 진다.면
++ metafunction class를 인자로 사용하도록 작성된 high-order function의 사용자측 코딩이 간편해 진다.
++ ApplyT 같은 type alias를 사용하면 metafunction class를 사용하는 high-order function에서 코드를 좀 줄일 수 있다.
++ metafunction class 개념을 사용하면, metafunction composition을 하기가 C++상에서 좀 쉬워(?)진다.
+
+### template <template <typename...> class f> struct Quote; 형태에서 f는 임의의 class template에 매칭될 수 있다.
+
+### type alias template은 specialization을 가질수가 없다.
