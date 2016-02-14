@@ -14,6 +14,7 @@ C++에서 사용할 수 있는 virtual function(가상 함수)기반의 dynamic 
 ## Dynamic Polymorphism through Virtual Function
 
 다음은 도형 2개(원, 정사각형)를 C++ 클래스 상속을 이용하여 간단히 모델링 한 예제코드이다.
+
 ```cpp
 struct Point
 {
@@ -88,7 +89,7 @@ public:
 		return 4 * sideLength_;
 	}
 };
-``` 
+```
 면적(area)과 둘레길이(perimeter)를 구하는 함수를 virtual function으로 구현하였다. Circle와 Square 클래스는 Shape 부모 클래스에서 상속하여 tightly-coupled 되었다. 이 것이 의미하는 것은 Shape 상에서의 변화가 자식클래스들 모두에게 영향을 미칠 수 있다는 것이다. 점차 클래스 계층이 복잡해지면 관리가 힘들어진다는 것을 의미한다.
 
 클라이언트 코드에서는 아래와 같이 호출하여 사용하겠다.
