@@ -5,7 +5,7 @@ tagline: Computer Programming and Music
 ---
 {% include JB/setup %}
 
-For those who want to learn more about C++, refer to [C++ Study Resources](/pages/cpp-study-resource.html).
+For those who want to learn more about C++, refer to [C++ Study Resources](/pages/cpp-study-resource).
 
 ---
 Here's a "posts list":
