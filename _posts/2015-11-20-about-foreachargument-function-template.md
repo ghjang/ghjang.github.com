@@ -25,9 +25,11 @@ auto ForEachArgument(F f, Args... args)
 ```
 
 하지만 이코드는 아래와 같은 컴파일 오류를 발생시킨다.
+
 ```
 error: expression contains unexpanded parameter pack 'args'
 ```
+
 위와 같은 표현으로는 parameter pack을 확장할 수 없다는 것이다.
 
 현재의 C++11/14 표준에서 parameter pack이 확장 가능한 context를 정확하게 모른다고했을 경우, 좀더 머리를 굴려보면 다음과 같은 것들을 시도해볼 수도 있을 것이다.
@@ -117,6 +119,7 @@ auto ForEachArgument(F f, Args... args)
 ```
 
 이 경우 컴파일은 성공하나 아래와 같은 컴파일 경고 메시지가 나타난다.
+
 ```
 warning: expression result unused [-Wunused-value]
 ```
@@ -153,6 +156,7 @@ ForEachArgument(Sum1(), 1, 2, 3, 4, 5);
 ```
 
 오류 메시지는 대략 다음과 같다.
+
 ```
 error: cannot initialize an array element of type 'const int' with an rvalue of type 'void'
 ```
@@ -207,6 +211,7 @@ auto ForEachArgument(F f, Args... args)
 ```
 
 현재시점에서는 정상적으로 컴파일되나 다음과 같은 오류 메시지가 발생했다.
+
 ```
 warning: pack fold expression is a C++1z extension [-Wc++1z-extensions]
 ```

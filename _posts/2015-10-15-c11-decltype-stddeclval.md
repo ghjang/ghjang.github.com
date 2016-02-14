@@ -47,6 +47,7 @@ decltype내부에 사용되는 괄호 사용여부에 따라서 전달되는 표
 
 ### decltype에 전달된 표현식내의 중첩된 서브표현식에 포함된 객체는 complete type이어야 한다.
 sizeof 키워드와 같이 decltype에 전달되는 표현은 evaluation이 되는 것이 아니기 때문에 완전한 정의가 필요하지 않다. 하지만 서브표현식에 대해서는 예외라는 것이다.
+
 ```cpp
 // declaration only
 int f(int);
@@ -91,6 +92,7 @@ declval은 선언만 있고 정의가 없다. 공용의 생성자는 없고 동�
 + [cppreference std::declval](http://en.cppreference.com/w/cpp/utility/declval)
 
 위 레퍼런스에서 제공되는 코드보다 약간 복잡한 사용예는 다음과 같겠다:
+
 ```cpp
 struct Default
 {

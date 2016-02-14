@@ -13,6 +13,7 @@ decay는 사전적으로 '부식'이라는 의미이다. C++에서 decay란 특�
 
 ## array-to-pointer decay
 가장 대표적인 decay의 예가 array-to-pointer decay이다:
+
 ```cpp
 using std::is_same;
 using std::decay;   // C++11
@@ -32,6 +33,7 @@ static_assert(is_same<decltype(pa), decay_t<decltype(a)>>::value, "");
 array-to-pointer decay가 일어난 문맥에서는 배열의 최상위 차원 크기를 알 수 없게된다. 1차원 배열이 가장 많이 사용되게되는데, 포인터 변수만을 놓고 보면 해당 포인터가 가리키는 것이 단일객체인지 배열인지 알 수 없다. 보통 배열과 배열크기정보를 같이 전달하여 처리하는 패턴이 된다. 전되달는 크기정보가 잘못되었거나 범위를 넘어가는 인덱스 조작을 통해서 문제가 발생할 수 있게된다.
 
 다차원 배열에서의 decay 예는 다음과 같은 형태가 된다:
+
 ```cpp
 // multi-dimensional array to pointer decay
 int aa[2][3] = {
@@ -49,6 +51,7 @@ assert(aa[1][0] == 44);
 
 ## function-to-pointer decay
 늘상 사용하는 당연히 생각되는 또다른 decay는 function-to-pointer decay이다. C++에는 function pointer type이외에 function type과 function reference type이 존재한다. function pointer type은 알아도 나머지 것들에 대해서 잘 생각하지 못하는 경우들이 있다. 함수는 int와 같은 primitive type처럼 함수의 인자등으로 전달될 수 있는 first class type이라서 '&', '*' 등을 붙여서 compound type을 구성하는 것이 가능하다.
+
 ```cpp
 int f(int i) { return i + 1; }
 
@@ -68,6 +71,7 @@ static_assert(is_same<int (*) (int), decay_t<decltype(f)>>::value, "");
 
 ## Function template에 인자로 전달시 decay
 template을 통한 generic한 코드를 작성시에는 이런 decay 상황에 대해서 대비해야 할 것이다. 원하지 않는 함수가 호출 되거나, 제대로 동작하지 않거나 하는 상황이 발생할 수 있을 것이다. 적절한 함수 오버로딩을 추가하거나, type trait과 std::enable_if와 같은 도구를 활용해야할 필요가 있을지도 모르겠다.
+
 ```cpp
 template <typename T>
 auto ReturnDecayedValue(T t)

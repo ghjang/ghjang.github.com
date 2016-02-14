@@ -24,6 +24,7 @@ function template이 아닌 일반 함수의 경우에는 해당 사항이 없�
 
 ### Class template내에 정의된 overload된 assignment operator는 default assignment operator를 대체하지 않는다.
 호환가능한(타입변환이가능한) 버전의 overload된 assignment operator가 있을 경우 이것이 기본적인 버전의 것, 그러니까 현재의 template parameter와 완전히 동일한 것을 대체하지 않는다는 것. 이는 default copy constructor와 overload된 template버전의 signature가 동일해보이는 copy constructor의 관계에서도 성립된다는 것.
+
 ```cpp
 struct X
 {

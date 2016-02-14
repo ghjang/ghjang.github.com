@@ -19,6 +19,7 @@ enable_if의 적절한 활용예제를 생각해내기 쉽지 않았다. 작위�
 
 ## Function template에서 사용
 아래는 주어진 컨테이너의 iterator 카테고리에 따라서 컨테이너 내의 중간 위치에 있는 값을 리턴해주는 함수를 구현한 것이다.
+
 ```cpp
 template <
         typename Container,
@@ -69,7 +70,9 @@ list<char> l = { 'a', 'b', 'c', 'd', 'e' };
 auto lRetVal = medianValue(l);
 cout << "lRetVal: " << lRetVal << std::endl; // lRetVal: c
 ```
+
 여기서 두 함수의 마지막 template parameter의 default argument 표현식은 주어진 컨테이너에 대해서 둘 중에 한곳에서만 유효한 표현식이 된다. 결과적으로 하나의 함수만을 overload resolution set에 포함시키게 된다. 예를 들어서 std::vector의 인스턴스가 인자로 넘어온다고 할 경우 두 함수의 signature는 다음과 같다고 볼 수 있다.
+
 ```cpp
 // first function
 template <
@@ -90,6 +93,7 @@ auto medianValue(Container const& c)
 두번째 함수 signature는 잘못된(ill-formed) C++ 코드이다. 해서 해당 코드 부분은 무시된다. 대안방법에 해당하는 첫번째 함수가 존재하기 때문에 정상적으로 컴파일된다. 만약 첫번째 함수마저도 없었다면 호출가능한 함수가 없다는 형태의 컴파일 오류가 발생할 것이다. 
 
 추가로 한가지 짚고 넘어가 볼만한 부분은 두번째 overload된 함수의 signature 부분이다. 이부분을 다음과 같이 두번째 template parameter를 제거하고 작성했다면 컴파일 오류가 발생한다.
+
 ```cpp
 template <
         typename Container,
@@ -110,6 +114,7 @@ auto medianValue(Container const& c)
 overload된 2개의 medianValue function template의 두번째 template parameter의 default argument에서 redefination관련 내용의 컴파일 오류가 발생한다. function template의 default template argument는 function template의 signature에 포함되지 않는다. 여기서는 이를 해결하기 위해서 사용하지 않는 dummy template parameter를 넣어 보았다.
 
 또다른 이 문제 해결법은 다음과 같이 될 수 있을 것이다.
+
 ```cpp
 template <
         typename Container,
@@ -129,6 +134,7 @@ auto medianValue(Container const& c)
 ```
 
 위 표현은 RandomAccessIterator를 제공하지 않는 컨테이너에 대해서 다음과 같은 형태로 내부적으로 바뀔 것이고 유효한(well-formed) 코드이다.
+
 ```cpp
 template <
         typename Container,
@@ -139,6 +145,7 @@ auto medianValue(Container const& c)
 ```
 
 template parameter가 아닌 function parameter를 이용해서도 문제 해결이 가능하다.
+
 ```cpp
 template <typename Container>
 auto medianValue(Container const& c, std::enable_if_t<
@@ -156,6 +163,7 @@ auto medianValue(Container const& c, std::enable_if_t<
 ```
 
 위 표현은 RandomAccessIterator를 제공하지 않는 컨테이너에 대해서 다음과 같은 형태로 내부적으로 바뀔 것이고 역시 유효한(well-formed) 코드가 된다. 'void \*\*'와 같이 '\*\*'를 이용한 것은 별다른 이유라기 보다는 최대한 사용자의 실수를 방지하기 위한 것이다. 
+
 ```cpp
 template <typename Container>
 auto medianValue(Container const& c, void ** = nullptr)
@@ -165,6 +173,7 @@ auto medianValue(Container const& c, void ** = nullptr)
 ---
 
 ## Class Template Specialization에서 사용
+
 ```cpp
 template <typename T, typename = void>
 struct Actor
@@ -210,6 +219,7 @@ ad.doSomething(); // 'did some work for floating point type.'
 ```
 
 Actor< int >를 예를 들어서 설명하면 내부적으로 다음과 같은 형태로 처리된다고 볼 수 있겠다.
+
 ```cpp
 // primary template
 template <typename T, typename = void>
@@ -226,6 +236,7 @@ template <typename T>
 struct Actor<T, >
 ...
 ```
+
 두번째 specialization은 잘못된 코드임으로 무시된다. 나머지 primary template과 first specialization 사이에서 선택이 일어나야 하겠다. 이때 primary template의 두번째 template parameter에 지정된 default template argument보다 first specialization에서 명시적으로 두번째 template argument에 지정된 것이 우선시 되어 first specialization이 선택된다.
 
 (Function template보다는 class template specialization에서 좀더 쓰임새가 있을것 같다...)
