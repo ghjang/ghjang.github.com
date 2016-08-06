@@ -88,7 +88,7 @@ NOTE: not written yet. use empty tuple for fold-right's init value.
 
 ## Take-3: Trying to Use C++17 Built-in Fold Feature
 
-C++17부터는 언어문법 자체에서 fold적인 작업에 대한 지원이 추가되었다.
+C++17부터는 언어문법 자체에 fold적인 작업에 대한 지원이 추가되었다.
 
 NOTE: not written yet.
 
