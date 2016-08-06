@@ -67,6 +67,20 @@ auto tuple_cat(std::tuple<T...> && a,
 
 ---
 
+## Take-2: Applying Fold-Left High-Order Function
+
+'주어진 시퀀스의 값을 이항함수를 이용해서 합친다.'
+
+조금만 생각해보면 위의 tuple_cat 구현은 전형적인 fold 알고리즘 패턴임을 알 수가 있다.
+
+---
+
+## Take-3: Trying to Use C++17 Built-in Fold Feature
+
+C++17부터는 언어문법 자체에서 fold적인 작업에 대한 지원이 추가되었다.
+
+---
+
 ## 참고
 
 + <https://github.com/ghjang/personal_study/blob/master/cpp/tuple_cat/main.cpp>
