@@ -18,7 +18,7 @@ n개의 tuple 객체들을 하나의 tuple 객체로 합치는 [tuple_cat](http:
 
 ## Take-1: Ordinary Recursion Way
 
-n개의 인자에 대해서 재귀함수호출을 통하여 앞의 인자들부터 끊어서 처리하는 아래와 같은 일반적인 구현을 우선 생각해볼 수 있겠다.
+n개의 인자에 대해서 재귀함수호출을 통하여 인자들을 하나씩 끊어서 처리하는 아래와 같은 일반적인 구현을 우선 생각해볼 수 있겠다.
 
 ```cpp
 namespace Detail
