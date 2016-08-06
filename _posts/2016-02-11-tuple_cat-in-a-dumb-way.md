@@ -21,49 +21,6 @@ n개의 tuple 객체들을 하나의 tuple 객체로 합치는 [tuple_cat](http:
 n개의 인자에 대해서 재귀함수호출을 통하여 앞의 인자들부터 끊어서 처리하는 아래와 같은 일반적인 구현을 우선 생각해볼 수 있겠다.
 
 ```cpp
-namespace Detail
-{
-    template
-    <
-            typename... T, std::size_t... i,
-            typename... U, std::size_t... j
-    >
-    auto binary_tuple_cat(std::tuple<T...> && a, std::index_sequence<i...>,
-                          std::tuple<U...> && b, std::index_sequence<j...>)
-    {
-        return std::make_tuple(
-                std::get<i>(std::forward<std::tuple<T...>>(a))...,
-                std::get<j>(std::forward<std::tuple<U...>>(b))...
-        );
-    }
-} // namespace Detail
-
-auto tuple_cat()
-{
-    return std::make_tuple();
-}
-
-template <typename... T>
-auto tuple_cat(std::tuple<T...> && a)
-{
-    return a;
-}
-
-template <typename... T, typename... U, typename... R>
-auto tuple_cat(std::tuple<T...> && a,
-               std::tuple<U...> && b,
-               R &&... rs)
-{
-    return Detail::binary_tuple_cat(
-            Detail::binary_tuple_cat(
-                    std::forward<std::tuple<T...>>(a),
-                    std::index_sequence_for<T...>(),
-                    std::forward<std::tuple<U...>>(b),
-                    std::index_sequence_for<U...>()
-            ),
-            tuple_cat(std::forward<R>(rs)...)
-    );
-}
 ```
 
 ---
