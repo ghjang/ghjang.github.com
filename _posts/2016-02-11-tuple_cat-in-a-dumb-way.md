@@ -21,11 +21,62 @@ n개의 tuple 객체들을 하나의 tuple 객체로 합치는 [tuple_cat](http:
 n개의 인자에 대해서 재귀함수호출을 통하여 앞의 인자들부터 끊어서 처리하는 아래와 같은 일반적인 구현을 우선 생각해볼 수 있겠다.
 
 ```cpp
+namespace Detail
+{
+    template
+    <
+            typename T, std::size_t... i,
+            typename U, std::size_t... j
+    >
+    auto binary_tuple_cat(T && a, std::index_sequence<i...>,
+                          U && b, std::index_sequence<j...>)
+    {
+        return std::make_tuple(
+                std::get<i>(std::forward<T>(a))...,
+                std::get<j>(std::forward<U>(b))...
+        );
+    }
+} // namespace Detail
+
+//...
+
+auto tuple_cat_()
+{
+    return std::make_tuple();
+}
+
+template <typename T>
+auto tuple_cat_(T && a)
+{
+    return a;
+}
+
+template <typename T, typename U>
+auto tuple_cat_(T && a, U && b)
+{
+    constexpr auto aSize = std::tuple_size<std::remove_reference_t<T>>::value;
+    constexpr auto bSize = std::tuple_size<std::remove_reference_t<U>>::value;
+    return Detail::binary_tuple_cat(
+            std::forward<T>(a),
+            std::make_index_sequence<aSize>{},
+            std::forward<U>(b),
+            std::make_index_sequence<bSize>{}
+    );
+}
+
+template <typename T, typename... R>
+auto tuple_cat_(T && a, R &&... rs)
+{
+    return tuple_cat_(
+            std::forward<T>(a),
+            tuple_cat_(std::forward<R>(rs)...)
+    );
+}
 ```
 
 ---
 
-## Take-2: Applying Fold-Left High-Order Function
+## Take-2: Applying Fold-Right High-Order Function
 
 '주어진 시퀀스의 값을 이항함수를 이용해서 합친다.'
 
