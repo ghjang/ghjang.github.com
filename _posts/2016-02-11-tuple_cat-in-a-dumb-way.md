@@ -54,8 +54,8 @@ auto tuple_cat_(T && a)
 template <typename T, typename U>
 auto tuple_cat_(T && a, U && b)
 {
-    constexpr auto aSize = std::tuple_size<std::remove_reference_t<T>>::value;
-    constexpr auto bSize = std::tuple_size<std::remove_reference_t<U>>::value;
+    constexpr auto aSize = std::tuple_size<std::decay_t<T>>::value;
+    constexpr auto bSize = std::tuple_size<std::decay_t<U>>::value;
     return Detail::binary_tuple_cat(
             std::forward<T>(a),
             std::make_index_sequence<aSize>{},
@@ -117,8 +117,8 @@ namespace Detail
         template <typename T, typename U>
         auto operator () (T && a, U && b) const
         {
-            constexpr auto aSize = std::tuple_size<std::remove_reference_t<T>>::value;
-            constexpr auto bSize = std::tuple_size<std::remove_reference_t<U>>::value;
+            constexpr auto aSize = std::tuple_size<std::decay_t<T>>::value;
+            constexpr auto bSize = std::tuple_size<std::decay_t<U>>::value;
             return binary_tuple_cat(
                     std::forward<T>(a),
                     std::make_index_sequence<aSize>{},
