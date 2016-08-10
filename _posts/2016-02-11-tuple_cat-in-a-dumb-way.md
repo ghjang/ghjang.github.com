@@ -9,7 +9,7 @@ tags: [C++]
 
 n개의 `tuple` 객체들을 하나의 `tuple` 객체로 합치는 [tuple_cat](http://en.cppreference.com/w/cpp/utility/tuple/tuple_cat) 함수를 직접 작성하는 **연습**을 해보도록 한다. 여기서는 효율성등을 고려하지 않고 기본적인 C++ template 사용법만을 가지고 구현을 시도했다.
 
-다소 복잡한 C++ TMP를 이용해서 효율적인 `tuple_cat`을 구현하는 것과 관련하여 아래의 글들을 참고할만하다:
+다소 복잡한 C++ TMP를 이용해서 효율적인 `tuple_cat`을 구현하는 것과 관해서는 아래의 글들을 참고할만하다:
 
 + [Tiny Metaprogramming Library](http://ericniebler.com/2014/11/13/tiny-metaprogramming-library/)
 + [Simple C++11 metaprogramming](http://pdimov.com/cpp2/simple_cxx11_metaprogramming.html)
