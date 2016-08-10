@@ -262,7 +262,7 @@ auto tuple_cat_(T &&... ts)
 
 허나, C++ 프로그래머라면 성능관련하여 일종의 강박증 같은 것이 있기 때문에 한번더 리팩터링에 들어가리라... :)
 
-lvalue `std::tuple` 객체가 `tuple_cat_`에 넘겨질 경우 `ArgWrap`의 `m_` 멤버변수에 복사생성이 일어나게 된다. 이 문제를 해결하려면 lvalue 객체가 전달될 경우 `std::tuple<...> const&` 형태의 **타입**으로 멤버객체를 저장하면 될 것도 같다. **타입을 제어해야하는 상황**,... 그렇다 **C++ Template Metaprogramming** 기법을 도입해야한다는 것이다. 구현이 좀 지저분해졌다. :( 변경된 코드부분은 아래와 같다.
+lvalue `std::tuple` 객체가 `tuple_cat_`에 넘겨질 경우 `ArgWrap`의 `m_` 멤버변수에 복사생성이 일어나게 된다. 이 문제를 해결하려면 lvalue 객체가 전달될 경우 `std::tuple<...> const&` 형태의 **타입**으로 멤버객체를 저장하면 될 것도 같다. **타입을 제어해야하는 상황**,... 그렇다 **C++ Template Metaprogramming** 기법을 도입해야한다는 것이다. 덕분에 구현이 좀 지저분해졌다. :( 변경된 코드부분은 아래와 같다.
 
 ```cpp
 template <typename T, typename F, bool isRvalueArg>
