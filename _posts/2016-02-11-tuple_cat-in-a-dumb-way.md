@@ -78,7 +78,7 @@ auto tuple_cat_(T && a, R &&... rs)
 
 ## Take-2: Applying Fold-Right High-Order Function
 
-'주어진 시퀀스의 값들을 이항함수를 이용해서 합친다.'
+**_'주어진 시퀀스의 값들을 이항함수를 이용해서 합친다.'_**
 
 조금만 생각해보면 위의 `tuple_cat_` 구현은 전형적인 fold-right 알고리즘 패턴과 닮아 있음을 알 수가 있다.
 
