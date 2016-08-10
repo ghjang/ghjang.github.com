@@ -80,9 +80,9 @@ auto tuple_cat_(T && a, R &&... rs)
 
 **_'주어진 시퀀스의 값들을 이항함수를 이용해서 합친다.'_**
 
-조금만 생각해보면 위의 `tuple_cat_` 구현은 전형적인 fold-right 알고리즘 패턴과 닮아 있음을 알 수가 있다.
+조금만 생각해보면 위의 `tuple_cat_` 구현은 전형적인 fold 알고리즘 패턴과 닮아 있음을 알 수가 있다.
 
-먼저 재귀함수호출 형태의 `fold_right` high-order function을 구현하면 아래와 같을 수 있겠다.
+먼저 재귀함수호출 형태의 `fold_right` 고차함수를 구현하면 아래와 같을 수 있겠다.
 
 ```cpp
 template <typename F, typename T, typename U>
