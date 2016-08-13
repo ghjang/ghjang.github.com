@@ -9,7 +9,7 @@ tags: [Wolfram Language, Functional Programming, Math, Animated GIF]
 
 Wolfram Language에서 아래와 같은 Animation GIF를 만들어 보았다.
 
-![Animated Sin Graph]({{ site.url }}/_posts/hello_animated_sin_ani.gif)
+![Animated Sin Graph](https://github.com/ghjang/ghjang.github.com/blob/master/_posts/hello_animated_sin_ani.gif?raw=true "Animated Sin Graph")
 
 사용한 코드는 다음과 같다.
 
