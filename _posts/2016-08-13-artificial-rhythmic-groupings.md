@@ -39,5 +39,7 @@ tags: [Music, Music Theory]
 | 점8분음표(Dotted Eighth Note)     | (1 / 2) + ((1 / 2) / 2) = 3 / 4 = 0.75  |
 | 점16분음표(Dotted Sixteenth Note) | (1 / 4) + ((1 / 4) / 2) = 3 / 8 = 0.375 |
 
+---
+
 NOTE: It is not written completely.
 
