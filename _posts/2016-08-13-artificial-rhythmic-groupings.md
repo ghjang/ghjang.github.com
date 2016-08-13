@@ -3,7 +3,7 @@ layout: post
 title: "Artificial Rhythmic Groupings?"
 description: ""
 category: Music Theory
-tags: [Music]
+tags: [Music, Music Theory]
 ---
 {% include JB/setup %}
 
