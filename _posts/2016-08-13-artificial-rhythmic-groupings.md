@@ -41,5 +41,5 @@ tags: [Music, Music Theory]
 
 ---
 
-NOTE: It is not written completely.
+NOTE: It is not written completely yet.
 
