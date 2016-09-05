@@ -65,8 +65,8 @@ tags: [Music, Music Theory]
 
 예를 들어서 **'4분음표 1박을 1/3박씩 세등분'**하기 위해서는 다음과 같은 **셋잇단음표(triplet)** 표기를 사용한다는 것이다.
 
-![Quater Note Triplet Score]({{ site.post_resource_file_base }}/2016-09-05/quater_note_triplet_score.png?raw=true)
+<img alt='Quater Note Triplet Score' style='width: 400px' src='{{ site.post_resource_file_base }}/2016-09-05/quater_note_triplet_score.png?raw=true'/>
 
 4/4박자의 1마디에서 첫박은 4분음표로, 3번째박은 셋잇단음표로 표시한 것이다. 이 표기를 **MIDI노트** 표기로 나타낸 것이 다음 그림이다. 악보에서보다 훨씬 이부분에 대해서는 확실히 이해할 수 있게된다.
 
-![Quater Note Triplet Score]({{ site.post_resource_file_base }}/2016-09-05/quater_note_triplet_piano_roll.png?raw=true)
+<img alt='Quater Note Triplet Score' style='width: 400px' src='{{ site.post_resource_file_base }}/2016-09-05/quater_note_triplet_piano_roll.png?raw=true' />
