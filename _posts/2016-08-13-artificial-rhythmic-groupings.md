@@ -83,7 +83,7 @@ tags: [Music, Music Theory]
 
 ---
 
-## 'I'll Divide It My Way'
+## "I'll Divide It My Way."
 
 애초에 가졌던 의문, 그러니까 **무엇을 가지고 인위적(Artificial)**인가에 대한 답을 나름 짧게 정리하면 이렇겠다.
 
