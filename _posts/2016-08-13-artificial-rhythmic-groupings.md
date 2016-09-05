@@ -79,6 +79,6 @@ tags: [Music, Music Theory]
 
 <img alt='Quater Note Triplet Score 1' style='width: 400px' src='{{ site.post_resource_file_base }}/2016-09-05/quater_note_triplet_score_1.png?raw=true' />
 
-<img alt='Quater Note Triplet MIDI Note 1' style='width: 400px' src='{{ site.post_resource_file_base }}/2016-09-05/quater_note_triplet_piano_roll_1.png?raw=true' />
+<img alt='Quater Note Triplet MIDI Note 1' style='width: 400px' src='{{ site.post_resource_file_base }}/2016-09-05/quater_note_triplet_piano_roll_2.png?raw=true' />
 
 ---
