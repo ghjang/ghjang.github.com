@@ -33,7 +33,7 @@ tags: [Music, Music Theory]
 
 <br/>
 
-점음표(Dotted Notes)에 대해도 같은 방식으로 나타내보면 아래와 같다.
+**점음표(Dotted Notes)**에 대해도 같은 방식으로 나타내보면 아래와 같다.
 
 <br/>
 
@@ -53,7 +53,7 @@ tags: [Music, Music Theory]
 
 ## How Do I Notate 1/3 Duration of a Quater Note?
 
-위의 테이블에 나열한 **박의 길이 비율**을 보면 **1/3(==0.333...)**, **1/5(==0.2)** 또는 **6/5(==1.2)** 같은 비율을 나타내는 부분이 없다는 것을 알 수 있다.
+위의 테이블에 나열한 **박의 길이 비율**을 보면 **1/3(==0.333...)**, **1/6(==0.1666...)**, **1/5(==0.2)** 또는 **6/5(==1.2)** 같은 비율들을 나타내는 부분이 없다는 것을 알 수 있다.
 
 **_이러한 비율의 길이(duration)을 나타내려면 어떻게 해야할 것인가?_**
 
@@ -67,6 +67,10 @@ tags: [Music, Music Theory]
 
 <img alt='Quater Note Triplet Score' style='width: 400px' src='{{ site.post_resource_file_base }}/2016-09-05/quater_note_triplet_score.png?raw=true'/>
 
-4/4박자의 1마디에서 첫박은 4분음표로, 3번째박은 셋잇단음표로 표시한 것이다. 이 표기를 **MIDI노트** 표기로 나타낸 것이 다음 그림이다. 악보에서보다 훨씬 이부분에 대해서는 확실히 이해할 수 있게된다.
+4/4박자의 1마디에서 첫박은 4분음표로, 3번째박은 셋잇단음표로 표시한 것이다. 이 표기를 **MIDI노트** 표기로 나타낸 것이 다음 그림이다. 악보에서보다 훨씬 이부분에 대해서는 그 의미를 확실히 이해할 수 있게된다.
 
 <img alt='Quater Note Triplet Score' style='width: 400px' src='{{ site.post_resource_file_base }}/2016-09-05/quater_note_triplet_piano_roll.png?raw=true' />
+
+**'4분음표 1박을 1/5박씩 5등분'**해서 **다섯잇단음표(quintuplet)**로 악보에 표기하면 다음과 같이 된다. 위의 두 그림은 **Apple Logic Pro X** 상에서 화면을 캡쳐한 것이다. 아래는 **Noteflight**라는 웹사이트에서 음표를 입력한후에 캡쳐한 화면이다. Logic Pro X 상에서 다섯잇단음표 악보표기를 제대로 표시하지 못한다는 것을 나중에서야 알았다...
+
+<img alt='Quater Note Quintuplet' style ='width: 400px' src='{{ site.post_resource_file_base }}/2016-09-05/quater_note_quintuplet_score.png?raw=true' />
