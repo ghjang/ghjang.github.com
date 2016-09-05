@@ -19,7 +19,7 @@ tags: [Music, Music Theory]
 
 ## Notes and Duration
 
-기보법(Musical Notation)에서는 4분음표(Quater Note)를 1박(Beat)으로 기준을 정하고 나머지 음표들의 박의 길이를 상대적으로 따진다.
+**기보법(Musical Notation)**에서는 **4분음표(Quater Note)를 1박(Beat)으로 기준**을 정하고 나머지 음표들의 박의 길이를 **상대적**으로 따진다.
 
 <br/>
 
@@ -62,3 +62,11 @@ tags: [Music, Music Theory]
 1. ...
 
 뭐, 대략 이런 생각을 해볼 수 있을 것이다. 첫번째 방법을 선택하게되면 추가해야할 비율이 있을때마다 새로운 음표를 정의해야했을 것이다. 매우 귀찮기도하고 현실성이 없다. 두번째 방법이 실제 채택되어 사용되고 있는 방법이다.
+
+예를 들어서 **'4분음표 1박을 1/3박씩 세등분'**하기 위해서는 다음과 같은 **셋잇단음표(triplet)** 표기를 사용한다는 것이다.
+
+![Quater Note Triplet Score]({{ site.post_resource_file_base }}/2016-09-05/quater_note_triplet_score.png?raw=true)
+
+4/4박자의 1마디에서 첫박은 4분음표로, 3번째박은 셋잇단음표로 표시한 것이다. 이 표기를 **MIDI노트** 표기로 나타낸 것이 다음 그림이다. 악보에서보다 훨씬 이부분에 대해서는 확실히 이해할 수 있게된다.
+
+![Quater Note Triplet Score]({{ site.post_resource_file_base }}/2016-09-05/quater_note_triplet_piano_roll.png?raw=true)
