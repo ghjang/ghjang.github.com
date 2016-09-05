@@ -135,7 +135,7 @@ auto medianValue(Container const& c)
 ...
 ```
 
-위 표현은 RandomAccessIterator를 제공하지 않는 컨테이너에 대해서 다음과 같은 형태로 내부적으로 바뀔 것이고 유효한(well-formed) 코드이다.
+위 표현은 `RandomAccessIterator`를 제공하지 않는 컨테이너에 대해서 다음과 같은 형태로 내부적으로 바뀔 것이고 유효한(well-formed) 코드이다.
 
 ```cpp
 template <
@@ -164,7 +164,7 @@ auto medianValue(Container const& c, std::enable_if_t<
 ...
 ```
 
-위 표현은 RandomAccessIterator를 제공하지 않는 컨테이너에 대해서 다음과 같은 형태로 내부적으로 바뀔 것이고 역시 유효한(well-formed) 코드가 된다. `void **`와 같이 `**`를 이용한 것은 별다른 이유라기 보다는 최대한 사용자의 실수를 방지하기 위한 것이다. 
+위 표현은 `RandomAccessIterator`를 제공하지 않는 컨테이너에 대해서 다음과 같은 형태로 내부적으로 바뀔 것이고 역시 유효한(well-formed) 코드가 된다. `void **`와 같이 `**`를 이용한 것은 별다른 이유라기 보다는 최대한 사용자의 실수를 방지하기 위한 것이다. 
 
 ```cpp
 template <typename Container>
@@ -245,8 +245,55 @@ struct Actor<T, >
 
 ---
 
+## C++17 constexpr if statement
+
+C++17에 도입되는 `constexpr` if statement 언어문법을 사용하게되면 앞서 `std::enable_if`를 사용하여 구현한 코드는 대부분 상당히 간소화될 것이다. 이 내용을 업데이트하는 현시점(2016/09/05)에 아직 이를 구현한 정식 릴리즈된 컴파일러는 없다는 것 같다. 개발중인 최신의 **clang** 컴파일러에서 사용가능하다고 한다.
+
+우선 `medianValue` function template은 아래와 같이 간소화될 수 있을 것이다.
+
+```cpp
+template <typename Container>
+auto medianValue(Container const& c)
+{
+    constexpr auto isRandomAccessIterator
+        = std::is_same<
+                std::random_access_iterator_tag,
+                typename std::iterator_traits<typename Container::iterator>::iterator_category
+          >::value;
+    if constexpr(isRandomAccessIterator) {
+        return c[c.size() / 2];
+    } else {
+        auto iter = c.begin();
+        std::advance(iter, c.size() / 2);
+        return *iter;
+    }
+}
+```
+
+`Actor` class template의 specialization코드는 아래와 같이 `if` ~ `else` chain 모양새의 코드로 바뀌게 될 것이다. 이런 형태의 `if` ~ `else` chain 코드의 길이가 길어지면 그닥 보기가 좋지 않다. `switch`에 대해서도 `constexpr` statement 문법이 추가된다면 이런식의 코드에 대해서 가독성이 좀더 좋아질 수는 있을 것 같다는 생각을 그냥 해보기만 한다. :) 
+
+```cpp
+template <typename T>
+struct Actor
+{
+    void doSomething()
+    {
+        if constexpr(std::is_integral<T>::value) {
+            std::cout << "did some work for integral type.\n";
+        } else if constexpr(std::is_floating_point<T>::value) {
+            std::cout << "did some work for floating point type.\n";
+        } else {
+            std::cout << "did some work.\n";
+        }
+    }
+};
+```
+
+---
+
 ### 참고
 + [cppreference std::enable_if](http://en.cppreference.com/w/cpp/types/enable_if)
-+ [MSDN std::enable_if](https://msdn.microsoft.com/en-us/library/ee361639.aspx): enable_if의 잘못된 사용에 대한 설명이 cppreference쪽보다 좀더 자세하다.
++ [MSDN std::enable_if](https://msdn.microsoft.com/en-us/library/ee361639.aspx): `enable_if`의 잘못된 사용에 대한 설명이 cppreference쪽보다 좀더 자세하다.
 + [Wikipedia SFINAE](https://en.wikipedia.org/wiki/Substitution_failure_is_not_an_error)
-+ <https://github.com/ghjang/personal_study/blob/master/cpp/enable_if/main.cpp>
++ [C++17 constexpr if statement](http://en.cppreference.com/w/cpp/language/if#Constexpr_If)
++ <https://github.com/ghjang/personal_study/blob/master/cpp/enable_if/main.cpp>: `constexpr` if statement를 사용한 코드는 포함하지 않음.
