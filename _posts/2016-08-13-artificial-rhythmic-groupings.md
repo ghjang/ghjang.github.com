@@ -82,3 +82,15 @@ tags: [Music, Music Theory]
 <img alt='Quater Note Triplet MIDI Note 1' style='width: 400px' src='{{ site.post_resource_file_base }}/2016-09-05/quater_note_triplet_piano_roll_2.png?raw=true' />
 
 ---
+
+## 'I'll Divide It My Way'
+
+애초에 가졌던 의문, 그러니까 **무엇을 가지고 인위적(Artificial)**인가에 대한 답을 나름 짧게 정리하면 이렇겠다.
+
+> 기존 기보법에 수많은 duration 분할비율에 해당하는 음표들을 대량 추가하여 문제를 복잡하게 만들지 않고, 일종의 modifier와 같은 개념의 액세서리 표기를 추가하여 **_내마음대로(인위적으로, artificial) 박(beat)을 쪼개는 것_**.
+
+다양한 분할비율을 도입함으로 인해서 리듬의 대칭성적인 측면에 비대칭적인 느낌을 끌어들이다던지 하는 상황을 연출하여 지루하지않고 다채로운 느낌을 만들어낼 수 있게된다.
+
+근데, 이런 리듬은 실제로는 연주하기가 어렵다는 것은 함정... 
+
+참고로, 앞서의 셋잇단음표 예제는 보통 쉽게(?) 볼 수 있는 표기일텐데, 좀더 복잡하거나 경우에 따라서는 직관적이지 못한 관용적(?) 표기등이 있는 것으로 보임.
