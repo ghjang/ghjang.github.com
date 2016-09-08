@@ -84,6 +84,34 @@ TODO: 매번 혼동하게되는 부분으로 예제를 작성하는게 좋겠다
 + ApplyT 같은 type alias를 사용하면 metafunction class를 사용하는 high-order function에서 코드를 좀 줄일 수 있다.
 + metafunction class 개념을 사용하면, metafunction composition을 하기가 C++상에서 좀 쉬워(?)진다.
 
-### template <template <typename...> class f> struct Quote; 형태에서 f는 임의의 class template에 매칭될 수 있다.
+### template <template <typename...> class f> struct Quote; 형태에서 f는 임의의 variadic class template에 매칭될 수 있다. std::pair와 같은 고정 길이 template parameter를 가질 경우는 받을 수 없다(?).
 
 ### type alias template은 specialization을 가질수가 없다.
+
+### typename/class template parameter로 template을 받을 수는 없다. rocky에서 ApplyTemplate관련 코드 참고할 것.
+
+
+/**
+ * following is not a valid pattern matching.
+ */
+/*
+template <typename... T1, typename... T2>
+struct FlattenAsTypeList<T1..., TypeList<T2...>> : type_is<TypeList<T1..., T2...>>
+{ };
+ */
+
+/**
+ * following is not a valid pattern matching.
+ */
+/*
+template <typename... T1, typename... T2, typename... T3>
+struct FlattenAsTypeList<T1..., TypeList<T2...>, T3...> : type_is<TypeList<T1..., T2..., T3...>>
+{ };
+ */
+ 
+### void_t는 SFINAE-friendly 하다. using을 이용한 type alias자체가 그런지는 테스트해볼 필요가 있을 것 같다. IsCallableWith와 연계해서 생각해볼 것...
+
+### C++ 에서 function type 과 array타입이 first class citizen 이 아니라는 것에 대한 간단한 블로글을 작성해볼 것.
+Notice how we pattern matched on (x :-: xs). That works because pattern matching is actually about matching constructors. We can match on :-: because it is a constructor for our own list type and we can also match on : because it is a constructor for the built-in list type. Same goes for []. Because pattern matching works (only) on constructors, we can match for stuff like that, normal prefix constructors or stuff like 8 or 'a', which are basically constructors for the numeric and character types, respectively.
+
+해스켈에서는 'a'같은 값조차도 '무항 밸류 컨스트럭터' 라고 본다. 모든 것을 함수로 본다는 지극히 단순한 생각을 가지고 있다.
