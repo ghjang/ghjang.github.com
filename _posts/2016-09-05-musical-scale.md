@@ -7,4 +7,4 @@ tags: [Music, Music Theory]
 ---
 {% include JB/setup %}
 
-**NOTE: It will be written soon.** ~ :)
+**NOTE: It will be written later.** ~ :)
