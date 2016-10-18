@@ -331,5 +331,6 @@ for (auto s : sv) {
 ## 참고
 + [Boost.Variant](http://www.boost.org/doc/libs/1_59_0/doc/html/variant.html)
 + [Variant: a type-safe union (v4)](http://open-std.org/JTC1/SC22/WG21/docs/papers/2015/n4542.pdf): 진행되고 있는 관련 표준 문서
++ [C++17 std::variant]: C++17에 정식으로 variant가 포함되었다. Boost.Variant와 차이점도 점검해볼 것.
 + [https://github.com/ghjang/personal_study/tree/master/cpp/polymorphism](https://github.com/ghjang/personal_study/tree/master/cpp/polymorphism)
 
