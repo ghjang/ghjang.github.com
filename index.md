@@ -5,7 +5,8 @@ tagline: Computer Programming and Music
 ---
 {% include JB/setup %}
 
-For those who want to learn more about C++, refer to [C++ Study Resources](/pages/cpp-study-resource).
+* For those who want to learn more about C++, refer to [C++ Study Resources](/pages/cpp-study-resource).
+* For those who wanted to see Cosmos Document English Vocabulary, visit <http://ghjang.github.io/cosmos/>.
 
 ---
 Here's a "posts list":
