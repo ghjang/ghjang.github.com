@@ -135,3 +135,8 @@ JB :
   # where [HELPER] is the name of the helper you are overriding.
   
 post_resource_file_base: https://github.com/ghjang/ghjang.github.com/blob/master/_posts/files
+
+markdown: kramdown
+kramdown: 
+	syntax_highlighter_opts:
+		disable : true
