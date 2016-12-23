@@ -3,7 +3,6 @@ layout: page
 title: "C++ Study Resources"
 description: "C++ 공부에 유용한 리소스들을 간략하게 정리한다."
 ---
-{% include JB/setup %}
 
 ## C++ Standard
 + [https://isocpp.org](https://isocpp.org)
