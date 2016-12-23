@@ -1,11 +1,9 @@
 ---
-layout: post
 title: "Mac OS X Keyboard Shortcuts"
 description: ""
 category: 
 tags: [Mac OS X]
 ---
-{% include JB/setup %}
 
 For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support.apple.com/en-us/HT201236).
 

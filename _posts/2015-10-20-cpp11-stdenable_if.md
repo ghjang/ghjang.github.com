@@ -1,11 +1,9 @@
 ---
-layout: post
 title: "[C++11] std::enable_if"
 description: "std::enable_if에 대해서 알아본다."
 category: Computer Programming
 tags: [C++, C++11, C++ TMP]
 ---
-{% include JB/setup %}
 
 `std::enalbe_if` class template은 (member) function 호출시 **overload resolution** 과정에 사용되는 **overload resolution set에 제약**을 가하는데 사용될 수 있다. 또한 class template specialization을 컴파일러가 선택하는 과정에서도 **class template specialization set에 제약**을 가하는 도구로써 사용된다. 적절히 사용될 경우 유용하게 사용될 수 있지만 그렇지 못한 사용은 오히려 혼란을 가중시킬 수 있을 것 같다. 직접 사용할 일이 많지는 않을 것 같으나 개념은 알고 있어야할 것 같아서 적어본다. 하단의 '참고' 부분의 MSDN쪽의 링크글내에 설명된 가이드라인 참고할 것.
 

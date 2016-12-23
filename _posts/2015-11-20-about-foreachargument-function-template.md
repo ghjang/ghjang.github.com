@@ -1,11 +1,9 @@
 ---
-layout: post
 title: "About ForEachArgument Function Template"
 description: ""
 category: Computer Programming
 tags: [C++, C++11, C++14, C++17, C++ TMP]
 ---
-{% include JB/setup %}
 
 최근 보게된 다음 동영상에서 소개된 'for_each_argument'라는 function template과 관련하여 몇자 적는다. 해당 설명은 동영상내에 매우 자세하게 설명되어 있다. 여기서는 직접 for_each_argument를 구현한다고 했을 경우 최종 결과물에 이르기까지의 과정에 대해서 나름데로 적어본다. 결과물의 코드를 이미 알고 있기 때문에 좀 작위적인 부분들이 있겠다. for_each_argument는 자체적으로도 의미가 있겠으나 또다른 기능을 구현하는데 훌륭한 빌딩블럭으로써 사용될 수 있겠다.
 

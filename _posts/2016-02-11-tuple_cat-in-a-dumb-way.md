@@ -1,11 +1,9 @@
 ---
-layout: post
 title: "tuple_cat in a Dumb Way"
 description: ""
 category: Computer Programming
 tags: [C++]
 ---
-{% include JB/setup %}
 
 n개의 `tuple` 객체들을 하나의 `tuple` 객체로 합치는 [tuple_cat](http://en.cppreference.com/w/cpp/utility/tuple/tuple_cat) 함수를 직접 작성하는 **연습**을 해보도록 한다. 여기서는 효율성등을 고려하지 않고 기본적인 C++ template 사용법만을 가지고 구현을 시도했다.
 
@@ -338,6 +336,6 @@ C++17 fold 관련하여 좀더 자세히 알고 싶다면 아래 '참고' 섹션
 ## 참고
 
 + <https://github.com/ghjang/personal_study/blob/master/cpp/tuple_cat/main.cpp>: 글에서 설명한 샘플코드
-+ [Fold it the way you like](http://ghjang.github.io/computer%20programming/2015/12/12/fold/): C++17 fold에 관한 내용은 아님. C++ TMP 공부하는 와중에 정리해본 내용임.
++ [Fold it the way you like]({{ site.baseurl }}{% post_url 2015-12-12-fold %}): C++17 fold에 관한 내용은 아님. C++ TMP 공부하는 와중에 정리해본 내용임.
 + [Fun with folds](https://ngathanasiou.wordpress.com/2015/12/15/182/)
 + [Lazily evaluated folds in C++](https://ngathanasiou.wordpress.com/2016/03/22/lazily-evaluated-folds-in-c/): 'Fun with folds' 글을 쓴 저자의 C++17 fold 관련내용 제2탄. **Expression Template**관련 내용이 다루어진다. '어디까지 가는거냐?' :)

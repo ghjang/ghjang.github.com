@@ -1,11 +1,9 @@
 ---
-layout: post
 title: "[C++11] std::initializer_list"
 description: ""
 category: Computer Programming
 tags: [C++, C++11]
 ---
-{% include JB/setup %}
 
 C++11의 brace initialization 표기법의 결과물이 std::initializer_list라고 함. 이때 리스트의 원소 타입은 자동으로 deduction된다 함. 내용이 간단한 편이기 때문에 하단의 레퍼런스 링크를 참고하면 되겠다.
 

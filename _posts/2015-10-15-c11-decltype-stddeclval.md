@@ -1,11 +1,9 @@
 ---
-layout: post
 title: "[C++11] decltype, std::declval"
 description: ""
 category: Computer Programming
 tags: [C++, C++11, C++ TMP]
 ---
-{% include JB/setup %}
 
 decltype은 언어 키워드이고 std::declval은 function template이다.
 

@@ -1,11 +1,9 @@
 ---
-layout: post
 title: "[C++11] std::decay"
 description: "std::decay에 대해서 알아본다."
 category: Computer Programming
 tags: [C++, C++11, C++ TMP]
 ---
-{% include JB/setup %}
 
 decay는 사전적으로 '부식'이라는 의미이다. C++에서 decay란 특정 context에서 type이 원래 고유의 것이 아닌 다른 type으로 변질되는 것을 말한다. std::decay는 decay가 일어나는 문맥에서의 type을 계산해주는 meta function.
 

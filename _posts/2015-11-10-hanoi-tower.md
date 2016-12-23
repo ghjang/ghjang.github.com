@@ -1,11 +1,9 @@
 ---
-layout: post
 title: "Tower of Hanoi"
 description: ""
 category: Computer Programming
 tags: [C++, C++ TMP, Algorithm]
 ---
-{% include JB/setup %}
 
 C++ Template Meta-programming에서 recursion의 이해는 필수사항이다. Hanoi Tower는 이 recursion과 관련하여 생각해볼만한 문제이다. Hanoi Tower 문제는 결과코드만 보면 단순하다. 하지만, (해답을 보지 않고) 결과에 다다르는 생각을 해내는 것이 쉽지만은 않을 수도 있다. 이런 방식의 사고방식을 좀 고민해볼 필요가 있겠다.
 

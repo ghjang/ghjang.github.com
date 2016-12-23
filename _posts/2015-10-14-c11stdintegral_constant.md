@@ -1,11 +1,9 @@
 ---
-layout: post
 title: "[C++11] std::integral_constant"
 description: ""
 category: Computer Programming
 tags: [C++, C++11, C++ TMP]
 ---
-{% include JB/setup %}
 
 정수형 타입의 값을 type화 할 수 있도록 해주는 wrapper 클래스 템플릿이다:
 

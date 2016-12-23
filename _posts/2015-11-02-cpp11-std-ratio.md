@@ -1,11 +1,9 @@
 ---
-layout: post
 title: "[C++11] std::ratio"
 description: ""
 category: Computer Programming
 tags: [C++, C++11]
 ---
-{% include JB/setup %}
 
 std::ratio는 C++11 표준에 추가된 Rational Number(유리수)의 compile-time 계산지원이다. run-time 계산이 아니라는 것에 유의할 것. ratio 내부에 표현되는 분모, 분자 값은 약분된 형태로 값이 유지된다.
 

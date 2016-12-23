@@ -1,11 +1,9 @@
 ---
-layout: post
 title: "[C++14] std::integer_sequence"
 description: ""
 category: Computer Programming
 tags: [C++14, C++ TMP]
 ---
-{% include JB/setup %}
 
 C++14에 추가된 `std::integer_sequence`는 C++ Template metaprogramming에 아주 유용한 도구이다. 하단의 '참고'에 있는 cppreference 링크 글의 내용을 숙지하도록 할 것. 내용이 길지도 않다. 예제에서 보이는 사용법은 일종의 idiom으로 생각하고 익숙해질 필요가 있을 정도다.
 
