@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+gemspec
 ruby RUBY_VERSION
 
 # Hello! This is where you manage which Jekyll version is used to run.
@@ -26,3 +27,6 @@ gem "jekyll-theme-cayman"
 group :jekyll_plugins do
    gem "jekyll-feed", "~> 0.6"
 end
+
+# Pagination
+gem "jekyll-paginate"
