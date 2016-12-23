@@ -30,6 +30,7 @@ theme: jekyll-theme-slate
 gems:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-paginate
 
 exclude:
   - Gemfile
@@ -51,3 +52,6 @@ defaults:
 
 # Custom variables
 postsResBase: https://github.com/ghjang/ghjang.github.com/blob/master/_posts/files
+
+# Pagination
+paginate: 1
