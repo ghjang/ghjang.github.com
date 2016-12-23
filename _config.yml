@@ -56,3 +56,8 @@ postsResBase: https://github.com/ghjang/ghjang.github.com/blob/master/_posts/fil
 
 # Pagination
 paginate: 1
+
+# About/contact
+author:
+  name: ghjang
+  url: https://www.facebook.com/jmxexpert
