@@ -64,3 +64,12 @@ postsResBase: https://github.com/ghjang/ghjang.github.com/blob/master/_posts/fil
 author:
   name: ghjang
   url: https://www.facebook.com/jmxexpert
+
+# For Facebook Comments Plug-in
+comments :
+  facebook :
+    appid : 485739381600808
+    num_posts : 5
+    width : 580
+    colorscheme : light
+    version : v2.4

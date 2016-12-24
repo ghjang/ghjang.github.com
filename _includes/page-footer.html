@@ -1,4 +1,9 @@
 <footer class="site-footer">
+  {% if page.layout == 'post' %}
+  <h4>Comments</h4>
+  <div class="fb-comments" data-href="{{ site.production_url }}{{ page.url }}" data-numposts="{{ site.comments.facebook.num_posts }}" data-width="{{ site.comments.facebook.width }}" data-colorscheme="{{ site.comments.facebook.colorscheme }}"></div>
+  <hr/>
+  {% endif %}
   <span class="site-footer-owner">This site is maintained by <a href="{{ site.author.url }}">{{ site.author.name }}</a>.</span>
   <script src="{{ "/js/prism.js" | prepend: site.baseurl }}"></script>
 </footer>
