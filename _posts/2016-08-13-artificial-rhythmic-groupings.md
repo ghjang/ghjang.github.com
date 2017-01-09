@@ -5,6 +5,18 @@ category: Music Theory
 tags: [Music, Music Theory]
 ---
 
+<link href='{{ site.url }}/css/bravura_smufl_font.css' type='text/css' rel='stylesheet'>
+
+<style type='text/css' media='all'>
+    table {
+        font-family: 'Bravura Text';
+    }
+    table th, table td {
+        vertical-align: middle;
+        padding: 0;
+    }
+</style>
+
 **Artificial Rhythmic Groupings**는 우리말로는 **잇단음표**로 번역되고 있나보다.
 
 > _'응? 뭔 용어번역이 이러냐?'_
@@ -19,31 +31,23 @@ tags: [Music, Music Theory]
 
 **기보법(Musical Notation)**에서는 **4분음표(Quater Note)를 1박(Beat)으로 기준**을 정하고 나머지 음표들의 박의 길이를 **상대적**으로 따진다.
 
-<br/>
-
-|        | 음표 이름                | 박의 길이 비율   |
-|--------|------------------------|--------------|
-|        | 온음표(Whole Note)       | 4            |
-|        | 2분음표(Half Note)       | 2            |
-|&#x2669;| 4분음표(Quater Note)     | 1            |
-|&#x266a;| 8분음표(Eighth Note)     | 1 / 2 = 0.5  |
-|        | 16분음표(Sixteenth Note) | 1 / 4 = 0.25 |
-
-<br/>
+|         | 음표 이름                | 박의 길이 비율   |
+|---------|------------------------|--------------|
+|&#x1D15D;| 온음표(Whole Note)       | 4            |
+|&#x1D15E;| 2분음표(Half Note)       | 2            |
+|&#x1D15F;| 4분음표(Quater Note)     | 1            |
+|&#x1D160;| 8분음표(Eighth Note)     | 1 / 2 = 0.5  |
+|&#x1D161;| 16분음표(Sixteenth Note) | 1 / 4 = 0.25 |
 
 **점음표(Dotted Notes)**에 대해도 같은 방식으로 나타내보면 아래와 같다.
 
-<br/>
-
-| | 점음표 이름                        | 박의 길이 비율                             |
-|-|---------------------------------|-----------------------------------------|
-| | 점온음표(Dotted Whole Note)       | 4 + (4 / 2) = 6                         |
-| |점2분음표(Dotted Half Note)        | 2 + (2 / 2) = 3                         |
-| |점4분음표(Dotted Quater Note)      | 1 + (1 / 2) = 3 / 2 = 1.5               |
-| |점8분음표(Dotted Eighth Note)      | (1 / 2) + ((1 / 2) / 2) = 3 / 4 = 0.75  |
-| |점16분음표(Dotted Sixteenth Note)  | (1 / 4) + ((1 / 4) / 2) = 3 / 8 = 0.375 |
-
-<br/>
+|                  | 점음표 이름                        | 박의 길이 비율                             |
+|------------------|---------------------------------|-----------------------------------------|
+|&#x1D15D; &#xE1FC;| 점온음표(Dotted Whole Note)       | 4 + (4 / 2) = 6                         |
+|&#x1D15E; &#xE1FC;|점2분음표(Dotted Half Note)        | 2 + (2 / 2) = 3                         |
+|&#x1D15F; &#xE1FC;|점4분음표(Dotted Quater Note)      | 1 + (1 / 2) = 3 / 2 = 1.5               |
+|&#x1D160; &#xE1FC;|점8분음표(Dotted Eighth Note)      | (1 / 2) + ((1 / 2) / 2) = 3 / 4 = 0.75  |
+|&#x1D161; &#xE1FC;|점16분음표(Dotted Sixteenth Note)  | (1 / 4) + ((1 / 4) / 2) = 3 / 8 = 0.375 |
 
 32분음표 이상도 있겠으나 여기서는 나타내지 않는다.
 
