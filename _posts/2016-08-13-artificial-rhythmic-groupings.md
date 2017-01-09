@@ -10,10 +10,12 @@ tags: [Music, Music Theory]
 <style type='text/css' media='all'>
     table {
         font-family: 'Bravura Text';
+        overflow: visible;
     }
     table th, table td {
         vertical-align: middle;
-        padding: 0;
+        white-space: nowrap;
+        overflow: visible;
     }
 </style>
 
