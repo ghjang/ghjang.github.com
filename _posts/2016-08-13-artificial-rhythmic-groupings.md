@@ -8,6 +8,9 @@ tags: [Music, Music Theory]
 <link href='{{ site.url }}/css/bravura_smufl_font.css' type='text/css' rel='stylesheet'>
 
 <style type='text/css' media='all'>
+    section.main-content {
+        overflow: visible;
+    }
     table {
         font-family: 'Bravura Text';
         overflow: visible;
