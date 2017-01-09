@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'Bravura Text';
+    src: local('Bravura Text'), url('../font/bravura/woff/Bravura.woff');
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+}
