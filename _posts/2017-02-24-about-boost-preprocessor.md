@@ -23,5 +23,6 @@ tags: [C++]
 
 ## 참고
 
-+ <https://github.com/ghjang/personal_study/tree/master/cpp/Boost.Preprocessor>: 발표에 사용한 소스 위치
-+ [Boost.Preprocessor Documentation](http://www.boost.org/doc/libs/1_63_0/libs/preprocessor/doc/index.html)
++ [Boost.Preprocessor](http://www.boost.org/doc/libs/1_63_0/libs/preprocessor/doc/index.html)
++ 발표에 사용한 소스 위치
+    - <https://github.com/ghjang/personal_study/tree/master/cpp/Boost.Preprocessor>
