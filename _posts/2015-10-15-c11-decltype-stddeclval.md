@@ -9,7 +9,7 @@ tags: [C++, C++11, C++ TMP]
 
 ---
 
-`decltype`은 **'declared type'**의 약자로 볼 수 있다. 인자로 넘겨진 개체(entity)나 표현식(expression)의 타입(type)을 compile-time에 알려준다. 기본적으로 다음과 같이 사용 가능하다:
+`decltype`은 **'declared type'**의 약자로 볼 수 있다. 인자로 주어진 개체(entity)나 표현식(expression)의 타입(type)을 compile-time에 알려준다. 기본적으로 다음과 같이 사용 가능하다:
 
 ```cpp
 using std::is_same;
@@ -37,9 +37,20 @@ static_assert(is_same<int, decltype(1 + 1)>::value, "");
 
 ### 인자가 무엇이냐에 따라서 생성되는 타입이 달라진다.
 
-기본적으로 이름이 있는 변수등에 대해서는 그 변수의 원래 타입을 리턴해준다.
+기본적으로 이름이 있는 변수등에 대해서는 먼저 보인 예제 코드에서와 같이 그 변수의 원래 타입을 리턴해준다.
 
 이름이 없는 표현식에 대해서는 lvalue일 경우 원래 타입에 `&`를 붙인 레퍼런스 타입이 리턴되고 `(p)rvalue`일 경우 원래 타입을 돌려 준다.
+
+다음은 이름이 없는 lvalue의 예인 문자열 리터럴을 가지고 `decltype`을 테스트한 예제 코드이다. 문자열 `"abc"`의 타입은 `char const [4]`이다라는 것에 주의할 것.
+
+```cpp
+// string literal is a lvalue.
+// "abc"'s type is char const [4].
+char const (* pStr) [4] = &"abc";   // can get the address of the string.
+char const * pStr1 = "abc";         // array to pointer decay
+
+static_assert(std::is_same<char const (&) [4], decltype("abc")>::value, "");
+```
 
 > C++17 **structured binding**으로 바인딩한 변수에 대해서는 레퍼런스 타입을 리턴한다고 함.
 
