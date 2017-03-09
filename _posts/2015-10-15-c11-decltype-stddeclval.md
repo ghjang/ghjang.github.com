@@ -5,11 +5,11 @@ category: Computer Programming
 tags: [C++, C++11, C++ TMP]
 ---
 
-`decltype`은 언어 키워드이고 `std::declval`은 function template이다.
+`decltype`은 C++ 언어 키워드이고 `std::declval`은 function template이다.
 
 ---
 
-`decltype`은 **'declared type'**의 약자로 볼 수 있다. 인자로 넘겨진 entity나 expression의 type을 compile time에 알려준다. 기본적으로 다음과 같이 사용 가능하다:
+`decltype`은 **'declared type'**의 약자로 볼 수 있다. 인자로 넘겨진 개체(entity)나 표현식(expression)의 타입(type)을 compile-time에 알려준다. 기본적으로 다음과 같이 사용 가능하다:
 
 ```cpp
 using std::is_same;
@@ -33,7 +33,7 @@ static_assert(is_same<int, decltype(1 + 1)>::value, "");
 
 ---
 
-## `decltype` 사용에 있어서 유의해야할 점
+## decltype 사용에 있어서 유의해야 할 점
 
 ### 인자가 무엇이냐에 따라서 생성되는 type의 형태가 달라진다.
 
@@ -41,18 +41,18 @@ static_assert(is_same<int, decltype(1 + 1)>::value, "");
 
 이름이 없는 표현식에 대해서는 lvalue일 경우 원래 타입에 `&`를 붙인 레퍼런스 타입이 리턴되고 `(p)rvalue`일 경우 원래 타입을 돌려 준다.
 
-> C++17 **structured binding**으로 바인딩된 변수에 대해서는 레퍼런스 타입을 리턴한다고 함.
+> C++17 **structured binding**으로 바인딩한 변수에 대해서는 레퍼런스 타입을 리턴한다고 함.
 
 자세한 사항은 다음 URL을 참조하도록 할 것:
 
-+ [cppreference decltype](http://en.cppreference.com/w/cpp/language/decltype): lambda expression으로 생성되는 객체에 대해서 컴파일러가 내부적으로 다루는 type을 얻어내고 사용하는 예제가 추가적으로 있다. 
++ [cppreference decltype](http://en.cppreference.com/w/cpp/language/decltype): lambda expression으로 생성하는 객체에 대해서 컴파일러가 내부적으로 다루는 타입을 얻어내고 사용하는 예제가 추가적으로 있다. 
 + [cppreference value category](http://en.cppreference.com/w/cpp/language/value_category): lvalue, rvalue, prvalue, xvalue 같은 개념들에 대해서 설명하고 있다.
 
-### `decltype(x)`와 `decltype((x))`의 결과 타입이 다르다.
+### decltype(x)와 decltype((x))의 결과 타입이 다르다.
 
-`decltype`내부에 사용되는 괄호 사용여부에 따라서 전달되는 표현의 **value category**가 바뀐다고 한다. `()`를 사용하여 이름이 있는 변수등을 감싸면 일종의 이름이 없는 표현식으로 바꾼 효과를내서 결과적으로 다른 type을 생성하게 될 수 있다. 이름이 있는 lvalue 변수 `x`를 `(x)`와 같이 표현하면 이름이 없는 lvalue 표현식으로 취급되어 레퍼런스 타입을 리턴한다는 것이다.
+`decltype`내부에 괄호 사용여부에 따라 표현식의 성질이 바뀐다. `()`를 사용하여 이름이 있는 변수를 감싸면 일종의 이름이 없는 표현식으로 바꾼 효과를 내서 결과적으로 다른 타입을 리턴할 수 있다. 예를 들어 이름이 있는 lvalue 변수 `x`를 `(x)`와 같이 표현하면 이름이 없는 lvalue 표현식으로 취급되어 레퍼런스 타입을 리턴한다는 것이다.
 
-### `decltype`에 전달된 표현식내 중첩된 서브표현식에 포함된 객체는 complete type이어야 한다.
+### decltype에 전달된 표현식내 중첩된 서브표현식에 포함된 객체는 complete type이어야 한다.
 
 `sizeof` 키워드와 같이 `decltype`에 전달되는 표현은 evaluation이 되는 것이 아니기 때문에 완전한 정의가 필요하지 않다. 하지만 서브표현식에 나타나는 객체에 대해서는 예외라는 것이다. 함수의 리턴 타입도 이에 해당한다.
 
@@ -95,7 +95,7 @@ static_assert(is_same<int, decltype(doSomething(CompleteType()))>::value, "");
 ```
 
 ---
-`declval`은 선언만 있고 정의가 없다. `public` 기본 생성자가 없어 객체를 직접 생성할 수 없는 상황에서 특정 멤버함수의 리턴값 타입을 얻어내는 데 사용한다고 한다:
+`declval`은 선언만 있고 정의가 없다. `public` 기본 생성자가 없어 객체를 직접 생성할 수 없는 상황에서 특정 멤버함수의 리턴 타입을 얻어내는 데 사용한다고 한다:
 
 + [cppreference std::declval](http://en.cppreference.com/w/cpp/utility/declval)
 
