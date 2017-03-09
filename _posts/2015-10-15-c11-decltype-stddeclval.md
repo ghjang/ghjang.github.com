@@ -59,9 +59,15 @@ static_assert(std::is_same<char const (&) [4], decltype("abc")>::value, "");
 + [cppreference decltype](http://en.cppreference.com/w/cpp/language/decltype): lambda expression으로 생성하는 객체에 대해서 컴파일러가 내부적으로 다루는 타입을 얻어내고 사용하는 예제가 추가적으로 있다. 
 + [cppreference value category](http://en.cppreference.com/w/cpp/language/value_category): lvalue, rvalue, prvalue, xvalue 같은 개념들에 대해서 설명하고 있다.
 
-### decltype(x)와 decltype((x))의 결과 타입이 다르다.
+### decltype(x)와 decltype((x))의 결과 타입이 다를 수 있다.
 
 `decltype`내부에 괄호 사용여부에 따라 표현식의 성질이 바뀐다. `()`를 사용하여 이름이 있는 변수를 감싸면 일종의 이름이 없는 표현식으로 바꾼 효과를 내서 결과적으로 다른 타입을 리턴할 수 있다. 예를 들어 이름이 있는 lvalue 변수 `x`를 `(x)`와 같이 표현하면 이름이 없는 lvalue 표현식으로 취급되어 레퍼런스 타입을 리턴한다는 것이다.
+
+```cpp
+int x = 100;
+static_assert(std::is_same<int, decltype(x)>::value, "");       // decltype(x)
+static_assert(std::is_same<int &, decltype((x))>::value, "");   // decltype((x))
+```
 
 ### decltype에 전달된 표현식내 중첩된 서브표현식에 포함된 객체는 complete type이어야 한다.
 
