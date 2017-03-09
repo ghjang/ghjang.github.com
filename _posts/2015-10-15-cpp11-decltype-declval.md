@@ -55,6 +55,7 @@ char const (* pStr4) [4] = &str;    // but this works OK.
 
 static_assert(std::is_same<char const (&) [4], decltype("abc")>::value, "");
 ```
+> **decay**에 대한 내용은 다음 블로그 포스트를 참고할 것: [[C++11 std::decay]](https://ghjang.github.io/computer%20programming/2015/10/19/cpp11-decay.html)
 
 > C++17 **structured binding**으로 바인딩한 변수에 대해서는 레퍼런스 타입을 리턴한다고 함.
 
