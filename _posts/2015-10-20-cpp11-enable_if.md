@@ -5,20 +5,21 @@ category: Computer Programming
 tags: [C++, C++11, C++ TMP]
 ---
 
-`std::enalbe_if` class template은 (member) function 호출시 **overload resolution** 과정에 사용되는 **overload resolution set에 제약**을 가하는데 사용될 수 있다. 또한 class template specialization을 컴파일러가 선택하는 과정에서도 **class template specialization set에 제약**을 가하는 도구로써 사용된다. 적절히 사용될 경우 유용하게 사용될 수 있지만 그렇지 못한 사용은 오히려 혼란을 가중시킬 수 있을 것 같다. 직접 사용할 일이 많지는 않을 것 같으나 개념은 알고 있어야할 것 같아서 적어본다. 하단의 '참고' 부분의 MSDN쪽의 링크글내에 설명된 가이드라인 참고할 것.
+`std::enalbe_if` 클래스 템플릿은 (멤버) 함수 호출시 **overload resolution** 과정에 사용되는 **overload resolution set에 제약**을 가하는 데 사용한다. 또한 클래스 템플릿 특수화(class template specialization)를 컴파일러가 선택하는 과정에서도 **class template specialization set에 제약**을 가하는 도구로써 사용한다. 적절히 사용할 경우 유용하게 사용될 수 있지만 그렇지 못한 사용은 오히려 혼란을 가중시킬 수 있을 것 같다. 직접 사용할 일이 많지는 않을 것 같으나 개념은 알고 있어야할 것 같아서 적어본다. 하단의 '참고' 부분의 MSDN쪽의 링크글내에 설명된 가이드라인 참고할 것.
 
 `enable_if`를 제대로 이해하기 위해서는 **SFINAE(Substitution Failure Is Not An Error)** 개념을 이해해야한다. `enable_if`는 SFINAE 사용의 한 예이다. 하단의 '참고' 부분의 Wikipedia 링크의 글이 간결하게 잘 설명하고 있다.
 
-SFINAE를 간단하게 설명하면 **'template관련 코드에서 특정 부분만을 보면 잘못된(ill-formed) 컴파일이 실패하는 코드이나, 대체 방안이 있을 경우 문제된 코드부분은 무시되고 정상적으로 컴파일된다.'**라고 할 수 있겠다.
+SFINAE를 간단하게 설명하면 **'template관련 코드에서 특정 부분만을 보면 잘못된(ill-formed) 컴파일이 실패하는 코드이나, 대체 방안이 있을 경우 문제된 코드부분은 무시되고 정상적으로 컴파일된다.'**라고 할 수도 있겠다.
 
 `enable_if`의 적절한 활용예제를 생각해내기 쉽지 않았다. 작위적으로라도 (실제 유용성은 그다지 없어보이는) 예제를 만들어 보겠다.
 
 ---
 
 ## Function template에서 사용
-아래는 주어진 컨테이너의 iterator 카테고리에 따라서 컨테이너 내의 중간 위치에 있는 값을 리턴해주는 함수를 구현한 것이다.
 
-> **NOTE:** 아래의 medianValue 함수코드에서의 `std::enalbe_if`의 사용은 `std::advance` 자체가 iterator 카테고리를 고려해서 이미 최적화되었다면 별다른 의미가 없다. 작위적인 예제라고 생각하면 되겠다.
+아래는 주어진 컨테이너의 `iterator` 카테고리에 따라서 컨테이너 내의 중간 위치에 있는 값을 리턴해주는 함수를 구현한 것이다.
+
+> **NOTE:** 아래의 medianValue 함수코드에서의 `std::enalbe_if`의 사용은 `std::advance` 자체가 iterator 카테고리를 고려해서 이미 최적화되었다면 별다른 의미가 없다. 작위적인 예제라고 생각하면 된다.
 
 ```cpp
 template <
@@ -268,7 +269,7 @@ auto medianValue(Container const& c)
 }
 ```
 
-`Actor` class template의 specialization코드는 아래와 같이 `if` ~ `else` chain 모양새의 코드로 바뀌게 될 것이다. 이런 형태의 `if` ~ `else` chain 코드의 길이가 길어지면 그닥 보기가 좋지 않다. `switch`에 대해서도 `constexpr` statement 문법이 추가된다면 이런식의 코드에 대해서 가독성이 좀더 좋아질 수는 있을 것 같다는 생각을 그냥 해보기만 한다. :) 
+`Actor` class template의 specialization코드는 아래와 같이 `if` ~ `else` chain 모양새의 코드로 바뀌게 된다. 이런 형태의 `if` ~ `else` chain 코드의 길이가 길어지면 그닥 보기가 좋지 않다. `switch`에 대해서도 `constexpr` statement 문법이 추가된다면 이런식의 코드에 대해서 가독성이 좀더 좋아질 수는 있을 것 같다는 생각을 그냥 해보기만 한다. :)
 
 ```cpp
 template <typename T>
@@ -290,8 +291,9 @@ struct Actor
 ---
 
 ### 참고
-+ [cppreference std::enable_if](http://en.cppreference.com/w/cpp/types/enable_if)
++ [std::enable_if](http://en.cppreference.com/w/cpp/types/enable_if)
 + [MSDN std::enable_if](https://msdn.microsoft.com/en-us/library/ee361639.aspx): `enable_if`의 잘못된 사용에 대한 설명이 cppreference쪽보다 좀더 자세하다.
 + [Wikipedia SFINAE](https://en.wikipedia.org/wiki/Substitution_failure_is_not_an_error)
 + [C++17 constexpr if statement](http://en.cppreference.com/w/cpp/language/if#Constexpr_If)
-+ <https://github.com/ghjang/personal_study/blob/master/cpp/enable_if/main.cpp>: `constexpr` if statement를 사용한 코드는 포함하지 않음.
++ 사용한 예제 코드
+    - <https://github.com/ghjang/personal_study/blob/master/cpp/enable_if/main.cpp>: `constexpr` if statement를 사용한 코드는 포함하지 않음.
