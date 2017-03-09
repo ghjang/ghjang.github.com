@@ -46,8 +46,12 @@ static_assert(is_same<int, decltype(1 + 1)>::value, "");
 ```cpp
 // string literal is a lvalue.
 // "abc"'s type is char const [4].
+char const str[4] = "abc";
 char const (* pStr) [4] = &"abc";   // can get the address of the string.
 char const * pStr1 = "abc";         // array to pointer decay
+char const * pStr2 = str;           // array to pointer decay
+//char const (* pStr3) [4] = str;   // this is a compile error
+char const (* pStr3) [4] = &str;    // but this works OK.
 
 static_assert(std::is_same<char const (&) [4], decltype("abc")>::value, "");
 ```
