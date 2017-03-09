@@ -35,7 +35,7 @@ static_assert(is_same<int, decltype(1 + 1)>::value, "");
 
 ## decltype 사용에 있어서 유의해야 할 점
 
-### 인자가 무엇이냐에 따라서 생성되는 type의 형태가 달라진다.
+### 인자가 무엇이냐에 따라서 생성되는 타입이 달라진다.
 
 기본적으로 이름이 있는 변수등에 대해서는 그 변수의 원래 타입을 리턴해준다.
 
@@ -73,6 +73,9 @@ struct IncompleteType;
 template <typename T>
 int doSomething(T const& t);
 
+CompleteType returnCompleteType();
+IncompleteType returnIncompleteType();
+
 // ...
 
 using std::is_same;
@@ -92,6 +95,12 @@ static_assert(is_same<int, decltype(doSomething(CompleteType()))>::value, "");
 // but it's not ok. it's compile-time errors.
 //decltype(doSomething(IncompleteType())) it;
 //static_assert(is_same<int, decltype(doSomething(IncompleteType()))>::value, "");
+
+// it's ok
+static_assert(is_same<int, decltype(doSomething(returnCompleteType()))>::value, "");
+
+// but it's not ok. it's compile-time errors.
+//static_assert(is_same<int, decltype(doSomething(returnIncompleteType()))>::value, "");
 ```
 
 ---
