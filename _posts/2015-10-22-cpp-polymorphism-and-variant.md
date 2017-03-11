@@ -288,7 +288,7 @@ void runShapeTestByUsingVariant()
 
 문제해결 방법으로 먼저 생각해볼 수 있는 것은 `Shape` 클래스에 그리는 것과 관련된 virtual function을 추가하고 필요한 자식 클래스들을 모두 수정해 주는 것이다. 하지만 어떤 이유로 인해서 그려야할 자식 클래스의 수정이 부담스럽거나 불가능할 수도 있다(이미 충분히 안정화 되었거나, 소스코드는 없고 라이브러리 형태로만 존재한다던지,...).
 
-또다른 해결법은 **visitor pattern**을 고려해보는 것 이겠다. static polymorphism 예제에서 설명한 `boost::variant`와 `apply_visitor`를 이용하면 visitor pattern을 쉽게 구현할 수 있다. member function template을 잘 활용하면 virtual function으로 구현했을 때와 동일한 횽과를 나타내는 구현이 가능하다.
+또다른 해결법은 **visitor pattern**을 고려해보는 것 이겠다. static polymorphism 예제에서 설명한 `boost::variant`와 `apply_visitor`를 이용하면 visitor pattern을 쉽게 구현할 수 있다. member function template을 잘 활용하면 virtual function으로 구현했을 때와 동일한 효과를 나타내는 구현이 가능하다.
 
 대략 다음과 같은 식이 될 수 있겠다. (이 부분에 대해서는 실제로 코드를 작성해서 테스트하지 않았다.)
 
