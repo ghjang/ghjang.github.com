@@ -7,41 +7,41 @@ tags: [Functional Programming, C++ TMP]
 
 ## What is Fold about?
 
-Functional Programming과 관련하여 언급되는 **Fold**에 대해서는 인터넷 상의 여러 C++ TMP관련 글들에서 간혹 볼 수가 있었다. 그러다가 좀 그나마 자세하게 이해하게된 시점은 아래의 글을 읽고 나서이다. 이 글에서는 수치 데이터를 다루는 `FoldRight`에 대한 설명을 포함하고있다:
+**Functional Programming**의 **Fold** 개념에 대해서 언급하는 인터넷 상의 여러 C++ TMP 관련 글들을 간혹 볼 수가 있었다. 그러다가 좀 자세하게 이해한 시점은 아래의 블로그 포스트를 읽고 나서이다. 이 글에서는 수치 데이터를 다루는 `FoldRight`에 대한 설명을 포함하고있다:
 
 + [What Does Haskell Have to Do with C++?](http://bartoszmilewski.com/2009/10/21/what-does-haskell-have-to-do-with-c/)
 
 Fold는 사전적인 의미로는 **접다**이다. *'접기는 뭘 접는다는 것이여?'*
 
-Fold를 간략하게 요약하면 '입력 열을 특정 연산에 대해서 접어서 하나의 결과값을 생성(accumulation)' 하는 것이라고 할 수 있겠다. 좀더 단순하게 설명하면 '입력열을 받아서 하나의 결과생성' 정도 이겠다.
+Fold를 간략하게 요약하면 '입력 열을 특정 연산에 대해서 접어서 하나의 결과값을 생성(accumulation)' 하는 것이라고 할 수 있다. 좀더 단순하게 설명하면 '입력열을 받아서 하나의 결과생성' 정도로 요약할 수 있겠다.
 
 Fold는 두가지가 있다고 한다: **FoldRight, FoldLeft**
 
 ### FoldRight
 
-F를 두개의 인자를 받고 1개의 값을 리턴하는 이항함수라고 하자. 편의를 위해서 F를 op(operation)라고하자. 't0,t1,...,tn'은 함수에 인자로 전달될 값의 열이라고 하자. 'init'는 어떤 초기값에 해당하는 것이라고 하자. 이상태에서 FoldRight를 추상적인 개념으로 다음과 같이 표현할 수 있겠다:
+**F**를 두개의 인자를 받고 1개의 값을 리턴하는 **이항함수**라고 하자. 편의를 위해서 F를 **op(operation)**라고하자. **t0,t1,...,tn**은 함수에 인자로 전달할 값의 열이라고 하자. **init**은 어떤 초기값에 해당하는 것이라고 하자. 이상태에서 FoldRight를 추상적인 개념으로 다음과 같이 표현할 수 있다:
 
 + (t0 op (t1 op (t2 op ...(tn op init)...)
 
-가만히 보면 괄호문자 '('와 ')'가 전체 인자 열에서 우측에 우선하게 결합되어 있는 것을 볼 수 있다. 좀 어거지일 수도 있겠으나 이런 괄호가 우측으로 '접혀진' 것처럼 보이기에 Fold라고 부르는 것이 아닐까 싶기도 하다.
+가만히 보면 괄호문자 **(**와 **)**가 전체 인자 열에서 우측에 우선하여 결합하는 것을 볼 수 있다. 좀 어거지일 수도 있겠으나 이런 괄호가 우측으로 **접혀진** 것처럼 보이기에 Fold라고 부르는 것이 아닐까 싶기도 하다.
 
-op는 무엇이던지 될 수 있겠다. 흔하게드는 예가 '+', '-' 연산이다.
+op는 무엇이던지 될 수 있겠다. 흔하게드는 예가 **+**, **-** 연산이다.
 
 ### FoldLeft
 
-먼저 설명한 FoldRight에서의 가정과 같다고 하면, FoldLeft를 추상적인 개념으로 다음과 같이 표현할 수 있겠다:
+먼저 설명한 FoldRight에서의 가정과 같다고 하면 FoldLeft를 추상적인 개념으로 다음과 같이 표현할 수 있다:
 
 + (...(init op t0) op t1) op t2)... op tn)
 
 전체 인자 열에서 좌측에 우선하게 결합되어 있는 것을 확인할 수 있다.
 
-특정 연산은 **교환법칙**이 성립하지 않는다. 교환칙법이 성립하는 연산의 경우는 FoldRight, FoldLeft의 결과가 동일하지만 성립하지 않는 연산의 경우는 사용에 주의해야만 한다.
+특정 연산은 **교환법칙**이 성립하지 않는다. 교환칙법이 성립하는 연산의 경우는 FoldRight, FoldLeft의 결과가 동일하지만 성립하지 않는 연산의 경우는 사용에 주의해야 한다.
 
 ---
 
 ## Runtime Fold: std::accumulate
 
-C++ STL에 Fold(accumulation) 기능을 하는 것이 바로 `std::accumulate` 알고리즘이다. 이항함수를 받아들이도록 오버로드된 버전은 보통 아래와 같이 구현된다고 한다:
+**C++ STL**에 Fold(accumulation) 기능을 하는 것이 바로 `std::accumulate` 알고리즘이다. 이항함수를 받아들이도록 오버로드된 버전은 보통 아래와 같이 구현된다:
 
 ```cpp
 template<class InputIt, class T, class BinaryOperation>
@@ -185,7 +185,7 @@ using sum_t = typename FoldLeft<
 static_assert(sum_t() == 15, "(((((0 + 1) + 2) + 3) + 4) + 5) = 15");
 ```
 
-예제로든 코드는 수치계산 문제로 '+' 연산에 대해서 예를 든 것이다. 앞서 '교환법칙' 관련하여 주의해야한다고 언급했었다. '-' 연산의 경우는 FoldRight, FoldLeft의 결과가 아래와 같이 다르게 나타난다.
+예제로든 코드는 수치계산 문제로 **+ 연산**에 대해서 예를 든 것이다. 앞서 '교환법칙' 관련하여 주의해야한다고 언급했었다. **- 연산**의 경우 FoldRight, FoldLeft의 결과가 아래와 같이 다르게 나타난다.
 
 ```cpp
 template <typename lhs, typename rhs>
@@ -231,7 +231,7 @@ struct IntegralConstantSubtract<std::integral_constant<T1, v1>, std::integral_co
 
 ## You can also Fold types
 
-Compile-time Fold가 단순히 위에서든 예제와 같이 수치계산만을 한다면 그다지 흥미롭지 못하다. C++ type list를 '입력열값'이라고 생각하고 이에 대해서 동작할 수 있는 metafunction을 정의할 경우 재미난 type calculation을 할 수 있게된다.
+Compile-time Fold가 단순히 위에서든 예제와 같이 수치계산만을 한다면 그다지 흥미롭지 못하다. **C++ type list**를 '입력열값'이라고 생각하고 이에 대해서 동작할 수 있는 metafunction을 정의할 경우 재미난 type calculation을 할 수 있다.
 
 아래는 주어진 type list에서 조건을 만족하는 type만 제거한 결과 type list를 template parameter로 가지는 `std::tuple` type을 계산해내는 `RemoveElementType` metafunction을 `FoldLeft`를 이용하여 구현한 것이다.
 
@@ -282,15 +282,16 @@ static_assert(
 
 ## 참고
 
-+ <https://github.com/ghjang/rocky/blob/master/rocky/skull/FoldL.h>
-+ <https://github.com/ghjang/rocky/blob/master/rocky/skull/FoldR.h>
-+ <https://github.com/ghjang/rocky/blob/master/rocky/test/skull/FoldLTest.cpp>
-+ <https://github.com/ghjang/rocky/blob/master/rocky/test/skull/FoldRTest.cpp>
-+ <https://github.com/ghjang/rocky/blob/master/rocky/app/RemoveIf.h>
-+ <https://github.com/ghjang/rocky/blob/master/rocky/test/app/RemoveIfTest.cpp>
-+ <http://www.wolfram.com/language/elementary-introduction/29-more-about-pure-functions.html>: Wolfram Languag의 FoldList 함수에 대한 설명이 포함되어있다. FoldList는 위에서 설명한 FoldLeft의 개념이다. 그림과 함께 설명되어있어서 Fold에 대해서 이해하는데 많은 도움을 받을 수 있겠다.
-+ <http://www.cs.nott.ac.uk/~pszgmh/fold.pdf>: 'A tutorial on the universality and expressiveness of fold'. Haskell의 fold관련 설명이 포함되어있다.
++ <http://www.wolfram.com/language/elementary-introduction/29-more-about-pure-functions.html>: **Wolfram Language**의 `FoldList` 함수에 대한 설명이 포함되어있다. `FoldList`는 위에서 설명한 FoldLeft의 개념이다. 그림과 함께 설명되어있어서 Fold에 대해서 이해하는데 많은 도움을 받을 수 있다.
++ <http://www.cs.nott.ac.uk/~pszgmh/fold.pdf>: 'A tutorial on the universality and expressiveness of fold'. **Haskell**의 fold관련 설명이 포함되어있다.
 + <http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4295.html>: C++17 표준 'N4295, Folding expressions'
 + <http://en.cppreference.com/w/cpp/language/fold>: C++17 fold expression reference 
 + <https://ngathanasiou.wordpress.com/2015/12/15/182/>: 'Fun with folds'. C++17 Fold에 대한 블로그 글. 
-+ [tuple_cat in a Dumb Way]({{ site.baseurl }}{% post_url 2016-02-11-tuple_cat-in-a-dumb-way %}): C++17 fold expression 관련 일부 포함시켰었다.
++ [tuple_cat in a Dumb Way]({{ site.baseurl }}{% post_url 2016-02-11-tuple_cat-in-a-dumb-way %}): C++17 fold expression 관련 내용 일부를 포함한다.
++ 사용한 예제 코드
+    - <https://github.com/ghjang/rocky/blob/master/rocky/skull/FoldL.h>
+    - <https://github.com/ghjang/rocky/blob/master/rocky/skull/FoldR.h>
+    - <https://github.com/ghjang/rocky/blob/master/rocky/test/skull/FoldLTest.cpp>
+    - <https://github.com/ghjang/rocky/blob/master/rocky/test/skull/FoldRTest.cpp>
+    - <https://github.com/ghjang/rocky/blob/master/rocky/app/RemoveIf.h>
+    - <https://github.com/ghjang/rocky/blob/master/rocky/test/app/RemoveIfTest.cpp>
