@@ -5,7 +5,7 @@ category: Computer Programming
 tags: [C++14, C++ TMP]
 ---
 
-C++14에 추가된 `std::integer_sequence`는 C++ Template metaprogramming에 아주 유용한 도구이다. 하단의 '참고'에 있는 cppreference 링크 글의 내용을 숙지하도록 할 것. 내용이 길지도 않다. 예제에서 보이는 사용법은 일종의 idiom으로 생각하고 익숙해질 필요가 있을 정도다.
+C++14에 추가된 `std::integer_sequence`는 **C++ Template metaprogramming**에 아주 유용한 도구이다. 하단의 '참고'에 있는 **cppreference** 링크 글의 내용을 숙지하도록 할 것. 내용이 길지도 않다. 예제에서 보이는 사용법은 일종의 idiom으로 생각하고 익숙해질 필요가 있을 정도다.
 
 표준에서 제공하는 `std::integer_sequence`관련 부분에 한가지 아쉬운 점은 `std::make_integer_sequence`, `std::make_index_sequence`, `std::index_sequence_for`와 같은 sequential한 integer sequence를 생성해주는 helper template은 있으나 임의의 integer sequence를 생성해주는 것은 없다는 점이다. 여기서는 원하는 형태의 integer sequence를 생성하는 한가지 방법에 대해서 적어보도록 하겠다.
 
@@ -28,7 +28,7 @@ static_assert(is_same<integer_sequence<std::size_t, 0, 1, 2>, index_seq>(), "");
 static_assert(is_same<int_seq, index_seq>(), "");
 ```
 
-`std::integer_sequence`는 이름처럼 특정 integral type의 일정한 개수의 integer sequence를 나타내는 기능을 한다. `std::index_sequence`는 `std::integer_sequence`의 type alias로 integral type이 `std::size_t`로 지정되어있다.
+`std::integer_sequence`는 이름처럼 특정 integral type의 일정한 개수의 integer sequence를 나타내는 기능을 한다. `std::index_sequence`는 `std::integer_sequence`의 type alias로 내부 integral type이 `std::size_t`이다.
 
 ---
 
@@ -54,7 +54,7 @@ using square_int_seq = integer_sequence<int, SquareInt(0), SquareInt(1), SquareI
 static_assert(is_same<integer_sequence<int, 0, 1, 4, 9>, square_int_seq>(), "");
 ```
 
-여기서 예로든 `IdentityInt`, `SquareInt`는 매우 단순하기 때문에 해당 부분을 `constexpr` function이 아닌 전통적인 class template을 사용한 수치계산방법을 사용해도 전혀 무리가 없겠다. 하지만 원하는 시퀀스의 값을 계산하는 부분이 복잡해질수록 class template을 이용한 방법은 불편하기는 물론이고 가독성이 너무 떨어지게될 것이다.
+여기서 예로든 `IdentityInt`, `SquareInt`는 매우 단순하기 때문에 해당 부분을 `constexpr` function이 아닌 전통적인 class template을 사용한 수치계산방법을 사용해도 전혀 무리가 없다. 하지만 원하는 시퀀스의 값을 계산하는 부분이 복잡해질수록 class template을 이용한 방법은 불편하기는 물론이고 가독성이 너무 떨어진다.
 
 ---
 
@@ -94,13 +94,13 @@ static_assert(is_same<integer_sequence<std::size_t, 0, 1, 4, 9>, square_int_seq>
 
 `SquareIntegerSequence<4>::type`와 같은 표현은 0~3까지의 4개 integer에 대해서 각각 제곱한 integer를 가지는 `std::integer_sequence` type을 리턴하는 것이다.
 
-예제에서 보다시피 '0~(N-1)' 범위의 integer 입력에 대해서 특정 integer값을 리턴하는 `constexpr` function을 정의할 수 있다면 임의의 integer sequence를 쉽게 생성할 수 있을 것이다. 'y=f(x)' 같은 수학표현을 떠올려보는 것도 재미있을 것이다. :-)
+예제에서 보다시피 '0~(N-1)' 범위의 integer 입력에 대해서 특정 integer값을 리턴하는 `constexpr` function을 정의할 수 있다면 임의의 integer sequence를 쉽게 생성할 수 있다. **y=f(x)** 같은 수학표현을 떠올려보는 것도 재미있을 것이다. :-)
 
 ---
 
 ## A Generic Custom Integer Sequence Example
 
-앞에서 설명한 `SquareIntegerSequence` 예의 경우는 제곱된 integer sequence만을 다루는 것이다. 이를 좀더 일반화해서 다시 작성해본 것이 아래이다.
+앞에서 설명한 `SquareIntegerSequence` 예의 경우 제곱한 integer sequence만을 다루는 것이다. 이를 좀더 일반화해서 다시 작성해본 것이 아래이다.
 
 ```cpp
 constexpr int SquareInt(int i) { return i * i; }
@@ -183,21 +183,22 @@ static_assert(is_same<integer_sequence<std::size_t, 1, 1, 2, 6, 24>, factorial_i
 
 ## Where to Use
 
-이런 compile time integer sequence type을 생성해서 어디다가 써먹을 수 있을까 생각이 들 수 있을 것이다. 건 상상하기 나름이리라. :-)
+이런 compile-time integer sequence type을 생성해서 어디다가 써먹을 수 있을까 생각이 들 수 있을 것이다. 건 상상하기 나름이리라. :-)
 
 간단하게는 이런 걸 할 수 있을 것이다:
 
 + '홀수/짝수' 인덱스열을 생성하고 variadic template arguments에서 '홀수/짝수'번째 것만 뽑아서 처리
-+ 역순의 인덱스열을 생성해서 reverse된 tuple type 생성하기. 예를 들면 `std::tuple<char, int, float>`로부터 `std::tuple<float, int, char>` type을 생성.
-+ variadic template arguments에 대해서 boolean 형태의 정수열을 생성하고 true 형태인 것만 처리. 'type list filter'같은 것을 만드는데 이용할 수 있겠다는 것이다.
++ 역순의 인덱스열을 생성해서 reverse한 tuple type 생성하기. 예를 들면 `std::tuple<char, int, float>`로부터 `std::tuple<float, int, char>` type을 생성.
++ variadic template arguments에 대해서 boolean 형태의 정수열을 생성하고 `true` 형태인 것만 처리. 'type list filter'같은 것을 만드는데 이용할 수 있겠다.
 + Music Theory의 Scale개념을 수의 열로 추상화해서 특정 Scale에 해당하는 Musical Note들의 열을 구하거나 하는 따위의 일도 가능할 것 같다.
 + ...
 
 ---
 
 ## 참고
-+ [cppreference std::integer_sequence](http://en.cppreference.com/w/cpp/utility/integer_sequence): 예제 포함 전체 내용을 숙지하는 것이 좋겠다. 예제가 좋다.
++ [std::integer_sequence](http://en.cppreference.com/w/cpp/utility/integer_sequence): 예제 포함 전체 내용을 숙지하는 것이 좋겠다. 예제가 좋다.
 + <https://github.com/picanumber/CODEine/blob/master/integer_sequence.h>: Variadic Template를 이용한 Recursive Inheritance를 통해서 Compile-time Integer Sequence를 생성해내는 소스이다. 기억해둘만한 기법이다.
-+ <https://github.com/ghjang/personal_study/blob/master/cpp/integer_sequence/main.cpp>
-+ <https://github.com/ghjang/rocky/blob/master/rocky/base/IntegerSequenceUtility.h>
-+ <https://github.com/ghjang/rocky/blob/master/rocky/test/base/IntegerSequenceUtilityTest.cpp>
++ 사용 예제 코드
+    - <https://github.com/ghjang/personal_study/blob/master/cpp/integer_sequence/main.cpp>
+    - <https://github.com/ghjang/rocky/blob/master/rocky/base/IntegerSequenceUtility.h>
+    - <https://github.com/ghjang/rocky/blob/master/rocky/test/base/IntegerSequenceUtilityTest.cpp>
