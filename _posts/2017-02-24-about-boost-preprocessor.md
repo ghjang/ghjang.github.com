@@ -5,7 +5,7 @@ category: Computer Programming
 tags: [C++]
 ---
 
-2017/02/17(금)과 2017/02/24(금) 2회에 걸쳐 온라인 **행아웃**에서 진행하고 있는 C++ 스터디 그룹에서 **Boost.Preprocessor를 이용한 Preprocessor Metaprogramming**에 대해서 발표를 했었다. 아래는 발표했던 화면을 녹화한 영상이다.
+2017/02/17(금)과 2017/02/24(금) 2회에 걸쳐 참여중인 온라인 행아웃 C++ 스터디 그룹에서 **Boost.Preprocessor를 이용한 Preprocessor Metaprogramming**에 대해서 발표를 했었다. 아래는 발표했던 화면을 녹화한 영상이다.
 
 ---
 
