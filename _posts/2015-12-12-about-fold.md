@@ -7,7 +7,7 @@ tags: [Functional Programming, C++ TMP]
 
 ## What is Fold about?
 
-**Functional Programming**의 **Fold** 개념에 대해서 언급하는 인터넷 상의 여러 C++ TMP 관련 글들을 간혹 볼 수가 있었다. 그러다가 좀 자세하게 이해한 시점은 아래의 블로그 포스트를 읽고 나서이다. 이 글에서는 수치 데이터를 다루는 `FoldRight`에 대한 설명을 포함하고있다:
+**Functional Programming**의 **Fold** 개념에 대해서 언급하는 인터넷 상의 여러 C++ TMP 관련 글들을 간혹 볼 수가 있었다. 그러다가 좀 자세하게 이해한 시점은 아래의 블로그 포스트를 읽고 나서이다. 이 글에서는 수치 데이터를 다루는 **FoldRight**에 대한 설명을 포함하고있다:
 
 + [What Does Haskell Have to Do with C++?](http://bartoszmilewski.com/2009/10/21/what-does-haskell-have-to-do-with-c/)
 
@@ -287,7 +287,7 @@ static_assert(
 + <http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4295.html>: C++17 표준 'N4295, Folding expressions'
 + <http://en.cppreference.com/w/cpp/language/fold>: C++17 fold expression reference 
 + <https://ngathanasiou.wordpress.com/2015/12/15/182/>: 'Fun with folds'. C++17 Fold에 대한 블로그 글. 
-+ [tuple_cat in a Dumb Way]({{ site.baseurl }}{% post_url 2016-02-11-tuple_cat-in-a-dumb-way %}): C++17 fold expression 관련 내용 일부를 포함한다.
++ [tuple_cat in a Dumb Way]({{ site.baseurl }}{% post_url 2016-02-11-tuple_cat-in-a-dumb-way %}): C++17 fold expression 관련 내용 일부를 포함한 다른 블로그 포스트이다.
 + 사용한 예제 코드
     - <https://github.com/ghjang/rocky/blob/master/rocky/skull/FoldL.h>
     - <https://github.com/ghjang/rocky/blob/master/rocky/skull/FoldR.h>
