@@ -5,6 +5,10 @@ category: Computer Programming
 tags: [C++, C++ TMP]
 ---
 
+## 발표 자료
+
++ <https://github.com/ghjang/cpp_practical_tmp_study>
+
 ---
 
 ## 2017/03/10(금) - Part 1

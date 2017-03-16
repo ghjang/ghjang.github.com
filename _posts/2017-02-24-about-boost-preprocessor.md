@@ -9,6 +9,12 @@ tags: [C++, C++ TMP]
 
 ---
 
+## 발표 자료
+
++ <https://github.com/ghjang/personal_study/tree/master/cpp/Boost.Preprocessor>
+
+---
+
 ## 2017/02/17(금) - Part 1
 
 [![About Preprocessor Metaprogramming by Using Boost.Preprocessor - Part 1](https://img.youtube.com/vi/-QS1cBEbQkA/0.jpg)](http://www.youtube.com/watch?v=-QS1cBEbQkA)
