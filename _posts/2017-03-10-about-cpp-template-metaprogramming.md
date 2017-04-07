@@ -26,3 +26,11 @@ tags: [C++, C++ TMP]
 ## 2017/03/24(금) - Part 3
 
 [![About C++ Template Metaprogramming - Part 3](https://img.youtube.com/vi/0ZiEcQbdHO4/0.jpg)](http://www.youtube.com/watch?v=0ZiEcQbdHO4)
+
+---
+
+## 2017/04/07(금) - Part 4
+
+[![About C++ Template Metaprogramming - Part 4](https://img.youtube.com/vi/1E7mIwuL2x0/0.jpg)](http://www.youtube.com/watch?v=1E7mIwuL2x0)
+
+* <https://github.com/ghjang/skull>
