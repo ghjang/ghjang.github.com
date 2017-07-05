@@ -22,7 +22,7 @@ TEST_CASE("test_case_0", "[my_test]")
 }
 ```
 
-하고자 하는 바는 다음처럼 이 테스트 케이스의 이름 **test_case_0**을 이 테스트 케이스 코드 자체에서 참조하는 것이다. 여기서는 `THIS_TEST_CASE_NAME` 부분이 이름 참조부분을 나타내는 것으로 보면 된다:
+최종적으로 하고자 하는 바는 다음처럼 이 테스트 케이스의 이름 **test_case_0**을 이 테스트 케이스 코드 자체에서 참조하는 것이다. 여기서는 `THIS_TEST_CASE_NAME` 부분이 이름 참조부분을 나타내는 것으로 보면 된다:
 
 ```cpp
 TEST_CASE("test_case_1", "[my_test]")
