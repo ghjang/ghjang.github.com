@@ -158,7 +158,7 @@ Catch 매뉴얼에 따르면 Catch는 테스트 케이스를 병렬로 실행하
 #include "catch_util.h"
 ```
 
-그리고 나서 테스트 케이스가 있는 cpp파일에서 다음과 같이 `THIS_TEST_CASE_NAME` 매크로를 사용해 현재 실행 중이 코드 블럭이 속한 테스트 케이스의 이름을 얻어 올 수 있다:
+그러고 나서 테스트 케이스가 있는 cpp파일에서 다음과 같이 `THIS_TEST_CASE_NAME` 매크로를 사용해 현재 실행 중이 코드 블럭이 속한 테스트 케이스의 이름을 얻어 올 수 있다:
 
 ```cpp
 #include "catch.hpp"
