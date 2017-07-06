@@ -5,7 +5,18 @@ category: Computer Programming
 tags: [C++, C++ TMP, C++ Expression Template]
 ---
 
+C++의 Expression Template 이야기를 좀 풀어봤다. Expression Template이라고 매번 길게 타이핑하는 노가다를 피하고자 이후에는 ET라고 줄여 쓰겠다.
 
+> E.T.(Extra-Terrestrial)가 아님에 주의할 것.
+
+ET의 원류는 행렬 계산 문제 코드의 최적화와 관련이 있는다는 것이 널리 알려져 있다. 이 기법은 비슷한 시기에 서로 다른 두 분이 각각 고안했다고 한다. 코드 표현의 추상적인 측면을 유지하면서도 고성능의 코드를 생성해낸다는 기법이다.
+
+여기서는 최적화된 코드를 생성하는 측면에서의 ET가 아니라 표현력 확장이라는 측면에서의 ET를 설명하겠다. 대략 ET가 어떻게 구현된다는 것인지를 개념이라도 파악한다면 좀더 어려운 문제인 최적화 코드 생성에 어떻게 써먹을 수 있는지 생각해 볼 수 있지 않을까 싶다. 최적화 문제는 컴파일러가 코드를 생성하는 방식, 다루는 문제의 핵심사항, 적용 환경등에 대해 잘 파악하고 있어야 풀 수 있는 문제이겠다. ET 기법을 쓴다고 최적화가 된다는 것이 아니고, 그런 최적화된 코드를 생성하는 데 훌륭한 도구가 될 수 있겠다.
+
+참고로 최초의 ET 기법 소개 글은 다음에서 찾아볼 수 있다. 이외에도 검색을 해보면 많은 자료들을 찾아볼 수 있다:
+
++ [Expression Templates - Todd Veldhuizen](https://web.archive.org/web/20050210090012/http://osl.iu.edu/~tveldhui/papers/Expression-Templates/exprtmpl.html): 아카이빙된 웹문서. 저자는 Todd Veldhuizen이다. 아래에서 언급하는 책보다 보통 이 글을 ET관련 글들에서 더 언급하는 것 같다.
++ [C++ Templates - The Complete Guide](http://www.josuttis.com/tmplbook/tmplbook.html): 종이책이다. 저자 중에 한명인 David Vandevoorde이 ET 기법을 고안했었다고 한다. 책에 ET를 설명하는 부분이 있다.
 
 ---
 
