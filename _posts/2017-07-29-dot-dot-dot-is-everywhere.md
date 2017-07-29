@@ -97,15 +97,24 @@ C++ 역사적으로 콤마를 사용하지 않는 방법이 먼저 도입된 후
 
 ---
 
-## Parameter Pack
+## Variadic Template, Parameter Pack and Parameter Pack Expansion
 
-> 좀더 자세한 사항은 다음을 참고하라: <http://en.cppreference.com/w/cpp/language/parameter_pack>
+C++11부터는 템플릿과 관련해 다음과 같은 새로운 문법이 추가되어 n개의 인수를 다룰 수 있게 되었다:
 
----
+```cpp
 
-## Variadic Template
+```
+
+> 좀더 자세한 사항은 다음을 참고하라:
+> * <http://en.cppreference.com/w/cpp/language/parameter_pack>
+
+## Variadic Template + Variadic Arguments
 
 ---
 
 ## Variadic Macro
+
+---
+
+## Conclusion
 
