@@ -223,6 +223,81 @@ static_assert(
 
 (*타입 계산*이라는 메타프로그래밍적 개념에 익숙하지 않다면 *이게 뭔 뻘짓인가?*라고 생각할지도 모르겠다.)
 
+이 변경된 예제에서 이전에서 보지 못했던 부분은 `std::integral_constant<T, n>...`이다. 별다른 것은 아니고 `T... n` parameter pack을 확장한 표현식이다. (fold expression은 좀 유별나긴 하지만,) 이처럼 `...` 확장 표기가 `n`에 곧바로 붙어 있을 필요는 없다.
+
+### using type alias
+
+바로 전의 `int`를 *타입으로 랩핑*한 것을 받는 `sum` 클래스 템플릿 예제는 그 사용법이 매우 번잡하다. 이런 식의 클래스 템플릿이 주어졌을 때 코드 사용자 측에서 간편하게 사용할 수 있게 다음과 같은 추가적인 타입 별칭을 만들어 줄 수 있다. 보다시피 `using` 타입 별칭에서도 nㄱ새 인자를 지정하는 템플릿이 사용가능하다:
+
+```cpp
+template <typename T, T... n>
+using sum_t = sum<std::integral_constant<T, n>...>;
+
+static_assert(sum_t<int, 1, 2, 3, 4, 5>::value == 15);
+```
+
+### variable template & inline variable
+
+*C++14*에서는 변수조차 템플릿화가 가능해졌다. *C++17*에서는 변수를 인라인화할 수도 있다. 이 두가지 피쳐를 이용하면 바로 전의 `sum_t` 코드를 다음과 같이 고칠 수 있다. 애당초 원했던 것은 합산된 *값*이지 *타입*이 아니지 않은가?:
+
+```cpp
+template <typename T, T... n>
+inline constexpr auto sum_v = sum<std::integral_constant<T, n>...>::value;
+
+static_assert(sum_v<int, 1, 2, 3, 4, 5> == 15);
+```
+
+여기서 `sum_v<int, 1, 2, 3, 4, 5>`이라는 표현 자체는 *인라인화된 변수*, 여기서는 그냥 *상수값*이 된다. 이 표현은 그닥 변수라는 느낌이 들지 않는다. 해서 변수임을 극대화해서 나타내기 위해 배열 변수를 템플릿화해서 다음처럼 표현해봤다:
+
+```cpp
+#include <iterator> // for std::size
+
+// ...
+
+template <typename T, T... n>
+constexpr static T g_table[] = {
+    sum_v<T, n...>,
+    sum_v<T, (n + 1)...>,
+    sum_v<T, (n * n)...>
+};
+
+static_assert(std::size(g_table<int, 1, 2, 3, 4, 5>) == 3);
+static_assert(g_table<int, 1, 2, 3, 4, 5>[0] == 15);
+static_assert(g_table<int, 1, 2, 3, 4, 5>[1] == 20);
+static_assert(g_table<int, 1, 2, 3, 4, 5>[2] == 55);
+```
+
+`std::size`는 C++17에 추가된 것으로 인자로 배열을 넘길 경우 크기를 리턴해 준다.
+
+또한 변수 템플릿은 *특수화*가 가능하다. `g_table`을 다음과 같이 특수화해줄 수도 있다:
+
+```cpp
+#include <utility> // for std::integer_sequence
+
+// ...
+
+template <typename T, T... n>
+constexpr static T g_table<std::integer_sequence<T, n...>>[sizeof...(n)][2] = {
+    { n, sum_v<T, n, n + 1, n * n> }...
+};
+
+using int_seq_t = std::make_index_sequence<5>;
+static_assert(g_table<int_seq_t>[0][0] == 0);
+static_assert(g_table<int_seq_t>[0][1] == 1);
+static_assert(g_table<int_seq_t>[1][0] == 1);
+static_assert(g_table<int_seq_t>[1][1] == 4);
+static_assert(g_table<int_seq_t>[2][0] == 2);
+static_assert(g_table<int_seq_t>[2][1] == 9);
+static_assert(g_table<int_seq_t>[3][0] == 3);
+static_assert(g_table<int_seq_t>[3][1] == 16);
+static_assert(g_table<int_seq_t>[4][0] == 4);
+static_assert(g_table<int_seq_t>[4][1] == 25);
+```
+
+`std::integer_sequence`에 대해서 `g_table` 변수 템플릿을 *부분 특수화*한 것으로 보다시피 심지어 배열을 1차원에서 2차원으로 바꾸는 것도 가능하다. (이 코드 자체는 굉장히 쓸모없어 보이긴 한다. 이런 다양한 표현을 하는 것이 가능하다는 느낌만 받으면 될 것 같다.)
+
+코드에서 보이는 `sizeof...(n)`이라는 표현은 parameter pack의 크기를 얻어오는 문법이다. 여기서도 `...`을 볼 수 있다.
+
 > 좀더 자세한 사항은 다음을 참고하라:
 > * <http://en.cppreference.com/w/cpp/language/parameter_pack>
 
