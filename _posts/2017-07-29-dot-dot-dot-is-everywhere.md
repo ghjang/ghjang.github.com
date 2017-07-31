@@ -50,7 +50,7 @@ int main()
 }
 ```
 
-위 코드에서 `add_nums` 함수는 *0개 이상*의 `int` 인수를 받아서 모두 더하는 코드라고 볼 수 있다. 코드에서 `va_list`, `va_start`, `va_arg`, `va_end`를 사용해 첫 번째 매개변수 `count` 이후에 넘어올 가변인수가 `int`타입으로 `count`개 있다고 정해놓고 처리하는 코드다.
+위 코드에서 `add_nums` 함수는 *0개 이상*의 `int` 인수를 받아서 모두 더하는 코드라고 볼 수 있다. 코드에서 `va_list`, `va_start`, `va_arg`, `va_end`를 사용해 첫 번째 매개변수 `count` 이후에 넘어올 가변 인수가 `int`타입으로 `count`개 있다고 정해놓고 처리하는 코드다.
 
 `printf` 함수에 구현에 대해 잠시 생각해보면 첫번째 인수는 약속한 포맷팅용 문자열이 오고, 이후는 이 포맷팅용 문자열내에서 *place holder*로 사용된 부분을 대체할 실제 인수가 온다. 포맷팅 문자열 파싱후 어떤 타입의 인수가 몇개가 와야 하는지 파악해 가변 인수를 처리하는 식일 것이다.
 
@@ -115,7 +115,7 @@ C++11부터는 템플릿과 관련해 새로운 문법이 추가되어 *n개*의
 
 여기서는 n개의 주어진 수를 합해서 리턴해주는 간단한 코드를 예로 들어 여러 템플릿 피쳐 관련 코드에서 `...` 표기 사용을 설명하겠다.
 
-> 설명하고자 하는 것이 템플릿 자체가 아니라 `...`의 사용에 있기에 가능하면 타입 적합성 체크나 타입 계산 코드는 예제에서 배제했다.
+> 설명하고자 하는 것이 템플릿 자체가 아니라 `...`의 사용이라서 가능하면 타입 적합성 체크나 타입 계산 코드는 예제에서 배제했다.
 
 ### function template
 
@@ -138,9 +138,9 @@ constexpr auto sum(T... n)
 static_assert(sum(1, 2, 3, 4, 5) == 15);
 ```
 
-여기서 `typename... T` 부분을 **parameter pack**이라고 한다. parameter pack에 담긴 정보를 사용하기 위해 *풀어헤치는 작업*을 **Parameter Pack Expansion**이라고 한다. 예제에서 `T...`과 `n...`부분이 parameter pack expansion 표현이다. `T...`의 경우는 parameter pack으로 부터 *type*정보를 꺼내오는 것이고, `n...`은 대응되는 *value*값을 꺼내오는 것이다.
+여기서 `typename... T` 부분을 **Parameter Pack**이라고 한다. parameter pack에 담긴 정보를 사용하기 위해 *풀어헤치는 작업*을 **Parameter Pack Expansion**이라고 한다. 예제에서 `T...`과 `n...`부분이 parameter pack expansion 표현이다. `T...`의 경우는 parameter pack으로 부터 *type*정보를 꺼내오는 것이고, `n...`은 대응되는 *value*값을 꺼내오는 것이다. 이렇게 parameter pack을 사용하는 어떤 템플릿을 **Variadic Template**이라고 한다.
 
-이 `sum` 함수의 경우 **C++17 fold expression** 문법을 적용하면 구현이 매우 단순해 진다:
+이 `sum` 함수의 경우 다음과 같이 **C++17 fold expression** 문법을 적용하면 구현이 매우 단순해 진다:
 
 ```cpp
 template <typename... T>
@@ -150,9 +150,9 @@ constexpr auto sum(T... n)
 }
 ```
 
-이 버전의 구현에서 `(... + n)`과 같은 부분을 fold expression이라고 부른다. 보다시피 여기서도 `...`을 볼 수가 있다.
+이 버전의 구현에서 `(... + n)`과 같은 부분을 fold expression이라고 부른다. 보다시피 여기서도 `...`을 볼 수 있다.
 
-> * **fold**는 Functional Programming에서 이야기하는 바로 그것이다. fold 연산 자체에 대한 설명은 여기서는 하지 않는다. 검색을 하거나 다른 포스트 [Fold it the way you like](https://ghjang.github.io/computer%20programming/2015/12/12/about-fold.html)를 참고하라.
+> * **fold**는 *Functional Programming*에서 이야기하는 바로 그것이다. fold 연산 자체에 대한 설명은 여기서는 하지 않는다. 검색을 하거나 다른 포스트 [Fold it the way you like](https://ghjang.github.io/computer%20programming/2015/12/12/about-fold.html)를 참고하라.
 > * parameter pack을 다루는 상황에서 fold expression을 사용할 수 없거나, `...`으로 확장을 할 수도 없고 루프로도 처리할 수 없는 어떤 경우에 이용 가능한 일반적인 n개 인수 처리 방법은 인자 1개씩 끝어서 반복 처리해주는 **재귀호출**이다. 이는 템플릿 인스턴스화수의 증가등의 이유로 컴파일에 소요되는 시간에 좋지 못하다고 알려져 있다. 가능하면 최대한 재귀호출을 이용 가능한 다른 언어 피쳐로 대체해주는 것이 좋다. 
 
 템플릿의 인수에 넘길 수 있는 *non-type template argument*에는 *정수 상수*가 있기 때문에 (그다지 유용하지 않겠지만) 다음처럼 `sum`을 구현할 수도 있다:
@@ -167,13 +167,13 @@ constexpr auto sum()
 static_assert(sum<1, 2, 3, 4, 5>() == 15);
 ```
 
-이 변경된 예제에서 `int... n` 부분이 parameter pack이다. 보다시피 이미 정해진 `int`같은 타입으로도 pack을 표현할 수 있다. 이 경우 *타입* 정보는 이미 알고 있으니 풀어헤칠 필요가 없고 풀어헤칠 수도 없다. *값* 부분만 확장해서 사용할 수 있겠다.
+이 변경된 예제에서 `int... n` 부분이 parameter pack이다. 보다시피 이미 정해진 `int`같은 타입으로도 pack을 표현할 수 있다. 이 경우 *타입* 정보는 이미 알고 있으니 풀어헤칠 필요가 없고 풀어헤칠 수도 없다. *값* 부분만 확장해서 사용할 수 있다.
 
 당연한 것으로 여기서는 예제를 보이지 않으나 *멤버 함수 템플릿*에도 동일 내용이 적용된다.
 
 ### class template
 
-함수 템플릿으로 구현한 `sum` 예제를 클래스 템플릿을 사용해 *수치 메타함수* 예제를 작성하겠다. 역시 `...` 표기에 대한 설명용이지 코드 자체에 그다지 유용한 의미가 있지는 않다.
+함수 템플릿으로 구현한 `sum` 예제를 클래스 템플릿을 사용해 *수치 메타함수* 예제로 바꾸어 보겠다. 역시 `...` 표기에 대한 설명용이지 코드 자체에 그다지 유용한 의미가 있지는 않다.
 
 ```cpp
 template <int... n>
@@ -185,7 +185,7 @@ struct sum
 static_assert(sum<1, 2, 3, 4, 5>::value == 15);
 ```
 
-`int... n` parameter pack의 타입 정보를 `int`로 고정하지 않고 다음처럼 컴파일 타임에 결정되는 *type*으로 변경하면 컴파일 에러가 발생한다.
+`int... n` parameter pack의 타입 정보를 `int`로 고정하지 않고 다음처럼 단순히 컴파일 타임에 결정되는 *type*으로 변경하면 컴파일 에러가 발생한다.
 
 ```cpp
 template <typename... n>
@@ -299,7 +299,65 @@ static_assert(g_table<int_seq_t>[4][1] == 25);
 
 ### generic lambda
 
+C++에서 *로컬 컨텍스트*, 그러니까 함수 코드 블럭 안쪽 등에서 템플릿을 선언할 수 없다. 다음과 같은 코드 작성이 불가하다는 것이다:
 
+```cpp
+void func()
+{
+    template <typename T>
+    struct X
+    {
+        // ... 
+    };
+}
+```
+
+다음도 컴파일 에러다:
+
+```cpp
+void func()
+{
+    struct X
+    {
+        template <typename T>
+        void run()
+        {
+            // ...
+        } 
+    };
+}
+```
+
+C++14에는 **generic lambda**라는 람다 표현식이 추가되었다. 다음과 같은 모양의 코드다:
+
+```cpp
+void func()
+{
+    constexpr auto val = [](auto... n) { return (... + n); }(1, 2, 3, 4, 5);
+    static_assert(val == 15);
+}
+```
+
+이 코드는 대략 다음 코드에 대한 *syntax sugar*이다:
+
+```cpp
+struct F
+{
+    template <typename... T>
+    constexpr auto operator () (T... n) const
+    { return (... + n); }
+};
+
+void func()
+{
+    constexpr auto val = F{}(1, 2, 3, 4, 5);
+    static_assert(val == 15);
+}
+```
+
+예제에서 보다시피 제네릭 람다 표현식의 함수 인자 목록에 `auto`와 `...`을 지정한 것을 볼 수 있다. 일반 함수의 경우는 이런 식으로 `auto`를 사용할 수 없고 물론 `...`도 지정할 수 없다. 매우 예외적인 케이스다.
+
+> 여기서 설명하지는 않았지만 보통의 템플릿 정의 구문을 포함하는 또다른 람다 표현식 형태가 있다. (제네릭 람다 형태로는 람다 표현식에 넘어가는 타입 제어를 표현하기 쉽지가 않아서 그런 것 같다.)
 
 ---
 
