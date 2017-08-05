@@ -222,7 +222,7 @@ static_assert(
 
 (*타입 계산*이라는 메타프로그래밍적 개념에 익숙하지 않다면 '*이게 뭔 뻘짓인가?*'라고 생각할지도 모르겠다.)
 
-이 변경된 예제에서 이전에서 보지 못했던 부분은 `std::integral_constant<T, n>...`이다. 별다른 것은 아니고 `T... n` parameter pack을 확장한 표현식이다. (fold expression은 좀 유별나긴 하지만,) 이처럼 `...` 확장 표기가 `n`에 곧바로 붙어 있을 필요는 없다.
+이 변경된 예제에서 이전에서 보지 못했던 부분은 `std::integral_constant<T, n>...`이다. 별다른 것은 아니고 `T... n` parameter pack을 확장한 표현식이다. (fold expression은 좀 유별나긴 하지만,) 이처럼 `...` 확장 표기가 `T`나 `n`에 곧바로 붙어 있을 필요는 없다.
 
 ### using type alias
 
