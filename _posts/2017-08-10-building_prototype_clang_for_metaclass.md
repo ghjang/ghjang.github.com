@@ -179,7 +179,7 @@ public:
 
 int main()
 {
-    auto shape = std::make_unique<Circle>();
+    std::unique_ptr<Shape> shape = std::make_unique<Circle>();
     std::cout << "area: " << shape->area() << '\n';
     return 0;
 }
