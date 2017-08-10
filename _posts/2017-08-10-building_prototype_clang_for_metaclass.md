@@ -81,7 +81,129 @@ clang은 LLVM의 한 tool이다. tools 폴더 하위에 클론해주어 LLVM 전
 ```bash
 > make install
 ```
+
 ---
+
+## Testing a Metaclass Example: interface
+
+앞서 언급한 동영상과 글에서 언급하는 `interface` 메타클래스 예제를 컴파일하려면 다음과 같이 하면된다.
+
+### 1. Creating Minimum CMakeLists.txt file
+
+최소한의 CMake 빌드파일을 다음과 같이 생성해준다.
+
+```cmake
+cmake_minimum_required(VERSION 3.0.0)
+project(interface_test VERSION 0.0.0)
+
+include(CTest)
+enable_testing()
+
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
+
+# clang 4.0.0's C++ header file path
+include_directories("/Users/gilhojang/clang/clang+llvm-4.0.0-x86_64-apple-darwin/include/c++/v1")
+
+# prototype clang 5.0.0's additional C++ header file path
+include_directories("/Users/gilhojang/clang/llvm_clang_cppx/include")
+
+
+set(LLVM_5_0_0_BASE "/Users/gilhojang/clang/llvm_clang_cppx")
+
+set(CMAKE_C_COMPILER  "${LLVM_5_0_0_BASE}/bin/clang")
+set(CMAKE_CXX_COMPILER  "${LLVM_5_0_0_BASE}/bin/clang++")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1z -Xclang -freflection")
+
+set(SOURCE_FILES main.cpp)
+
+add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
+
+```
+
+보다시피 빌드한 프로토타입 clang을 사용하게 설정하고 있다. 한가지 주의할 점은 빌드를 하고 인스톨한 후에 내용물을 보면 *C++ 표준 헤더 파일*이 폴더내에 없다는 것이다. 여기서는 그나마 사용해도 문제가 되지 않을 것 같은 clang 4.0.0의 C++ 헤더파일을 사용하도록 했다. 추가적으로 프로토타입 clang에서 추가하는 헤더파일 경로를 포함시켰다. 마지막으로 컴파일 옵션에 메타클래스 코드를 제대로 동작시키기 위한 **"-std=c++1z -Xclang -freflection"** 옵션을 지정해 주어야 한다.
+
+### 2. Writing 'interface' Metaclass and Its Test Codes
+
+앞서 언급한 동영상과 글에서 설명하는 `interface` 메타클래스 예제 코드를 *main.cpp*에 아래와 같이 작성해준다.
+
+```cpp
+#include <iostream>
+
+// include Metaclass related stuffs like 'compiler'.
+#include <cppx/meta>
+
+
+$class interface
+{
+    constexpr {
+        compiler.require($interface.variables().empty(),
+                         "interfaces may not contain data");
+        for... (auto f : $interface.functions()) {
+            compiler.require(!f.is_copy() && !f.is_move(),
+                "interfaces may not copy or move; consider a"
+                " virtual clone() instead");
+            if (!f.has_access()) f.make_public();
+            compiler.require(f.is_public(),
+                "interface functions must be public");
+            f.make_pure_virtual();
+        }
+    }
+    virtual ~interface() noexcept { }
+};
+
+
+interface Shape
+{
+    int area() const;
+    void scale_by(double factor);
+};
+
+
+// print the compiler-generated final Shape class source codes
+//  to the compiler console at compile time.
+constexpr
+{
+    compiler.debug($Shape);
+}
+
+
+class Circle : public Shape
+{
+public:
+    int area() const override { return 1; }
+    void scale_by(double factor) override { }
+};
+
+
+int main()
+{
+    auto shape = std::make_unique<Circle>();
+    std::cout << "area: " << shape->area() << '\n';
+    return 0;
+}
+```
+
+컴파일과 실행결과는 다음과 같다.
+
+```bash
+> make
+Scanning dependencies of target interface_test
+[ 50%] Building CXX object CMakeFiles/interface_test.dir/main.cpp.o
+struct Shape {
+    virtual int area() const = 0;
+    virtual void scale_by(double factor) = 0;
+    virtual ~Shape() noexcept     {
+    }
+}
+[100%] Linking CXX executable interface_test
+[100%] Built target interface_test
+$ ./interface_test
+area: 1
+```
+
+컴파일하는 과정에서 소스코드에 지정한 `compiler.debug($Shape);`문에 의해서 컴파일러가 내부에서 생성한 클래스 타입의 실제 모습을 볼 수 있다. 실행파일 실행결과는 예상대로 `1`이다.
 
 ---
 
