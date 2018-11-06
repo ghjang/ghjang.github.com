@@ -32,6 +32,11 @@ For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support
 * **Find**: Command + F
 * **Spotlight Search**: Control + Space Bar
 
+### Mission Control
+* **Launch Mission Control**: Control + Top Arrow
+* **Move to Next Desktop**: Control + Right Arrow
+* **Move to Left Desktop**: Control + Left Arrow
+
 ---
 
 ## Caret Movement
@@ -56,6 +61,10 @@ For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support
 
 ## Safari
 * **New Tab**: Command + T
+* **Close Tab**: Command + W
+* **Move to Next Tab**: Control + Tab
+* **Move to Previous Tab**: Control + Shift + Tab
+* **Show All Tab Thumbnail Tiles**: Command + Shift + \
 
 ----
 
