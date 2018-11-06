@@ -36,7 +36,7 @@ For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support
 * **Spotlight Search**: Control + Space Bar
 
 ### Mission Control
-* **Launch Mission Control**: Control + Top Arrow
+* **Launch Mission Control**: Control + Up Arrow
 * **Close Mission Control**: "Control + Down Arrow" or "Esc"
 * **Move to Next Desktop**: Control + Right Arrow
 * **Move to Left Desktop**: Control + Left Arrow
@@ -70,7 +70,9 @@ For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support
 * **Close Tab**: Command + W
 * **Move to Next Tab**: Control + Tab
 * **Move to Previous Tab**: Control + Shift + Tab
-* **Show All Tab Thumbnail Tiles**: Command + Shift + \
+* **Show All Tab Thumbnails**: Command + Shift + \
+* **Scroll a Page Down**: Space Bar
+* **Scroll a Page Up**: Shift + Space Bar
 
 ----
 
