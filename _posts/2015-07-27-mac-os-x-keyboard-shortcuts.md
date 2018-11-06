@@ -27,6 +27,9 @@ For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support
 * **Paste**: Command + V
 * **Undo**: Command + Z
 * **Redo**: Command + Y
+* **Move to the End of the current line**: Command + Right Arrow(->)
+* **Move to the Start of the current line**: Command + Left Arrow(<-)
+* Range Selection
 
 ### Search
 * **Find**: Command + F
@@ -34,16 +37,18 @@ For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support
 
 ### Mission Control
 * **Launch Mission Control**: Control + Top Arrow
-* **Close Mission Control**: 'Control + Down Arrow' or 'Esc'
+* **Close Mission Control**: "Control + Down Arrow" or "Esc"
 * **Move to Next Desktop**: Control + Right Arrow
 * **Move to Left Desktop**: Control + Left Arrow
 
----
+----
 
-## Caret Movement
-* **Move to the End of the current line**: Command + Right Arrow(->)
-* **Move to the Start of the current line**: Command + Left Arrow(<-)
-## Range Selection
+## Capture
+
+### Screen Capture as an Image File
+* **Capture**: Command + Shift + 4
+
+### Screen Activity Capture as a Movie File
 
 ----
 
@@ -69,9 +74,3 @@ For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support
 
 ----
 
-## Capture
-
-### Screen Capture as an Image File
-* **Capture**: Command + Shift + 4
-
-### Screen Activity Capture as a Movie File
