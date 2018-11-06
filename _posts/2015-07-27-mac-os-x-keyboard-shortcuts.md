@@ -74,3 +74,7 @@ For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support
 
 ----
 
+## Xcode
+* **Auto-Zoom-in/out within Story Board**: Double-click in an empty storyboard area.
+* **Zoom-in within Story Board**: 
+* **Zoom-out within Story Board**: 
