@@ -34,6 +34,7 @@ For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support
 
 ### Mission Control
 * **Launch Mission Control**: Control + Top Arrow
+* **Close Mission Control**: 'Control + Down Arrow' or 'Esc'
 * **Move to Next Desktop**: Control + Right Arrow
 * **Move to Left Desktop**: Control + Left Arrow
 
