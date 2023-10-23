@@ -3,8 +3,9 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
 
 <instance-profile id="gb"
-                 name="ghjang-blog"
-                 start-page="starter-topic.md">
+                 name="Scribbles"
+                 start-page="Cpp.md">
 
-    <toc-element topic="starter-topic.md"/>
+    <toc-element topic="Cpp.md"/>
+    <toc-element topic="Music.md"/>
 </instance-profile>
