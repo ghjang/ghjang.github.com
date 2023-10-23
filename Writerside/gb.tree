@@ -4,8 +4,12 @@
 
 <instance-profile id="gb"
                  name="Scribbles"
-                 start-page="Cpp.md">
+                 start-page="_Cpp.md">
 
-    <toc-element topic="Cpp.md"/>
-    <toc-element topic="Music.md"/>
+    <toc-element topic="Overview.md"/>
+    <toc-element topic="_Cpp.md">
+        <toc-element topic="2015-09-19-things-to-remember-when-using-c-template.md"/>
+        <toc-element topic="Tutorial.md"/>
+    </toc-element>
+    <toc-element topic="_Music.md"/>
 </instance-profile>
