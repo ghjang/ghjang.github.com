@@ -18,7 +18,7 @@ n개의 `std::tuple` 객체들을 하나의 `std::tuple` 객체로 합치는 [st
 
 n개의 인자에 대해서 재귀함수호출로 인자를 하나씩 끊어서 처리하는 아래와 같은 일반적인 구현을 우선 생각해볼 수 있다.
 
-```cpp
+```c++
 namespace Detail
 {
     template
@@ -82,7 +82,7 @@ auto tuple_cat_(T && a, R &&... rs)
 
 먼저 재귀함수호출 형태의 `fold_right` 고차함수를 구현하면 아래와 같을 수 있다.
 
-```cpp
+```c++
 template <typename F, typename T, typename U>
 auto fold_right(F && f, T && init, U && last)
 {
@@ -105,7 +105,7 @@ auto fold_right(F && f, T && init, U && first, R &&... rs)
 
 다음으로 `fold_right`에 넘길 이항함수 코드를 작성해준다. 이 이항함수는 두개의 `tuple`객체들을 받아서 하나의 `tuple`객체로 합쳐주는 역할을 해주면 된다. 여기서는 `BinaryTupleCat struct`를 정의하고 함수연산자를 오버로딩해서 구현하도록했다. 앞서 먼저 구현한 `binary_tuple_cat` 함수를 재사용할 수 있다.
 
-```cpp
+```c++
 namespace Detail
 {
     // ...
@@ -130,7 +130,7 @@ namespace Detail
 
 마지막으로 `tuple_cat_` 함수를 `fold_right` 함수를 이용해서 다시 구현하면 아래와 같다.
 
-```cpp
+```c++
 template <typename... T>
 auto tuple_cat_(T &&... ts)
 {
@@ -150,7 +150,7 @@ C++17부터는 언어문법 자체에 fold적인 작업에 대한 지원이 추�
 
 별다른 생각없이 C++17 fold 표현식을 사용하여 먼저 작성해본 `fold_right` 함수에 해당하는 기능을 대체 시도해보았다. 하지만 우선 결과는...
 
-```cpp
+```c++
 template <typename T, typename U>
 auto operator + (T && a, U && b)
 {
@@ -174,7 +174,7 @@ auto tuple_cat_(T &&... ts)
 
 **_컴파일에러!!_**
 
-```cpp
+```c++
 /Users/gilhojang/GitHub/personal_study/cpp/tuple_cat/main.cpp:138:19: error: call to function 'operator+' that is neither visible in the template definition nor found by argument-dependent lookup
 /Users/gilhojang/GitHub/personal_study/cpp/tuple_cat/main.cpp:160:14: note: in instantiation of function template specialization 'tuple_cat_<std::__1::tuple<int, double, char> &, std::__1::tuple<const char *, float, double> &>' requested here
     auto t = tuple_cat_(a, b);
@@ -186,7 +186,7 @@ auto operator + (T && a, U && b)
 
 `tuple_cat_` 템플릿함수에서 `std::tuple` 객체에 대해 오버로딩한 `operator +` 함수를 C++17 fold 표현식내에서 찾을 수 없다는 내용이다. `operator +`를 `std::tuple` 선언전에 놓아야한다는 것 같지만 현재의 이 구조로는 불가능한 일이다. C++17 fold 표현식에서는 C++ 자체의 연산자를 이용한 표현식만을 사용할 수 있다. `std::tuple` 자체에 `tuple_cat` 용도의 연산자 오버로딩을 **새로이** 추가할 수는 없다. `std::tuple`에 대한 `operator +` 오버로딩이 원래 표준에 있었다면 **템플릿 특수화**의 형태로 추가가 가능은 했을 것이다. 이 것에 대한 우회책으로 `std::tuple` 인자를 wrapping해주는 방법을 생각해 볼 수 있다. 대략 다음과 같은 식이라는 것이다.
 
-```cpp
+```c++
 template <typename T, typename F>
 struct ArgWrap
 {
@@ -227,7 +227,7 @@ auto tuple_cat_(T &&... ts)
 
 1번 문제의 경우는 구현을 조금만 손보면 해결볼 수 있다.
 
-```cpp
+```c++
 template <typename F, typename... T>
 auto fold_right_impl(T &&... xs)
 {
@@ -262,7 +262,7 @@ auto tuple_cat_(T &&... ts)
 
 lvalue `std::tuple` 객체가 `tuple_cat_`에 넘겨질 경우 `ArgWrap`의 `m_` 멤버변수에 복사생성이 일어나게 된다. 이 문제를 해결하려면 lvalue 객체가 전달될 경우 `std::tuple<...> const&` 형태의 **타입**으로 멤버객체를 저장하면 될 것도 같다. **타입을 제어해야하는 상황**,... 그렇다 **C++ Template Metaprogramming** 기법을 도입해야한다는 것이다. 덕분에 구현이 좀 지저분해졌다. :( 변경된 코드부분은 아래와 같다.
 
-```cpp
+```c++
 template <typename T, typename F, bool isRvalueArg>
 struct ArgWrap;
 

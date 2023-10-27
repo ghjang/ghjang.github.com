@@ -21,7 +21,7 @@ SFINAE를 간단하게 설명하면 **'template관련 코드에서 특정 부분
 
 > **NOTE:** 아래의 medianValue 함수코드에서의 `std::enalbe_if`의 사용은 `std::advance` 자체가 iterator 카테고리를 고려해서 이미 최적화되었다면 별다른 의미가 없다. 작위적인 예제라고 생각하면 된다.
 
-```cpp
+```c++
 template <
         typename Container,
         typename = std::enable_if_t<
@@ -74,7 +74,7 @@ cout << "lRetVal: " << lRetVal << std::endl; // lRetVal: c
 
 여기서 두 함수의 마지막 template parameter의 default argument 표현식은 주어진 컨테이너에 대해서 둘 중에 한곳에서만 유효한 표현식이 된다. 결과적으로 하나의 함수만을 overload resolution set에 포함시키게 된다. 예를 들어서 `std::vector`의 인스턴스가 인자로 넘어온다고 할 경우 두 함수의 signature는 다음과 같다고 볼 수 있다.
 
-```cpp
+```c++
 // first function
 template <
         typename Container,
@@ -95,7 +95,7 @@ auto medianValue(Container const& c)
 
 추가로 한가지 짚고 넘어가 볼만한 부분은 두번째 overload된 함수의 signature 부분이다. 이부분을 다음과 같이 두번째 template parameter를 제거하고 작성했다면 컴파일 오류가 발생한다.
 
-```cpp
+```c++
 template <
         typename Container,
         typename = std::enable_if_t<
@@ -116,7 +116,7 @@ overload된 2개의 `medianValue` function template의 두번째 template parame
 
 또다른 이 문제 해결법은 다음과 같이 될 수 있을 것이다.
 
-```cpp
+```c++
 template <
         typename Container,
         std::enable_if_t<
@@ -136,7 +136,7 @@ auto medianValue(Container const& c)
 
 위 표현은 `RandomAccessIterator`를 제공하지 않는 컨테이너에 대해서 다음과 같은 형태로 내부적으로 바뀔 것이고 유효한(well-formed) 코드이다.
 
-```cpp
+```c++
 template <
         typename Container,
         void ** = nullptr
@@ -147,7 +147,7 @@ auto medianValue(Container const& c)
 
 template parameter가 아닌 function parameter를 이용해서도 문제 해결이 가능하다.
 
-```cpp
+```c++
 template <typename Container>
 auto medianValue(Container const& c, std::enable_if_t<
                                              std::is_base_of<
@@ -165,7 +165,7 @@ auto medianValue(Container const& c, std::enable_if_t<
 
 위 표현은 `RandomAccessIterator`를 제공하지 않는 컨테이너에 대해서 다음과 같은 형태로 내부적으로 바뀔 것이고 역시 유효한(well-formed) 코드가 된다. `void **`와 같이 `**`를 이용한 것은 별다른 이유라기 보다는 최대한 사용자의 실수를 방지하기 위한 것이다. 
 
-```cpp
+```c++
 template <typename Container>
 auto medianValue(Container const& c, void ** = nullptr)
 ...
@@ -175,7 +175,7 @@ auto medianValue(Container const& c, void ** = nullptr)
 
 ## Class Template Specialization에서 사용
 
-```cpp
+```c++
 template <typename T, typename = void>
 struct Actor
 {
@@ -221,7 +221,7 @@ ad.doSomething(); // 'did some work for floating point type.'
 
 `Actor<int>`를 예를 들어서 설명하면 내부적으로 다음과 같은 형태로 처리된다고 볼 수 있겠다.
 
-```cpp
+```c++
 // primary template
 template <typename T, typename = void>
 struct Actor
@@ -250,7 +250,7 @@ C++17에 도입되는 `constexpr` if statement 언어문법을 사용하게되�
 
 우선 `medianValue` function template은 아래와 같이 간소화될 수 있을 것이다.
 
-```cpp
+```c++
 template <typename Container>
 auto medianValue(Container const& c)
 {
@@ -271,7 +271,7 @@ auto medianValue(Container const& c)
 
 `Actor` class template의 specialization코드는 아래와 같이 `if` ~ `else` chain 모양새의 코드로 바뀌게 된다. 이런 형태의 `if` ~ `else` chain 코드의 길이가 길어지면 그닥 보기가 좋지 않다. `switch`에 대해서도 `constexpr` statement 문법이 추가된다면 이런식의 코드에 대해서 가독성이 좀더 좋아질 수는 있을 것 같다는 생각을 그냥 해보기만 한다. :)
 
-```cpp
+```c++
 template <typename T>
 struct Actor
 {

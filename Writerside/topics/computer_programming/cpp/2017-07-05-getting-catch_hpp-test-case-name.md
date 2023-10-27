@@ -13,7 +13,7 @@ tags: [C++, Catch, Testing]
 
 다음과 같은 최소한의 내용을 갖춘 Catch 테스트 케이스가 있다고 하자:
 
-```cpp
+```c++
 #include "catch.hpp"
 
 TEST_CASE("test_case_0", "[my_test]")
@@ -24,7 +24,7 @@ TEST_CASE("test_case_0", "[my_test]")
 
 최종적으로 하고자 하는 바는 다음처럼 이 테스트 케이스의 이름 **test_case_0**을 이 테스트 케이스 코드 자체에서 참조하는 것이다. 여기서는 `THIS_TEST_CASE_NAME` 부분이 이름 참조부분을 나타내는 것으로 보면 된다:
 
-```cpp
+```c++
 TEST_CASE("test_case_1", "[my_test]")
 {
     INFO("name: " << THIS_TEST_CASE_NAME);
@@ -46,7 +46,7 @@ g++ -P -E test_case.cpp > temp_out.cpp
 
 예제로 제시한 테스트 케이스 부분의 출력 결과물은 다음과 같다:
 
-```cpp
+```c++
 static void ____C_A_T_C_H____T_E_S_T____0(); namespace{ Catch::AutoReg autoRegistrar1( &____C_A_T_C_H____T_E_S_T____0, ::Catch::SourceLineInfo( "test_case.cpp", static_cast<std::size_t>( 5 ) ), Catch::NameAndDesc( "test_case_0", "[my_test]" ) ); } static void ____C_A_T_C_H____T_E_S_T____0()
 {
     do { Catch::ResultBuilder __catchResult( "CHECK", ::Catch::SourceLineInfo( "test_case.cpp", static_cast<std::size_t>( 7 ) ), "100 == 100", Catch::ResultDisposition::ContinueOnFailure ); try { ( __catchResult <= 100 == 100 ).endExpression(); } catch( ... ) { __catchResult.useActiveException( Catch::ResultDisposition::ContinueOnFailure ); } if( __catchResult.shouldDebugBreak() ) if( Catch::isDebuggerActive() ) { __asm__("int $3\n" : : ); }; __catchResult.react(); } while( Catch::isTrue( false && static_cast<bool>( !!(100 == 100) ) ) );
@@ -57,7 +57,7 @@ static void ____C_A_T_C_H____T_E_S_T____0(); namespace{ Catch::AutoReg autoRegis
 
 > Visual Studio Code의 경우 해당 영역을 선택후 _Format Selection(Cmd + K Cmd + F)_ 커맨드를 실행해주면 된다.
 
-```cpp
+```c++
 static void ____C_A_T_C_H____T_E_S_T____0();
 
 namespace
@@ -104,7 +104,7 @@ static void ____C_A_T_C_H____T_E_S_T____0()
 
 ### catch_util.h
 
-```cpp
+```c++
 #ifndef CATCH_UTIL_H
 #define CATCH_UTIL_H
 
@@ -151,7 +151,7 @@ Catch 매뉴얼에 따르면 Catch는 테스트 케이스를 병렬로 실행하
 
 작성한 `catch_util.h`는 다음과 같이 사용하면 된다. 우선 Catch의 *main*이 위치하게 될 cpp파일을 다음처럼 작성해 준다:
 
-```cpp
+```c++
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
@@ -160,7 +160,7 @@ Catch 매뉴얼에 따르면 Catch는 테스트 케이스를 병렬로 실행하
 
 그러고 나서 테스트 케이스가 있는 cpp파일에서 다음과 같이 `THIS_TEST_CASE_NAME` 매크로를 사용해 현재 실행 중이 코드 블럭이 속한 테스트 케이스의 이름을 얻어 올 수 있다:
 
-```cpp
+```c++
 #include "catch.hpp"
 #include "catch_util.h"
 

@@ -7,7 +7,7 @@ tags: [C++, C++ TMP, Algorithm]
 
 **C++ Template Metaprogramming**에서 **recursion**의 이해는 필수사항이다. **Hanoi Tower**는 이 recursion과 관련하여 생각해볼만한 문제이다. Hanoi Tower 문제풀이는 결과코드만 보면 단순하다. 하지만 recursion에 익숙하지 않은 경우 (해답을 보지 않고) 결과에 다다르는 생각을 해내는 것이 쉽지만은 않을 수도 있다. 이런 방식의 사고방식을 좀 고민해볼 필요가 있다.
 
-```cpp
+```c++
 void move_tower(int nthPlate, int fromIndex, int toIndex, int remainingIndex)
 {
     if (1 == nthPlate) { // if top plate,
@@ -80,7 +80,7 @@ plate-1, (0 => 2)
 
 compile-time MoveTower metafunction을 호출하고 이로부터 계산한 경로를 콘솔에 출력하는 코드를 먼저 적어본다.
 
-```cpp
+```c++
 using tower_movement_sequence_t = typename MoveTower<
                                                 int_c_t<towerHeight>,
                                                 int_c_t<0>,
@@ -92,21 +92,21 @@ PrintTowerMovementSequence(tower_movement_sequence_t());
 
 코딩 편의를 위해서 `int_c_t` type alias를 추가했다.
 
-```cpp
+```c++
 template <int i>
 using int_c_t = std::integral_constant<int, i>;
 ```
 
 특정 plate의 이동값을 나타내는 type alias를 추가했다. 여기서 `NthPlate`, `FromIndex`, `ToIndex`는 `std::integral_constant`의 특정 instance이다.
 
-```cpp
+```c++
 template <typename NthPlate, typename FromIndex, typename ToIndex>
 using plate_movement_t = std::tuple<NthPlate, FromIndex, ToIndex>;
 ```
 
 '이동값 type'들을 담을 'type container'용 type alias를 추가했다. 
 
-```cpp
+```c++
 template <typename... Sequence>
 struct TowerMovementSequence
 { };
@@ -114,7 +114,7 @@ struct TowerMovementSequence
 
 이동값 type들의 sequence를 병합하기위한 도우미성 metafunction을 추가했다.
 
-```cpp
+```c++
 template <typename TowerMovementSequence, typename... Movement>
 struct JoinTowerMovementSequence;
 
@@ -150,7 +150,7 @@ struct JoinTowerMovementSequence
 
 실제 이동 시퀀스를 계산하는 metafunction을 추가했다. template 문법이 번잡해보이기는 하겠지만 runtime 버전의 내용과 개념이 동일하다.
 
-```cpp
+```c++
 template <typename NthPlateIndex, typename FromIndex, typename ToIndex, typename RemainingIndex>
 struct MoveTower
 {
@@ -187,7 +187,7 @@ struct MoveTower<int_c_t<1>, FromIndex, ToIndex, RemainingIndex>
 
 계산된 compile-time 이동 시퀀스의 값을 콘솔에 출력해주는 도우미성 함수를 추가했다.
 
-```cpp
+```c++
 template <typename PlateMovement>
 void PrintTowerMovementSequence(TowerMovementSequence<PlateMovement>)
 {

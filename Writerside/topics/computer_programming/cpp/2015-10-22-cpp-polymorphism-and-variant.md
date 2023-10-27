@@ -13,7 +13,7 @@ C++에서 사용 가능한 **virtual function(가상 함수)기반의 dynamic po
 
 다음은 도형 2개(원, 정사각형)를 C++ 클래스 상속을 이용하여 간단히 모델링 한 예제코드이다.
 
-```cpp
+```c++
 struct Point
 {
 	Point(int x, int y)
@@ -93,7 +93,7 @@ public:
 
 클라이언트 코드에서는 아래와 같이 호출하여 사용한다.
 
-```cpp
+```c++
 // ...
 
 // heterogeneous object creation
@@ -123,7 +123,7 @@ for (auto s : sv) {
 
 앞서 살펴본 dynamic polymorphism에서 사용한 동일 코드 내용을 이번에는 클래스 상속없이 C++ template만을 사용해서 표현해보면 아래와 같다.
 
-```cpp
+```c++
 struct Point
 {
 	Point(int x, int y)
@@ -197,7 +197,7 @@ dynamic 버전의 예제코드와 차이는 `Shape` 부모 클래스가 제거�
 
 클라이언트 코드에서는 아래와 같이 사용할 수 있다.
 
-```cpp
+```c++
 // ...
 
 template <typename Shape>
@@ -235,7 +235,7 @@ runShapeTest<Square>();
 
 위의 static polymorphism 예제에서 볼 수 있는 것처럼 `runShapeTest` 함수내에서 heterogeneous한 객체를 다룰 수 없다는 것은 단점이다. `variant` class template을 사용하면 dynamic 버전에서와 같은 효과를 낼 수 있게 된다. 클라이언트측 코드를 아래와 같이 수정하여 사용할 수 있겠다.
 
-```cpp
+```c++
 struct CallArea: public boost::static_visitor<double>
 {
 	template <typename T>
@@ -292,7 +292,7 @@ void runShapeTestByUsingVariant()
 
 대략 다음과 같은 식이 될 수 있겠다. (이 부분에 대해서는 실제로 코드를 작성해서 테스트하지 않았다.)
 
-```cpp
+```c++
 struct CallDraw: public boost::static_visitor<>
 {
 	// some graphics object could be placed as member variable here.

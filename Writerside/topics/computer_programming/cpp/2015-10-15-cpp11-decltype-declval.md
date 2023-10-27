@@ -11,7 +11,7 @@ tags: [C++, C++11, C++ TMP]
 
 `decltype`은 **'declared type'**의 약자로 볼 수 있다. 인자로 주어진 개체(entity)나 표현식(expression)의 타입(type)을 compile-time에 알려준다. 기본적으로 다음과 같이 사용 가능하다:
 
-```cpp
+```c++
 using std::is_same;
 
 int i = 1024;
@@ -43,7 +43,7 @@ static_assert(is_same<int, decltype(1 + 1)>::value, "");
 
 다음은 이름이 없는 lvalue의 예인 문자열 리터럴을 가지고 `decltype`을 테스트한 예제 코드이다. 문자열 `"abc"`의 타입은 `char const [4]`이다라는 것에 주의할 것.
 
-```cpp
+```c++
 // string literal is a lvalue.
 // "abc"'s type is char const [4].
 char const str[4] = "abc";
@@ -68,7 +68,7 @@ static_assert(std::is_same<char const (&) [4], decltype("abc")>::value, "");
 
 `decltype`내부에 괄호 사용여부에 따라 표현식의 성질이 바뀐다. `()`를 사용하여 이름이 있는 변수를 감싸면 일종의 이름이 없는 표현식으로 바꾼 효과를 내서 결과적으로 다른 타입을 리턴할 수 있다. 예를 들어 이름이 있는 lvalue 변수 `x`를 `(x)`와 같이 표현하면 이름이 없는 lvalue 표현식으로 취급되어 레퍼런스 타입을 리턴한다는 것이다.
 
-```cpp
+```c++
 int x = 100;
 static_assert(std::is_same<int, decltype(x)>::value, "");       // decltype(x)
 static_assert(std::is_same<int &, decltype((x))>::value, "");   // decltype((x))
@@ -78,7 +78,7 @@ static_assert(std::is_same<int &, decltype((x))>::value, "");   // decltype((x))
 
 `sizeof` 키워드와 같이 `decltype`에 전달되는 표현은 evaluation이 되는 것이 아니기 때문에 완전한 정의가 필요하지 않다. 하지만 서브표현식에 나타나는 객체에 대해서는 예외라는 것이다. 함수의 리턴 타입도 이에 해당한다.
 
-```cpp
+```c++
 // declaration only
 int f(int);
 int g();
@@ -132,7 +132,7 @@ static_assert(is_same<int, decltype(doSomething(returnCompleteType()))>::value, 
 
 위 레퍼런스에서 제공되는 코드보다 약간 복잡한 사용예는 다음과 같다:
 
-```cpp
+```c++
 struct Default
 {
     int foo() const { return 1; }

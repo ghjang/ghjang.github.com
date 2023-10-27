@@ -128,7 +128,7 @@ add_executable(${CMAKE_PROJECT_NAME} ${SOURCE_FILES})
 
 앞서 언급한 동영상과 글에서 설명하는 `interface` 메타클래스 예제 코드를 *main.cpp*에 아래와 같이 작성해준다.
 
-```cpp
+```c++
 #include <iostream>
 
 // include Metaclass related stuffs like 'compiler'.

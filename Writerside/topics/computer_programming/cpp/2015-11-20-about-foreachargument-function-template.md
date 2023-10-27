@@ -13,7 +13,7 @@ tags: [C++, C++11, C++14, C++17, C++ TMP]
 
 `for_each_argument`를 직접 구현한다면 우선 별다른 고민 없이 다음과 같은 구현을 생각해 볼 수 있다.
  
-```cpp
+```c++
 template <typename F, typename... Args>
 auto ForEachArgument(F f, Args... args)
 {
@@ -32,7 +32,7 @@ error: expression contains unexpanded parameter pack 'args'
 
 현재의 C++11/14 표준에서 parameter pack이 확장 가능한 context를 정확하게 모른다고 가정했을 경우 컴파일 오류를 해결하기 위해 좀더 머리를 굴려보면 다음과 같은 것들을 시도해볼 수도 있을 것이다.
 
-```cpp
+```c++
 // another try-1
 template <typename F, typename... Args>
 auto ForEachArgument(F f, Args... args)
@@ -66,7 +66,7 @@ auto ForEachArgument(F f, Args... args)
 
 다음으로 **brace initialization**내에서 확장도 시도해볼 수도 있다.
 
-```cpp
+```c++
 // parameter pack expansion by using brace initialization - 1
 template <typename F, typename... Args>
 auto ForEachArgument(F f, Args... args)
@@ -90,7 +90,7 @@ auto ForEachArgument(F f, Args... args)
 
 **brace initialization에서 parameter pack의 확장을 허용**한다. 두번째 코드에서 `int`를 인자로 하는 `std::initializer_list<int>`를 명시적으로 사용한 것은 최초에 `ForEachArgument` 테스트로 작성한 코드가 대략 다음과 같기 때문이다.
 
-```cpp
+```c++
 struct Sum
 {
     Sum() : s_{} { }
@@ -109,7 +109,7 @@ ForEachArgument(Sum(), 1, 2, 3, 4, 5);
 
 `auto` context에서 brace initialization의 사용은 현재 표준상에서 문제가 있을 수 있는 경우가 있다고 어디서 들었던 기억이 있어 두번째 것을 사용하도록 한다. 헌데 이 코드내에는 사용되지 않는 지역변수 `il`이 1개 있다. redundant한 이름이기에 변수 이름을 제거해서 다음과 같이 이름없는 객체를 생성하는 것으로 코드를 변경한다.
 
-```cpp
+```c++
 template <typename F, typename... Args>
 auto ForEachArgument(F f, Args... args)
 {
@@ -126,7 +126,7 @@ warning: expression result unused [-Wunused-value]
 
 제대로된 생각을 가진 C++ 프로그래머라면 컴파일 경고는 무시하징 않을 것이다. 이 경우 유용한 `(void)` casting을 시도하도록 코드를 다시 수정한다.
 
-```cpp
+```c++
 template <typename F, typename... Args>
 auto ForEachArgument(F f, Args... args)
 {
@@ -139,7 +139,7 @@ auto ForEachArgument(F f, Args... args)
 
 하지만 `f`가 `int`를 리턴하지 않을 경우 문제가 발생한다. `void`를 리턴할 수도 있고 `int`와 호환되지 않는 값일 수도 있다. 그러니까 다음과 같은 형태의 테스트를 추가하면 곧바로 컴파일 오류가 발생한다.
 
-```cpp
+```c++
 struct Sum1
 {
     Sum1() : s_{} { }
@@ -163,7 +163,7 @@ error: cannot initialize an array element of type 'const int' with an rvalue of 
 
 이 문제를 해결하기 위해서 **comma(,) 연산자**를 도입한다.
 
-```cpp
+```c++
 template <typename F, typename... Args>
 auto ForEachArgument(F f, Args... args)
 {
@@ -178,7 +178,7 @@ comma 연산자의 간단한 예를들면, `a, b`라고 하는 표현이 있을 
 
 효율성을 고려하여 전달되는 인자를 받는 변수와 리턴 타입을 업데이트하고 마무리한다.
 
-```cpp
+```c++
 template <typename F, typename... Args>
 decltype(auto) ForEachArgument(F && f, Args &&... args)
 {
@@ -189,7 +189,7 @@ decltype(auto) ForEachArgument(F && f, Args &&... args)
 
 앞서 작성한 `struct`를 사용한 functor는 물론이고 다음과 같은 lambda 표현식을 사용한 테스트도 정상적으로 동작한다.
 
-```cpp
+```c++
 int intSum = 0;
 ForEachArgument([&intSum](int i) { intSum += i; }, 1, 2, 3, 4, 5);
 REQUIRE(intSum == 15);  // refer to catch.hpp
@@ -201,7 +201,7 @@ REQUIRE(intSum == 15);  // refer to catch.hpp
 
 코드 작성 초기에 아래와 같이하고 CLion 1.2상에서 컴파일을 해보았다.
  
-```cpp
+```c++
 template <typename F, typename... Args>
 auto ForEachArgument(F f, Args... args)
 {
@@ -224,7 +224,7 @@ warning: pack fold expression is a C++1z extension [-Wc++1z-extensions]
 
 아래 코드는 상단 비디오 링크에서 언급되는 Sean Parent가 트위터상에 트윗했다는 `for_each_element` 코드이다.
 
-```cpp
+```c++
 template <class F, class... Args>
 void for_each_element(F f, Args&&... args) {
     [](...){}((f(std::forward<Args>(args)), 0)...);
@@ -235,7 +235,7 @@ void for_each_element(F f, Args&&... args) {
 
 이해에 방해가되는 `std::forward` 부분을 없애버리면 구현부 코드는 이렇게 된다.
 
-```cpp
+```c++
     [](...){}((f(args), 0)...);
 ```
 

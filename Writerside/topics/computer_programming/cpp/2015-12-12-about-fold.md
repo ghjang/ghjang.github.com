@@ -43,7 +43,7 @@ op는 무엇이던지 될 수 있겠다. 흔하게드는 예가 **+**, **-** 연
 
 **C++ STL**에 Fold(accumulation) 기능을 하는 것이 바로 `std::accumulate` 알고리즘이다. 이항함수를 받아들이도록 오버로드된 버전은 보통 아래와 같이 구현된다:
 
-```cpp
+```c++
 template<class InputIt, class T, class BinaryOperation>
 T accumulate(InputIt first, InputIt last, T init, BinaryOperation op)
 {
@@ -58,7 +58,7 @@ T accumulate(InputIt first, InputIt last, T init, BinaryOperation op)
 
 사용예는 다음과 같다:
 
-```cpp
+```c++
 #include <numeric>
 
 //...
@@ -80,7 +80,7 @@ REQUIRE(15 == sum); // refer to catch.hpp
 
 ### FoldRight
 
-```cpp
+```c++
 template <typename T>
 struct Identity
 {
@@ -113,7 +113,7 @@ struct FoldRight<F, init, std::tuple<list...>>
 
 사용예는 다음과 같다.
 
-```cpp
+```c++
 template <typename lhs, typename rhs>
 struct IntegralConstantSum;
 
@@ -143,7 +143,7 @@ static_assert(sum_t() == 15, "1 + (2 + (3 + (4 + (5 + 0)))) = 15");
 
 ### FoldLeft
 
-```cpp
+```c++
 // NOTE: refer to the above description.
 
 //...
@@ -168,7 +168,7 @@ struct FoldLeft<F, init, std::tuple<list...>>
 
 사용예는 다음과 같다.
 
-```cpp
+```c++
 // NOTE: refer to the above description.
 
 //...
@@ -187,7 +187,7 @@ static_assert(sum_t() == 15, "(((((0 + 1) + 2) + 3) + 4) + 5) = 15");
 
 예제로든 코드는 수치계산 문제로 **+ 연산**에 대해서 예를 든 것이다. 앞서 '교환법칙' 관련하여 주의해야한다고 언급했었다. **- 연산**의 경우 FoldRight, FoldLeft의 결과가 아래와 같이 다르게 나타난다.
 
-```cpp
+```c++
 template <typename lhs, typename rhs>
 struct IntegralConstantSubtract;
 
@@ -235,7 +235,7 @@ Compile-time Fold가 단순히 위에서든 예제와 같이 수치계산만을 
 
 아래는 주어진 type list에서 조건을 만족하는 type만 제거한 결과 type list를 template parameter로 가지는 `std::tuple` type을 계산해내는 `RemoveElementType` metafunction을 `FoldLeft`를 이용하여 구현한 것이다.
 
-```cpp
+```c++
 template <template <typename> class Predicate, typename Tuple>
 struct RemoveElementType;
 
@@ -264,7 +264,7 @@ public:
 
 FoldRight가 아닌 FoldLeft를 사용한 것은 원래 입력 리스트의 순서를 그대로 유지하기 위함이다. `RemoveElementType`의 사용예는 다음과 같다.
 
-```cpp
+```c++
 #include <type_traits>
 #include <tuple>
 

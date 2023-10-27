@@ -28,7 +28,7 @@ printf("Hello %d %s World%c", 2, "Wonderful", '!');
 
 가변 인수를 처리하는 아래 함수 구현 예제는 cppreference 사이트에서 가져와 붙였다.
 
-```cpp
+```c++
 #include <iostream>
 #include <cstdarg>
  
@@ -58,7 +58,7 @@ int main()
 
 C에서는 `add_nums`, `printf` 예제 함수 원형에서 볼 수 있는 것처럼 첫번째 매개변수는 이름이 있어야 하고 이후에 가변 인수 지정 표기가 올 수 있다. C++의 경우는 이런 제약이 없다. 다음과 같은 함수를 선언하는 것이 가능하다:
 
-```cpp
+```c++
 int printz(...);
 ```
 
@@ -66,7 +66,7 @@ int printz(...);
 
 C++에서는 이런 식의 함수 정의를 **SFINAE**와 관련해 **메타프로그래밍**에서 사용하기도 한다. *overload resolution rule*상에서 `...`의 매치 우선 순위가 가장 낮다는 점을 활용한다. 이해와 편의를 위해 역시 cppreference 사이트의 예제 코드를 붙였다.
 
-```cpp
+```c++
 template<typename T>
 class is_class {
     typedef char yes[1];
@@ -80,7 +80,7 @@ class is_class {
 
 예제의 `is_class` 메타함수의 사용예는 다음과 같다:
 
-```cpp
+```c++
 struct S
 { };
 
@@ -92,7 +92,7 @@ static_assert(!is_class<int>::value);
 
 추가로 C++에서는 다음 두 문법이 모두 허용된다. 둘다 동일한 의미다:
 
-```cpp
+```c++
 int f(int n, ...);
 int g(int n...);
 ```
@@ -119,7 +119,7 @@ C++11부터는 템플릿과 관련해 새로운 문법이 추가되어 *n개*의
 
 ### function template
 
-```cpp
+```c++
 #include <type_traits>
 
 template <typename... T>
@@ -142,7 +142,7 @@ static_assert(sum(1, 2, 3, 4, 5) == 15);
 
 이 `sum` 함수의 경우 다음과 같이 C++17 **fold expression** 문법을 적용하면 구현이 매우 단순해 진다:
 
-```cpp
+```c++
 template <typename... T>
 constexpr auto sum(T... n)
 {
@@ -157,7 +157,7 @@ constexpr auto sum(T... n)
 
 템플릿의 인수에 넘길 수 있는 *non-type template argument* 중에는 *정수 상수*가 있기 때문에 (그다지 유용하지 않겠지만) 다음처럼 `sum`을 구현할 수도 있다:
 
-```cpp
+```c++
 template <int... n>
 constexpr auto sum()
 {
@@ -175,7 +175,7 @@ static_assert(sum<1, 2, 3, 4, 5>() == 15);
 
 함수 템플릿으로 구현한 `sum` 예제를 클래스 템플릿을 사용해 *수치 메타함수* 예제로 바꾸어 보겠다. 역시 `...` 표기에 대한 설명용이지 코드 자체에 그다지 유용한 의미가 있지는 않다.
 
-```cpp
+```c++
 template <int... n>
 struct sum
 {
@@ -187,7 +187,7 @@ static_assert(sum<1, 2, 3, 4, 5>::value == 15);
 
 `int... n` parameter pack의 타입 정보를 `int`로 고정하지 않고 다음처럼 단순히 컴파일 타임에 결정되는 *type*을 받게 변경하면 컴파일 에러가 발생한다.
 
-```cpp
+```c++
 template <typename... n>
 struct sum
 {
@@ -197,7 +197,7 @@ struct sum
 
 여기서 `n`은 타입 자체이기에 `+` 연산을 할 수가 없다. 이런 수치계산 문제를 해결하는 *idiom*이 있는데 다음과 같은 식이다:
 
-```cpp
+```c++
 #include <type_traits>
 
 template <typename... n>
@@ -228,7 +228,7 @@ static_assert(
 
 바로 전의 `int` 타입의 *정수값를 타입으로 랩핑*한 것을 받는 `sum` 클래스 템플릿 예제는 그 사용법이 매우 번잡하다. 이런 식의 클래스 템플릿이 주어졌을 때 코드 사용자 측에서 간편하게 사용할 수 있게 다음과 같은 추가적인 타입 별칭을 만들어 줄 수 있다. 보다시피 `using` 타입 별칭에서도 n개 인자를 지정하는 템플릿이 사용가능하다:
 
-```cpp
+```c++
 template <typename T, T... n>
 using sum_t = sum<std::integral_constant<T, n>...>;
 
@@ -239,7 +239,7 @@ static_assert(sum_t<int, 1, 2, 3, 4, 5>::value == 15);
 
 *C++14*에서는 변수조차 템플릿화가 가능해졌다. *C++17*에서는 변수를 인라인화할 수도 있다. 이 두가지 피쳐를 이용하면 바로 전의 `sum_t` 코드를 다음과 같이 고칠 수 있다. 애당초 원했던 것은 합산된 *값*이지 *타입*이 아니지 않은가?:
 
-```cpp
+```c++
 template <typename T, T... n>
 inline constexpr auto sum_v = sum<std::integral_constant<T, n>...>::value;
 
@@ -248,7 +248,7 @@ static_assert(sum_v<int, 1, 2, 3, 4, 5> == 15);
 
 여기서 `sum_v<int, 1, 2, 3, 4, 5>`이라는 표현 자체는 *인라인화된 변수*, 여기서는 그냥 *상수값*이 된다. 이 표현은 그닥 변수라는 느낌이 들지 않는다. 해서 변수임을 극대화해서 나타내기 위해 배열을 템플릿화해서 다음처럼 표현해봤다:
 
-```cpp
+```c++
 #include <iterator> // for std::size
 
 // ...
@@ -270,7 +270,7 @@ static_assert(g_table<int, 1, 2, 3, 4, 5>[2] == 55);
 
 또한 변수 템플릿은 *특수화*가 가능하다. `g_table`을 다음과 같이 특수화해줄 수도 있다:
 
-```cpp
+```c++
 #include <utility> // for std::integer_sequence
 
 // ...
@@ -301,7 +301,7 @@ static_assert(g_table<int_seq_t>[4][1] == 25);
 
 C++에서 *로컬 컨텍스트*, 그러니까 함수 코드 블럭 안쪽 등에서 템플릿을 선언할 수 없다. 다음과 같은 코드 작성이 불가하다는 것이다:
 
-```cpp
+```c++
 void func()
 {
     template <typename T>
@@ -314,7 +314,7 @@ void func()
 
 다음도 컴파일 에러다:
 
-```cpp
+```c++
 void func()
 {
     struct X
@@ -330,7 +330,7 @@ void func()
 
 C++14에는 **generic lambda**라는 람다 표현식이 추가하여 제한적이지만 로컬 영역에서 템플릿을 정의해 사용하는 것과 같은 효과를 낼 수 있다. 다음과 같은 모양의 코드다:
 
-```cpp
+```c++
 void func()
 {
     constexpr auto val = [](auto... n) { return (... + n); }(1, 2, 3, 4, 5);
@@ -340,7 +340,7 @@ void func()
 
 이 코드는 대략 다음 코드에 대한 *syntax sugar*이다:
 
-```cpp
+```c++
 struct F
 {
     template <typename... T>
@@ -363,7 +363,7 @@ void func()
 
 (여기까지만 보아도 이 `...` 표기에 익숙하지 않은 이는 혼란 스러워 할지도 모르겠다.) 다음과 같은 표현도 가능하다.
 
-```cpp
+```c++
 template <template <typename...> class... T>
 struct F
 {
@@ -377,7 +377,7 @@ struct F
 
 이 것을 활용하는 방법은 코드 작성자의 상상과 능력에 달려있지 않을까 싶기도 하다. *고차 메타함수*를 작성하는데 사용할 수도 있을 것 같고, *policy-based* 클래스 디자인에도 사용할 수 있을 것 같다. (템플릿-템플릿 파라미터를 n개 다루는 경우가 그리 유용할지는 잘 모르겠다.) 대략 아래와 같은 식으로 말이다:
 
-```cpp
+```c++
 template <typename T>
 struct Impl0
 {
@@ -423,7 +423,7 @@ Product<S, Impl0, Impl1, Impl2> p;
 
 좀 특이한 경우인데 `.`이 6개(`......`)가 있는 코드가 정상적으로 컴파일되는 컨텍스트가 있다. 예를 들면 다음과 같은 코드가 정상적으로 동작한다:
 
-```cpp
+```c++
 template <typename T>
 struct is_variadic_function : std::false_type
 { };
@@ -441,7 +441,7 @@ static_assert(!is_variadic_function<decltype(std::atoi)>());
 
 여기서 `is_variadic_function` 메타함수는 주어진 타입이 *가변 인수*를 가지는 *함수 타입*인지를 판별해준다. 본 글 앞쪽의 C++ 가변 인수 문법 설명부분을 참조하라. 이 메타함수의 부분 특수화 코드를 다음과 같이 작성해주는 것이 좀더 의도가 명확할 것 같긴 하다:
 
-```cpp
+```c++
 template <typename R, typename... Args>
 struct is_variadic_function<R(Args..., ...)> : std::true_type
 { };
@@ -455,7 +455,7 @@ struct is_variadic_function<R(Args..., ...)> : std::true_type
 
 마지막으로 템플릿은 아니지만 알아두면 간혹 유용하게 사용가능한 C++11 **Variadic Macro**에 대해 간략히 적는다. 다른게 아니라 *function-like macro*에 `...` 표기로 n개 인자를 지정하는 것이 가능하다. cppreference에서 볼 수 있는 예제 코드를 수정해 붙였다:
 
-```cpp
+```c++
 #define showlist(...) puts(#__VA_ARGS__)
 #define showlist_with_prefix(prefix, ...) puts(#prefix "_" #__VA_ARGS__)
 

@@ -13,7 +13,7 @@ C++14에 추가된 `std::integer_sequence`는 **C++ Template metaprogramming**�
 
 ## Basic Usage
 
-```cpp
+```c++
 using std::is_same;
 using std::integer_sequence;
 using std::make_integer_sequence;
@@ -36,7 +36,7 @@ static_assert(is_same<int_seq, index_seq>(), "");
 
 `constexpr` 함수는 constant expression이 요구되는 context에서 사용할 수 있기 때문에 다음과 같은 식의 표현이 가능하다.
 
-```cpp
+```c++
 constexpr int IdentityInt(int i) { return i; }
 constexpr int SquareInt(int i) { return i * i; }
 
@@ -62,7 +62,7 @@ static_assert(is_same<integer_sequence<int, 0, 1, 4, 9>, square_int_seq>(), "");
 
 앞의 예제와 같이 `constexpr` 함수를 원하는 수만큼 일일이 적어주는 것은 실용적이지 못하다. `std::make_index_sequence<4>`와 같은 사용법으로 원하는 수만큼의 squared된 integer sequence를 생성해주는 metafunction을 작성해보면 아래와 같다.
 
-```cpp
+```c++
 constexpr int SquareInt(int i) { return i * i; }
 
 // ...
@@ -102,7 +102,7 @@ static_assert(is_same<integer_sequence<std::size_t, 0, 1, 4, 9>, square_int_seq>
 
 앞에서 설명한 `SquareIntegerSequence` 예의 경우 제곱한 integer sequence만을 다루는 것이다. 이를 좀더 일반화해서 다시 작성해본 것이 아래이다.
 
-```cpp
+```c++
 constexpr int SquareInt(int i) { return i * i; }
 
 template <std::size_t i>
@@ -154,7 +154,7 @@ static_assert(is_same<square_int_seq, square_int_seq_1>(), "");
 
 다른 정수열을 생성하는 예제를 보이기 위해서 아래 코드를 추가로 작성해 보았다.
 
-```cpp
+```c++
 constexpr int Factorial(int i)
 {
     if (i == 0) {

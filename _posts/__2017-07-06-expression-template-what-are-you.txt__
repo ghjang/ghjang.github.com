@@ -26,14 +26,14 @@ ET의 원류는 행렬 계산 문제 코드의 최적화와 관련이 있는다�
 
 여기서 말하는 람다 표현식은 C++11에 추가된 언어 자체의 람다 표현식이 아니고 ET로 구현한 람다 표현식을 의미한다. 아래와 같은 코드를 작성해 보자는 것이다:
 
-```cpp
+```c++
 ```
 
 ### Catch.hpp's Test Expression Printing
 
 C++ Catch 테스트 프레임워크를 사용해보면 테스트 실패시에 테스트 실패를 일으킨 표현식을 콘솔에 출력해 준다:
 
-```cpp
+```c++
 ```
 
 어떻게 C++ 표현식 자체를 콘솔에 찍을 수 있겠는가? 뭐 예상대로 해답은 ET다.
@@ -42,13 +42,13 @@ C++ Catch 테스트 프레임워크를 사용해보면 테스트 실패시에 �
 
 ## Operator Overloadings for Capturing C++ Expressions
 
-```cpp
+```c++
     template <typename Left, typename OpTag, typename Right>
     struct non_terminal
     { };
 ```
 
-```cpp
+```c++
     namespace detail
     {
         template <typename T>
@@ -70,7 +70,7 @@ C++ Catch 테스트 프레임워크를 사용해보면 테스트 실패시에 �
     inline constexpr auto is_non_terminal_v = is_non_terminal<T>::value;
 ```
 
-```cpp
+```c++
     struct place_holder
     { };
 
@@ -79,12 +79,12 @@ C++ Catch 테스트 프레임워크를 사용해보면 테스트 실패시에 �
     inline constexpr place_holder_t _1{};
 ```
 
-```cpp
+```c++
     struct equal_to_t
     { };
 ```
 
-```cpp
+```c++
     template
     <
         typename Lhs,
@@ -125,7 +125,7 @@ C++ Catch 테스트 프레임워크를 사용해보면 테스트 실패시에 �
     }
 ```
 
-```cpp
+```c++
     template
     <
         typename Left, typename OpTag, typename Right,
@@ -169,7 +169,7 @@ C++ Catch 테스트 프레임워크를 사용해보면 테스트 실패시에 �
     }
 ```
 
-```cpp
+```c++
 TEST_CASE("equal_to expressions", "[expresso]")
 {
     auto expr0 = 1 == 1;
