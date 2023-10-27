@@ -1,13 +1,14 @@
 # Git
 
-A How-to article is an action-oriented type of document.
-It explains how to perform a specific task or solve a problem, and usually contains a sequence of steps.
-Start with a short introductory paragraph that explains what users will accomplish by following this procedure,
-what they need to perform it for, or define the target audience of the doc.
+혼동된다고 생각되는 git 사용법에 대해서 일부 정리한다.
 
-> **Highlight important information**
+> **git 사용법 인터랙트 학습 사이트: [Learn Git Branching](https://learngitbranching.js.org)**
 >
-> You can change the element to *tip* or *warning* by renaming the style attribute below.
+> '게임'을 하는 것처럼 git을 학습할 수 있는 사이트이다.
+> 
+> 'git add' 명령어 입력 과정이 없다는 것만을 제대로 인식하고 내용을 살펴보면 된다.
+> 
+> git의 'commit tree'가 조작되는 상황을 '애니메이션 시각화'를 했기 때문에 이해에 꽤 도움이 된다.
 >
 {style="note"}
 
