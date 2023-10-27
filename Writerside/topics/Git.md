@@ -14,7 +14,7 @@
 
 > **git 사용법 무료 책: [Pro Git](https://git-scm.com/book/en/v2)**
 >
-> [git-scm.com](https://git-scm.com) 사이트에서 무료로 배포하는 책이 있다.
+> [git-scm.com](https://git-scm.com) 사이트에서 무료로 배포하는 '오픈소스 책'이 있다.
 >
 {style="note"}
 
