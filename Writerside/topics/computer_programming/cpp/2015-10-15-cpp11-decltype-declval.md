@@ -1,9 +1,4 @@
----
-title: "[C++11] decltype, std::declval"
-description: ""
-category: Computer Programming
-tags: [C++, C++11, C++ TMP]
----
+# [C++11] decltype, std::declval
 
 `decltype`은 C++ 언어 키워드이고 `std::declval`은 function template이다.
 
@@ -164,4 +159,4 @@ static_assert(is_same<long, ReturnTypeOfFoo<NonDefault>>::value, "");
 
 ## 참고
 
-+ <https://github.com/ghjang/personal_study/blob/master/cpp/decltype/main.cpp>
++ [decltype test C++ code](https://github.com/ghjang/personal_study/blob/master/cpp/decltype/main.cpp)
