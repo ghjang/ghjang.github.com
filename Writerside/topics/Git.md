@@ -18,13 +18,21 @@
 >
 {style="note"}
 
-## Before you start
+## git 로컬 저장소 작업 폴더내 파일 상태 전이
 
-It is good practice to list the prerequisites that are required or recommended.
+완전한 내용을 기록한 것은 아니지만 다음의 그림을 우선 참고할 수 있다.
+
+![git local working tree](git_file_state_diagram.png){ width=1024 }
 
 Make sure that:
 - First prerequisite
 - Second prerequisite
+
+## 'merge' 동작을 함축하는 'git verb'들
+
+## '삭제' 커밋 완료된 파일 복구하기
+
+## 리베이싱
 
 ## How to perform a task
 
