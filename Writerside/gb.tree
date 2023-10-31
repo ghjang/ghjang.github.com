@@ -9,6 +9,7 @@
     <toc-element topic="Overview.md"/>
     <toc-element topic="Git.md"/>
     <toc-element topic="_Cpp.md">
+        <toc-element topic="2015-10-20-cpp11-enable_if.md"/>
         <toc-element topic="2015-10-19-cpp11-decay.md"/>
         <toc-element topic="2015-10-15-cpp11-decltype-declval.md"/>
         <toc-element topic="2015-10-14-cpp11-sizeof.md"/>
