@@ -1,6 +1,6 @@
 # Git
 
-혼동된다고 생각되는 git 사용법에 대해서 일부 정리한다.
+여기서는 혼동되거나 따로 정리할 필요가 있다고 생각되는 git 사용법에 대해서 일부 정리한다. git에 대한 일반적인 사용법에 대해서는 아래 학습자료를 참고해볼 수 있다.
 
 > **git 사용법 인터랙트 학습 사이트: [Learn Git Branching](https://learngitbranching.js.org)**
 >
