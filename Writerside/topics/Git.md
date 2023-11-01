@@ -25,6 +25,8 @@
 ![로컬 git 저장소 작업 폴더내 파일 상태 전이도](git_file_state_diagram.png){ width=1024 }
 
 - 'git rm --cached' 명령어와 관련해 이 글의 **'Tracked' 상태의 파일 'Untracked' 상태로 변경하기** 섹션의 내용 참조할 것.
+- 'git rm -f' 명령어와 관련해 이 글의 **기타 참고사항** 섹션의 **1번** 내용 참조할 것.
+- 'git commit -a' 명령어와 관련해 이 글의 **'Unstaged, Modified' 상태의 파일을 '스테이징' 단계 없이 곧바로 '커밋'하기** 섹션의 내용 참조할 것.
 
 ## '저장소 상태' 파악하기
 
@@ -152,7 +154,13 @@ git rm --cached <file name>
 
 ## 기타 참고사항
 
-1. '동일한 동작'을 수행하는 서로 다른 'git verb' 명령어들이 있다.
+1. 'git rm -f'를 'Staged, Added' 상태의 파일에 대해서 실행하면 'Deleted' 상태 전이 없이 곧바로 파일이 'working folder'에서 삭제된다.
+'Added' 상태로 전이후 해당 파일에 대해서 커밋이 수행된 적이 없기 때문에 'git rm -f' 명령어 실행시 별다르게 '삭제 자체' 관련 기록을 유지할 필요가 없다는
+상황으로 보인다. 'Staged, Modified' 상태와 'Unstaged, Unmodified/Modified' 상태의 파일에 대해서 'git rm -f' 명령어를 실행하면 
+'Staged, Deleted' 상태로 전이되고 파일이 'working folder'에서 삭제된다. (이 참고사항의 내용을 이 글 상단의 '파일 상태 전이' 그림에 마저 추가할
+수도 있었으나, 이미 그림 자체가 너무 복잡해져서 그렇게 하지 않았다.)
+
+2. '동일한 동작'을 수행하는 서로 다른 'git verb' 명령어들이 있다.
 현재 git의 버전은 '2.x'대 이다. 초기 git이 만들어진 이후에 진화하면서 새로운 'git verb' 명령어들이 추가되었다.
 새로 추가된 명령어들 중에 어떤 명령어는 기존에 다른 명령어에서 수행할 수 있는 기능을 수행하지만 좀더 상황에 맞는 이름의 'verb'가 부여되었다.
 예를 들어서 다음의 두 명령어는 동일한 동작을 수행한다.
@@ -174,9 +182,8 @@ git rm --cached <file name>
       ```bash
       git restore --staged <file name>
       ```
-      
-
-2. 어떤 'git verb' 명령어에서 '--staged'와 '--cached'는 동일한 의미로 사용된다.
+     
+3. 어떤 'git verb' 명령어에서 '--staged'와 '--cached'는 동일한 의미로 사용된다.
 즉 'git verb --staged'와 'git verb --cached'는 동일한 동작을 수행하는 명령어도 있다는 것이다. 
 예를 들어서 다음의 두 명령어는 동일한 동작을 수행한다. 모든 명령어에서 그런 것은 아니니 주의할 필요가 있다.
 
@@ -189,7 +196,7 @@ git rm --cached <file name>
       git diff --cached
       ```
      
-3. 'git diff'와 같은 명령어에서 출력하는 'diff 포맷'은 'patch 포맷'이다. 
+4. 'git diff'와 같은 명령어에서 출력하는 'diff 포맷'은 'patch 포맷'이다. 
 다음과 같이 해당 내용을 해석할 수 있다.
 
 ## How to perform a task
