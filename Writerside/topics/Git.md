@@ -28,9 +28,11 @@ Make sure that:
 - First prerequisite
 - Second prerequisite
 
-## 'merge' 동작을 함축하는 'git verb'들
+## '스테이징' 단계 없이 곧바로 '커밋'하기
 
 ## '삭제' 커밋 완료된 파일 복구하기
+
+## 'merge' 동작을 함축하는 'git verb'들
 
 ## 리베이싱
 
