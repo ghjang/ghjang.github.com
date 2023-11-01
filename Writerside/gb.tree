@@ -4,7 +4,7 @@
 
 <instance-profile id="gb"
                  name="Scribbles"
-                 start-page="_Cpp.md">
+                 start-page="Git.md">
 
     <toc-element topic="Overview.md"/>
     <toc-element topic="Git.md"/>
