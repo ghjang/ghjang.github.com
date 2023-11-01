@@ -1,9 +1,4 @@
----
-title: "[C++] Polymorphism and Variant"
-description: ""
-category: Computer Programming
-tags: [C++, Visitor Pattern, Design Pattern]
----
+# [C++] Polymorphism and Variant
 
 C++에서 사용 가능한 **virtual function(가상 함수)기반의 dynamic polymorphism(동적 다형성)**과 **template기반의 static polymorphism(정적 다형성)**에 대해서 몇자 적어 본다. polymorphism하면 보통 virtual function기반의 dynamic polymorphism만을 생각한다. 하지만 특정 부분에 있어서 동일 인터페이스를 가지고 함수호출과 같은 어떤 동작을 했을때 결과가 다르게 나타난다면 이를 polymorphic하다고 할 수 있다. 좀더 넓은 의미에서 생각해볼 필요가 있다.
 
