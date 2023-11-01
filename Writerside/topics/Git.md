@@ -126,7 +126,17 @@ git commit -a
 git commit -a -m "commit message"
 ```
 
+## 'Tracked' 상태의 파일 'Untracked' 상태로 변경하기
+
+'working directory'에 파일은 유지시키고 'Tracked' 상태의 파일을 'Untracked' 상태로 변경하고자 할 때 다음 명령어를 사용한다.
+
+```bash
+git rm --cached <file name>
+```
+
 ## '삭제' 커밋된 파일 복구하기
+
+## 커밋된 파일 '완전 삭제'하기
 
 ## 'merge' 동작을 함축하는 'git verb'들
 
@@ -146,10 +156,21 @@ git commit -a -m "commit message"
       
       ```bash
       git switch <branch name>
+      ``` 
+     
+   * 'Added' 상태로 'staging area'에 추가되어 'Tracked' 상태인 파일을 'Untracked' 상태로 변경
+      ```bash
+      git rm --cached <file name>
       ```
      
+      ```bash
+      git restore --staged <file name>
+      ```
+      
+
 2. 어떤 'git verb' 명령어에서 '--staged'와 '--cached'는 동일한 의미로 사용된다.
-즉 'git verb --staged'와 'git verb --cached'는 동일한 동작을 수행한다. 예를 들어서 다음의 두 명령어는 동일한 동작을 수행한다.
+즉 'git verb --staged'와 'git verb --cached'는 동일한 동작을 수행하는 명령어도 있다는 것이다. 
+예를 들어서 다음의 두 명령어는 동일한 동작을 수행한다. 모든 명령어에서 그런 것은 아니니 주의할 필요가 있다.
 
    * 'staging area'에 추가된 파일 변경사항을 '직전 커밋' 파일과 비교
       ```bash
