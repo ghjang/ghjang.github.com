@@ -24,10 +24,6 @@
 
 ![로컬 git 저장소 작업 폴더내 파일 상태 전이도](git_file_state_diagram.png){ width=1024 }
 
-Make sure that:
-- First prerequisite
-- Second prerequisite
-
 ## '저장소 상태' 파악하기
 
 ```bash
