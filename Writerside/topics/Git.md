@@ -29,7 +29,7 @@
 ```bash
 git status
 ```
-저장소 상태에 대해서 문장으로 다소 많은 양으로 설명을 출력해주는 명령어이다.
+저장소 상태에 대해서 문장으로 다소 많은 양의 설명을 포함해 출력해주는 명령어이다.
 
 ```bash
 $ git status
@@ -43,7 +43,7 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
-저장소 상태에 대한 설명과 함께 각 상태에서 다른 상태로 전이하기 위한 명령어 정보를 같이 포함해 출력해준다.
+저장소 상태에 대한 설명과 함께 각 상태에서 다른 상태로 전이하기 위한 명령어 정보를 같이 포함해 출력해주고 있다.
 
 ```bash
 git status -s
@@ -56,9 +56,9 @@ MM Writerside/topics/Git.md
 ```
 우선 저장소에 아무런 변경사항이 없을 경우에는 아무것도 출력되지 않는다.
 
-변경사항이 존재할 경우에는 위와 같이 변경된 파일에 대한 상태를 표시해준다. 예시 출력에서 'MM'으로 표시되어 있는데 이는 'staging area'에 추가되어
-'Modified'된 상태에 있고, 'working directory'에서도 'Modified'된 상태라는 것을 의미한다. 'MM'의 두글자 표현에서 왼쪽 글자는
-'staging area'에 대한 상태를, 오른쪽 글자는 'working directory'에 대한 상태를 나타낸다.
+변경사항이 존재할 경우에는 위와 같이 변경된 파일에 대한 상태를 표시해준다. 예시 출력에서는 1개의 'Git.md' 파일에 대해서 'MM'으로 표시되어 있는데
+이는 'staging area'에 추가되어 'Modified'된 상태에 있고, 'working directory'에서도 'Modified'된 상태라는 것을 의미한다.
+'MM'의 두글자 표현에서 왼쪽 글자는 'staging area'에 대한 상태를, 오른쪽 글자는 'working directory'에 대한 상태를 나타낸다.
 
 'staging area' 상태 표시 부분에 가능한 값은 '공백문자', 'A', 'M', 'D', 'R', 'C', 'U' 그리고 '?'가 있다.
 'working directory' 상태 표시 부분에 가능한 값은 '공백문자', 'M', 'D', 'R', 'C', 'U' 그리고 '?'가 있다.
@@ -80,22 +80,45 @@ Untracked 상태의 파일이 존재할 경우 이 명령어는 해당 파일에
 
 ## 리베이싱
 
+## 기타 참고사항
+
+1. '동일한 동작'을 수행하는 서로 다른 'git verb' 명령어들이 있다.
+현재 git의 버전은 '2.x'대 이다. 초기 git이 만들어진 이후에 진화하면서 새로운 'git verb' 명령어들이 추가되었다.
+새로 추가된 명령어들 중에 어떤 명령어는 기존에 다른 명령어에서 수행할 수 있는 기능을 수행하지만 좀더 상황에 맞는 이름의 'verb'가 부여되었다.
+예를 들어서 다음의 두 명령어는 동일한 동작을 수행한다.
+
+   * '작업 브랜치' 변경
+      ```bash
+      git checkout <branch name>
+      ```
+      
+      ```bash
+      git switch <branch name>
+      ```
+     
+2. 어떤 'git verb' 명령어에서 '--staged'와 '--cached'는 동일한 의미로 사용된다.
+즉 'git verb --staged'와 'git verb --cached'는 동일한 동작을 수행한다. 예를 들어서 다음의 두 명령어는 동일한 동작을 수행한다.
+
+   * 'working directory'내 파일 변경사항을 'staging area'에 추가된 변경사항과 비교,
+     'staging area'에 추가된 변경사항이 없을 경우에는 '직전 커밋'된 파일과 비교
+      ```bash
+      git diff --staged
+      ```
+   
+      ```bash
+      git diff --cached
+      ```
+
 ## How to perform a task
 
 Some introductory information.
 
 1. Step with a code block
-
    ```bash
     run this --that
    ```
-
+   
 2. Step with an image
    ![]()
 
 <!-- The 'src' attribute should contain the name of an image from the '/images' folder in your project -->
-
-3. Step with a list.
-   - List item
-   - List item
-   - List item
