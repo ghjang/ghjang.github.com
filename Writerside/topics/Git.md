@@ -67,7 +67,7 @@ MM Writerside/topics/Git.md
 
 'A'는 'Added'를 의미하고, 'M'은 'Modified'를 의미한다. 'D'는 'Deleted'를 의미하고, 'R'은 'Renamed'를 의미한다.
 
-'?'는 'Untracked'를 의미한다. 'Untracked' 상태는 'working directory'에만 존재하는 파일이다. 'staging area'에는 존재하지 않는다.
+'?'는 'Untracked'를 의미한다. 'Untracked'는 git에 의해서 'Tracking'되지 않고 'working directory'에만 존재하는 파일의 상태이다.
 Untracked 상태의 파일이 존재할 경우 이 명령어는 해당 파일에 대해서 '??'로 표시해준다. '??'가 아닌 다른 상태 문자로 표시되는 다른 파일들은 'Tracked'
 상태의 파일들이다. '.gitignore' 파일에 지정된 패턴의 파일들은 'Untracked' 상태의 파일이지만 이 명령어의 출력에서 사전에 배제되어 표시되지 않는다.
 
