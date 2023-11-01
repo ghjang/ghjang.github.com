@@ -111,8 +111,7 @@ git commit -a -m "commit message"
 2. 어떤 'git verb' 명령어에서 '--staged'와 '--cached'는 동일한 의미로 사용된다.
 즉 'git verb --staged'와 'git verb --cached'는 동일한 동작을 수행한다. 예를 들어서 다음의 두 명령어는 동일한 동작을 수행한다.
 
-   * 'working directory'내 파일 변경사항을 'staging area'에 추가된 변경사항과 비교,
-     'staging area'에 추가된 변경사항이 없을 경우에는 '직전 커밋'된 파일과 비교
+   * 'staging area'에 추가된 파일 변경사항을 '직전 커밋' 파일과 비교
       ```bash
       git diff --staged
       ```
@@ -132,5 +131,3 @@ Some introductory information.
    
 2. Step with an image
    ![]()
-
-<!-- The 'src' attribute should contain the name of an image from the '/images' folder in your project -->
