@@ -22,7 +22,7 @@
 
 완전한 내용을 기록한 것은 아니지만 다음의 그림을 우선 참고할 수 있다.
 
-![git local working tree](git_file_state_diagram.png){ width=1024 }
+![로컬 git 저장소 작업 폴더내 파일 상태 전이도](git_file_state_diagram.png){ width=1024 }
 
 Make sure that:
 - First prerequisite
