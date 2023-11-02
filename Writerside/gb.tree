@@ -9,6 +9,7 @@
     <toc-element topic="Overview.md"/>
     <toc-element topic="Git.md"/>
     <toc-element topic="_Cpp.md">
+        <toc-element topic="2015-11-20-about-foreachargument-function-template.md"/>
         <toc-element topic="2015-11-10-hanoi-tower.md"/>
         <toc-element topic="2015-11-03-cpp11-initializer_list.md"/>
         <toc-element topic="2015-11-02-cpp11-ratio.md"/>

@@ -1,9 +1,4 @@
----
-title: "About ForEachArgument Function Template"
-description: ""
-category: Computer Programming
-tags: [C++, C++11, C++14, C++17, C++ TMP]
----
+# About ForEachArgument Function Template
 
 최근 본 다음 동영상에서 소개한 `for_each_argument` function template과 관련하여 몇자 적는다. 해당 function template에 대해서는 동영상에서 매우 자세히 설명한다. 여기서는 `for_each_argument`를 직접 구현한다고 했을 경우 최종 결과물에 이르기까지의 과정에 대해서 생각해본다. 결과물의 코드를 이미 알고 있기 때문에 좀 작위적인 부분들이 있겠다. `for_each_argument`는 자체적으로도 의미가 있지만 또다른 기능을 구현하는 데 훌륭한 빌딩블럭으로써 사용할 수 있다.
 
@@ -242,7 +237,7 @@ void for_each_element(F f, Args&&... args) {
 이 것은 두부분으로 나누어서 생각하면되겠다.
 
 1. `[](...){}`: 가변인자를 받아서 아무것도 하지 않는 lambda 표현
-1. `(f(args), 0)...`: 앞서 `std::initializer_list`를 사용한 버전에서 언급한 내용과 동일. parameter pack 확장. lambda 함수의 인자로 넘기게되는데, 이와 같이 **함수호출 인자리스트 context에서 parameter pack 확장을 허용**한다.
+2. `(f(args), 0)...`: 앞서 `std::initializer_list`를 사용한 버전에서 언급한 내용과 동일. parameter pack 확장. lambda 함수의 인자로 넘기게되는데, 이와 같이 **함수호출 인자리스트 context에서 parameter pack 확장을 허용**한다.
 
 종합하면 parameter pack을 확장해서 `args`부분에 해당하는 인자 개수만큼 얻어지는 결과 `0`들의 값들을 아무것도 하지 않는 lambda에 전부 넘긴다는 것이다. 결과적으로 `std::initializer_list` 구현과정에서 언급한 `f`의 리턴값 문제와 컴파일러 경고 문제를 말끔히 해결한다.
 
@@ -257,7 +252,7 @@ void for_each_element(F f, Args&&... args) {
 + [Variadic Templates are Funadic](https://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Variadic-Templates-are-Funadic): Andrei Alexandrescu가 진행하는 강연이다. Parameter pack expansion rule에 대해서 자세히 설명되어 있다.
 + [Using Variadic Templates cleanly](http://florianjw.de/en/variadic_templates.html): `std::initializer_list`와 variadic template을 적절히 활용하는 방법을 자세히 설명한다. 맨 하단의 `sequential_foreach`는 거의 `ForEachArgument`와 동일하다.
 + 사용한 예제 코드
-    - <https://github.com/ghjang/rocky/blob/master/rocky/base/ForEachArgument.h>
-    - <https://github.com/ghjang/rocky/blob/master/rocky/test/base/ForEachArgumentTest.cpp>
-    - <https://github.com/ghjang/rocky/blob/master/rocky/base/ForEach.h>: `ForEachArgument`를 활용하여 구현한 한가지 예.
-    - <https://github.com/ghjang/rocky/blob/master/rocky/test/base/ForEachTest.cpp>
+  1. [ForEachArgument.h](https://github.com/ghjang/rocky/blob/master/rocky/base/ForEachArgument.h)
+  2. [ForEachArgumentTest.cpp](https://github.com/ghjang/rocky/blob/master/rocky/test/base/ForEachArgumentTest.cpp)
+  3. [ForEach.h](https://github.com/ghjang/rocky/blob/master/rocky/base/ForEach.h): `ForEachArgument`를 활용하여 구현한 한가지 예
+  4. [ForEachTest.cpp](https://github.com/ghjang/rocky/blob/master/rocky/test/base/ForEachTest.cpp)
