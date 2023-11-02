@@ -254,5 +254,5 @@ void for_each_element(F f, Args&&... args) {
 + 사용한 예제 코드
   1. [ForEachArgument.h](https://github.com/ghjang/rocky/blob/master/rocky/base/ForEachArgument.h)
   2. [ForEachArgumentTest.cpp](https://github.com/ghjang/rocky/blob/master/rocky/test/base/ForEachArgumentTest.cpp)
-  3. [ForEach.h](https://github.com/ghjang/rocky/blob/master/rocky/base/ForEach.h): `ForEachArgument`를 활용하여 구현한 한가지 예
+  3. [ForEach.h](https://github.com/ghjang/rocky/blob/master/rocky/base/ForEach.h): `ForEachArgument` 활용 예
   4. [ForEachTest.cpp](https://github.com/ghjang/rocky/blob/master/rocky/test/base/ForEachTest.cpp)
