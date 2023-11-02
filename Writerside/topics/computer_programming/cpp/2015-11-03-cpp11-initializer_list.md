@@ -1,9 +1,4 @@
----
-title: "[C++11] std::initializer_list"
-description: ""
-category: Computer Programming
-tags: [C++, C++11]
----
+# [C++11] std::initializer_list
 
 C++11 **brace initialization** 표기법의 결과물이 `std::initializer_list`이다. 리스트의 원소 타입은 자동으로 deduction된다. 내용이 간단한 편이기 때문에 하단의 레퍼런스 링크를 직접 참고하면 되겠다.
 
@@ -83,5 +78,4 @@ for (auto i: c.data_) {
 
 ## 참고
 + [std::initializer_list](http://en.cppreference.com/w/cpp/utility/initializer_list)
-+ 사용한 예제 코드
-    - <https://github.com/ghjang/personal_study/blob/master/cpp/initializer_list/main.cpp>
++ [사용된 예제 코드](https://github.com/ghjang/personal_study/blob/master/cpp/initializer_list/main.cpp)
