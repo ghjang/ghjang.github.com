@@ -1,9 +1,4 @@
----
-title: "[C++14] std::integer_sequence"
-description: ""
-category: Computer Programming
-tags: [C++14, C++ TMP]
----
+# [C++14] std::integer_sequence
 
 C++14에 추가된 `std::integer_sequence`는 **C++ Template metaprogramming**에 아주 유용한 도구이다. 하단의 '참고'에 있는 **cppreference** 링크 글의 내용을 숙지하도록 할 것. 내용이 길지도 않다. 예제에서 보이는 사용법은 일종의 idiom으로 생각하고 익숙해질 필요가 있을 정도다.
 
@@ -197,8 +192,8 @@ static_assert(is_same<integer_sequence<std::size_t, 1, 1, 2, 6, 24>, factorial_i
 
 ## 참고
 + [std::integer_sequence](http://en.cppreference.com/w/cpp/utility/integer_sequence): 예제 포함 전체 내용을 숙지하는 것이 좋겠다. 예제가 좋다.
-+ <https://github.com/picanumber/CODEine/blob/master/integer_sequence.h>: Variadic Template를 이용한 Recursive Inheritance를 통해서 Compile-time Integer Sequence를 생성해내는 소스이다. 기억해둘만한 기법이다.
++ [integer_sequence.h](https://github.com/picanumber/CODEine/blob/master/integer_sequence.h): Variadic Template을 이용한 Recursive Inheritance를 통해서 Compile-time Integer Sequence를 생성해내는 소스이다. 기억해둘만한 기법이다.
 + 사용 예제 코드
-    - <https://github.com/ghjang/personal_study/blob/master/cpp/integer_sequence/main.cpp>
-    - <https://github.com/ghjang/rocky/blob/master/rocky/base/IntegerSequenceUtility.h>
-    - <https://github.com/ghjang/rocky/blob/master/rocky/test/base/IntegerSequenceUtilityTest.cpp>
+    - [main.cpp](https://github.com/ghjang/personal_study/blob/master/cpp/integer_sequence/main.cpp)
+    - [IntegerSequenceUtility.h](https://github.com/ghjang/rocky/blob/master/rocky/base/IntegerSequenceUtility.h)
+    - [IntegerSequenceUtilityTest.cpp](https://github.com/ghjang/rocky/blob/master/rocky/test/base/IntegerSequenceUtilityTest.cpp)
