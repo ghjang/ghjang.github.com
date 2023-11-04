@@ -12,7 +12,7 @@ Fold를 간략하게 요약하면 '입력 열을 특정 연산에 대해서 접�
 
 Fold는 두가지가 있다고 한다: **FoldRight, FoldLeft**
 
-### FoldRight
+### FoldRight { id="fold-right" }
 
 **F**를 두개의 인자를 받고 1개의 값을 리턴하는 **이항함수**라고 하자. 편의를 위해서 F를 **op(operation)**라고하자. **t0,t1,...,tn**은 함수에 인자로 전달할 값의 열이라고 하자. **init**은 어떤 초기값에 해당하는 것이라고 하자. 이상태에서 FoldRight를 추상적인 개념으로 다음과 같이 표현할 수 있다:
 
@@ -22,7 +22,7 @@ Fold는 두가지가 있다고 한다: **FoldRight, FoldLeft**
 
 op는 무엇이던지 될 수 있겠다. 흔하게드는 예가 **+**, **-** 연산이다.
 
-### FoldLeft
+### FoldLeft { id="fold-left" }
 
 먼저 설명한 FoldRight에서의 가정과 같다고 하면 FoldLeft를 추상적인 개념으로 다음과 같이 표현할 수 있다:
 
@@ -73,7 +73,7 @@ REQUIRE(15 == sum); // refer to catch.hpp
 
 나름 자체적으로 구현한 Compile-time 버전의 FoldRight와 FoldLeft 코드는 아래와 같다. 
 
-### Compile-time FoldRight
+### FoldRight { id="fold-right-compile-time" }
 
 ```c++
 template <typename T>
@@ -136,7 +136,7 @@ using sum_t = typename FoldRight<
 static_assert(sum_t() == 15, "1 + (2 + (3 + (4 + (5 + 0)))) = 15");
 ```
 
-### Compile-time FoldLeft
+### FoldLeft { id="fold-left-compile-time" }
 
 ```c++
 // NOTE: refer to the above description.
@@ -282,7 +282,7 @@ static_assert(
 + [C++17 표준 'N4295, Folding expressions'](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4295.html)
 + [C++17 fold expression reference](http://en.cppreference.com/w/cpp/language/fold) 
 + [Fun with folds](https://ngathanasiou.wordpress.com/2015/12/15/182/): C++17 Fold에 대한 블로그 글. 
-+ [tuple_cat in a Dumb Way]({{ site.baseurl }}{% post_url 2016-02-11-tuple_cat-in-a-dumb-way %}): C++17 fold expression 관련 내용 일부를 포함한 다른 블로그 포스트이다.
++ [tuple_cat in a Dumb Way](2016-02-11-tuple_cat-in-a-dumb-way.md): C++17 fold expression 관련 내용 일부를 포함한 다른 블로그 포스트이다.
 + 사용한 예제 코드
     - [rocky/skull/FoldL.h](https://github.com/ghjang/rocky/blob/master/rocky/skull/FoldL.h)
     - [rocky/skull/FoldR.h](https://github.com/ghjang/rocky/blob/master/rocky/skull/FoldR.h)
