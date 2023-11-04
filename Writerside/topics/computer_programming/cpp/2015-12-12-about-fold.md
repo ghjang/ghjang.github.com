@@ -1,9 +1,4 @@
----
-title: "Fold it the way you like"
-description: ""
-category: Computer Programming
-tags: [Functional Programming, C++ TMP]
----
+# Fold it the way you like
 
 ## What is Fold about?
 
@@ -78,7 +73,7 @@ REQUIRE(15 == sum); // refer to catch.hpp
 
 나름 자체적으로 구현한 Compile-time 버전의 FoldRight와 FoldLeft 코드는 아래와 같다. 
 
-### FoldRight
+### Compile-time FoldRight
 
 ```c++
 template <typename T>
@@ -141,7 +136,7 @@ using sum_t = typename FoldRight<
 static_assert(sum_t() == 15, "1 + (2 + (3 + (4 + (5 + 0)))) = 15");
 ```
 
-### FoldLeft
+### Compile-time FoldLeft
 
 ```c++
 // NOTE: refer to the above description.
@@ -282,16 +277,16 @@ static_assert(
 
 ## 참고
 
-+ <http://www.wolfram.com/language/elementary-introduction/29-more-about-pure-functions.html>: **Wolfram Language**의 `FoldList` 함수에 대한 설명이 포함되어있다. `FoldList`는 위에서 설명한 FoldLeft의 개념이다. 그림과 함께 설명되어있어서 Fold에 대해서 이해하는데 많은 도움을 받을 수 있다.
-+ <http://www.cs.nott.ac.uk/~pszgmh/fold.pdf>: 'A tutorial on the universality and expressiveness of fold'. **Haskell**의 fold관련 설명이 포함되어있다.
-+ <http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4295.html>: C++17 표준 'N4295, Folding expressions'
-+ <http://en.cppreference.com/w/cpp/language/fold>: C++17 fold expression reference 
-+ <https://ngathanasiou.wordpress.com/2015/12/15/182/>: 'Fun with folds'. C++17 Fold에 대한 블로그 글. 
++ [FoldList](http://www.wolfram.com/language/elementary-introduction/29-more-about-pure-functions.html): **Wolfram Language**의 `FoldList` 함수에 대한 설명이 포함되어있다. `FoldList`는 위에서 설명한 FoldLeft의 개념이다. 그림과 함께 설명되어있어서 Fold에 대해서 이해하는데 많은 도움을 받을 수 있다.
++ [A tutorial on the universality and expressiveness of fold](http://www.cs.nott.ac.uk/~pszgmh/fold.pdf): PDF 파일. **Haskell**의 fold관련 설명이 포함되어있다.
++ [C++17 표준 'N4295, Folding expressions'](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4295.html)
++ [C++17 fold expression reference](http://en.cppreference.com/w/cpp/language/fold) 
++ [Fun with folds](https://ngathanasiou.wordpress.com/2015/12/15/182/): C++17 Fold에 대한 블로그 글. 
 + [tuple_cat in a Dumb Way]({{ site.baseurl }}{% post_url 2016-02-11-tuple_cat-in-a-dumb-way %}): C++17 fold expression 관련 내용 일부를 포함한 다른 블로그 포스트이다.
 + 사용한 예제 코드
-    - <https://github.com/ghjang/rocky/blob/master/rocky/skull/FoldL.h>
-    - <https://github.com/ghjang/rocky/blob/master/rocky/skull/FoldR.h>
-    - <https://github.com/ghjang/rocky/blob/master/rocky/test/skull/FoldLTest.cpp>
-    - <https://github.com/ghjang/rocky/blob/master/rocky/test/skull/FoldRTest.cpp>
-    - <https://github.com/ghjang/rocky/blob/master/rocky/app/RemoveIf.h>
-    - <https://github.com/ghjang/rocky/blob/master/rocky/test/app/RemoveIfTest.cpp>
+    - [rocky/skull/FoldL.h](https://github.com/ghjang/rocky/blob/master/rocky/skull/FoldL.h)
+    - [rocky/skull/FoldR.h](https://github.com/ghjang/rocky/blob/master/rocky/skull/FoldR.h)
+    - [rocky/test/skull/FoldLTest.cpp](https://github.com/ghjang/rocky/blob/master/rocky/test/skull/FoldLTest.cpp)
+    - [rocky/test/skull/FoldRTest.cpp](https://github.com/ghjang/rocky/blob/master/rocky/test/skull/FoldRTest.cpp)
+    - [master/rocky/app/RemoveIf.h](https://github.com/ghjang/rocky/blob/master/rocky/app/RemoveIf.h)
+    - [rocky/test/app/RemoveIfTest.cpp](https://github.com/ghjang/rocky/blob/master/rocky/test/app/RemoveIfTest.cpp)
