@@ -2,11 +2,11 @@
 
 **Wolfram Language**에서 아래와 같은 Animation GIF를 만들어 보았다.
 
-![Animated Sin Graph]({{ site.postsResBase }}/2015-12-14/hello_animated_sin_ani.gif?raw=true)
+![Animated Sin Graph](hello_animated_sin_ani.gif)
 
 사용한 코드는 다음과 같다.
 
-```mma
+```
 Export["hello_animated_sin_ani.gif", Join[Table[Plot[ Sin[x*n], {x, 0, 2 Pi}, ImageSize -> 400], {n, 1, 10, 0.1}], Table[Plot[ Sin[x*n], {x, 0, 2 Pi}, ImageSize -> 400], {n, 10, 1, -0.1}]], "DisplayDurations" -> {0.025}]
 ```
 
