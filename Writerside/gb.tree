@@ -6,7 +6,6 @@
                  name="Scribbles"
                  start-page="Git.md">
 
-    <toc-element topic="Overview.md"/>
     <toc-element topic="Git.md"/>
     <toc-element topic="_Cpp.md">
         <toc-element topic="2015-12-12-about-fold.md"/>
