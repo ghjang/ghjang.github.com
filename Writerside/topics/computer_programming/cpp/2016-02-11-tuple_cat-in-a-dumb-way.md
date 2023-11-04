@@ -1,9 +1,4 @@
----
-title: "tuple_cat in a Dumb Way"
-description: ""
-category: Computer Programming
-tags: [C++]
----
+# tuple_cat in a Dumb Way
 
 n개의 `std::tuple` 객체들을 하나의 `std::tuple` 객체로 합치는 [std::tuple_cat](http://en.cppreference.com/w/cpp/utility/tuple/tuple_cat) 함수를 직접 작성하는 **연습**을 해보도록 하겠다. 여기서는 효율성등을 고려하지 않고 기본적인 **C++ template** 사용법만을 가지고 구현을 시도한다.
 
@@ -339,4 +334,4 @@ C++17 fold 관련하여 좀더 자세히 알고 싶다면 아래 '참고' 섹션
 + [Lazily evaluated folds in C++](https://ngathanasiou.wordpress.com/2016/03/22/lazily-evaluated-folds-in-c/): 'Fun with folds' 글을 쓴 저자의 C++17 fold 관련내용 제2탄. **Expression Template**관련 내용이 다루어진다. '어디까지 가는거냐?' :)
 + [Fold it the way you like]({{ site.baseurl }}{% post_url 2015-12-12-about-fold %}): C++17 fold에 관한 내용은 아님. C++ TMP 공부하는 와중에 정리해본 블로그 포스트임.
 + 사용한 예제 코드
-    - <https://github.com/ghjang/personal_study/blob/master/cpp/tuple_cat/main.cpp>
+    - [cpp/tuple_cat/main.cpp](https://github.com/ghjang/personal_study/blob/master/cpp/tuple_cat/main.cpp)
