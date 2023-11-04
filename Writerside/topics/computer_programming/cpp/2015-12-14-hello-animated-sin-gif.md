@@ -1,9 +1,4 @@
----
-title: "Hello! Animated Sin GIF"
-description: ""
-category: Computer Programming
-tags: [Wolfram Language, Functional Programming, Math, Animated GIF]
----
+# Hello! Animated Sin GIF
 
 **Wolfram Language**에서 아래와 같은 Animation GIF를 만들어 보았다.
 
