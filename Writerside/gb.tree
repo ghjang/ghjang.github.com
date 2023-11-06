@@ -24,7 +24,9 @@
         <toc-element topic="2015-09-19-things-to-remember-when-using-c-template.md"/>
         <toc-element topic="Tutorial.md"/>
     </toc-element>
-    <toc-element topic="_Music.md"/>
+    <toc-element topic="_Music.md">
+        <toc-element topic="2016-08-13-artificial-rhythmic-groupings.md"/>
+    </toc-element>
     <toc-element topic="etc.md">
         <toc-element topic="2015-12-14-hello-animated-sin-gif.md"/>
     </toc-element>
