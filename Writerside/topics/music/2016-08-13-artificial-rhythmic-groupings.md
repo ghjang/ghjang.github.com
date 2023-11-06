@@ -50,21 +50,21 @@
 
 예를 들어서 **'4분음표 1박을 1/3박씩 세등분'** 하기 위해서는 다음과 같은 **셋잇단음표(triplet)** 표기를 사용한다는 것이다.
 
-<img alt='Quater Note Triplet Score' src='quater_note_triplet_score.png' width="400px"/>
+<img alt='Quater Note Triplet Score' src='quater_note_triplet_score.png' width="400"/>
 
 4/4박자의 1마디에서 첫박은 4분음표로, 3번째 박은 셋잇단음표로 표시한 것이다. 이 표기를 **MIDI노트** 표기로 나타낸 것이 다음 그림이다. 악보에서보다 훨씬 이부분에 대해서는 그 의미를 확실히 쉽게 이해할 수 있다.
 
-<img alt='Quater Note Triplet MIDI Note' src='quater_note_triplet_piano_roll.png' width="400px"/>
+<img alt='Quater Note Triplet MIDI Note' src='quater_note_triplet_piano_roll.png' width="400"/>
 
 **'4분음표 1박을 1/5박씩 5등분'** 해서 **다섯잇단음표(quintuplet)** 로 악보에 표기하면 다음과 같다. 참고로 위의 두 그림은 **Apple Logic Pro X** 상에서 화면을 캡쳐한 것이다. 아래는 **Noteflight**라는 웹사이트에서 음표를 입력한후 캡쳐한 화면이다. (Logic Pro X 상에서 다섯잇단음표 악보표기를 제대로 표시하지 못한다는 것을 나중에서야 알았다...)
 
-<img alt='Quater Note Quintuplet' src='quater_note_quintuplet_score.png' width="400px"/>
+<img alt='Quater Note Quintuplet' src='quater_note_quintuplet_score.png' width="400"/>
 
 마지막 예제로 **'4분음표 1박을 1/3박씩 세등분하고, 마지막 1/3박은 다시 이등분 그러니까 1/6박으로'** 쪼개서 표기하면 다음과 같다. 악보표기는 Noteflight에서 캡쳐한 것이고 MIDI노트 화면은 Logic Pro X에서 했다.
 
-<img alt='Quater Note Triplet Score 1' src='quater_note_triplet_score_1.png' width="400px"/>
+<img alt='Quater Note Triplet Score 1' src='quater_note_triplet_score_1.png' width="400"/>
 
-<img alt='Quater Note Triplet MIDI Note 1' src='quater_note_triplet_piano_roll_2.png' width="400px"/>
+<img alt='Quater Note Triplet MIDI Note 1' src='quater_note_triplet_piano_roll_2.png' width="400"/>
 
 ---
 
