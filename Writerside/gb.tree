@@ -28,8 +28,8 @@
         <toc-element topic="2016-08-13-artificial-rhythmic-groupings.md"/>
     </toc-element>
     <toc-element topic="etc.md">
-        <toc-element topic="몇가지-참고할만한-리눅스-커맨드.md"/>
-        <toc-element topic="brew-자체-업데이트.md"/>
+        <toc-element topic="몇가지-참고할-만한-리눅스-커맨드.md"/>
+        <toc-element topic="macOS에서-참고할-만한-커맨드.md"/>
         <toc-element topic="2015-12-14-hello-animated-sin-gif.md"/>
     </toc-element>
 </instance-profile>
