@@ -160,7 +160,12 @@ git rm --cached <file name>
 
 ## 기타 참고사항
 
-1. 'git rm -f'를 'Staged, Added' 상태의 파일에 대해서 실행하면 'Deleted' 상태 전이 없이 곧바로 파일이 'working folder'에서 삭제된다.<br/><br/>
+1. 'working folder'에서 'Tracked' 상태의 파일을 'rm'으로 삭제후 'git pull' 명령어를 실행해도 삭제된 파일이 다시 '복구'되지 않는다.<br/><br/>
+'SVN'의 경우는 'working folder'에서 파일을 'rm'으로 삭제후 'svn update' 명령어를 실행하면 삭제된 파일이 다시 '복구'된다.<br/><br/>
+'git'의 경우는 'working folder'에서 'Tracked' 상태의 파일을 'rm'으로 삭제시 'Deleted' 상태로 전이될 뿐이다. 'Deleted' 상태의 파일은
+'git restore / git restore --staged' 명령어를 이용해서 복구할 수 있다. 이글 상단의 '파일 상태 전이' 그림을 참조할 것.
+
+2. 'git rm -f'를 'Staged, Added' 상태의 파일에 대해서 실행하면 'Deleted' 상태 전이 없이 곧바로 파일이 'working folder'에서 삭제된다.<br/><br/>
 'Added' 상태로 전이후 해당 파일에 대해서 커밋이 수행된 적이 없기 때문에 'git rm -f' 명령어 실행시 별다르게 '삭제 자체' 관련 기록을 유지할 필요가 없다는
 상황으로 보인다. 'Staged, Modified' 상태와 'Unstaged, Unmodified/Modified' 상태의 파일에 대해서 'git rm -f' 명령어를 실행하면 
 'Staged, Deleted' 상태로 전이되고 파일이 'working folder'에서 삭제된다. (이 참고사항의 내용을 이 글 상단의 '파일 상태 전이' 그림에 마저 추가할
