@@ -205,15 +205,3 @@ git rm --cached <file name>
      
 4. 'git diff'와 같은 명령어에서 출력하는 'diff 포맷'은 'patch 포맷'이다. 
 다음과 같이 해당 내용을 해석할 수 있다.
-
-## How to perform a task
-
-Some introductory information.
-
-1. Step with a code block
-   ```bash
-    run this --that
-   ```
-   
-2. Step with an image
-   ![]()
