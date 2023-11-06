@@ -1,22 +1,5 @@
 # Artificial Rhythmic Groupings?
 
-<link href='{{ site.url }}/css/bravura_smufl_font.css' type='text/css' rel='stylesheet'>
-
-<style type='text/css' media='all'>
-    section.main-content {
-        overflow: visible;
-    }
-    table {
-        font-family: 'Bravura Text';
-        overflow: visible;
-    }
-    table th, table td {
-        vertical-align: middle;
-        white-space: nowrap;
-        overflow: visible;
-    }
-</style>
-
 **Artificial Rhythmic Groupings**는 우리말로는 **잇단음표**로 번역한다.
 
 > _'응? 뭔 용어번역이 이러냐?'_
