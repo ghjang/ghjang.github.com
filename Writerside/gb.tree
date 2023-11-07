@@ -7,7 +7,7 @@
                  start-page="Git.md">
 
     <toc-element topic="Git.md"/>
-    <toc-element topic="_Cpp.md">
+    <toc-element topic="_Cpp.md">q
         <toc-element topic="2016-02-11-tuple_cat-in-a-dumb-way.md"/>
         <toc-element topic="2015-12-12-about-fold.md"/>
         <toc-element topic="2015-11-22-cpp14-integer_sequence.md"/>
@@ -28,8 +28,8 @@
         <toc-element topic="2016-08-13-artificial-rhythmic-groupings.md"/>
     </toc-element>
     <toc-element topic="etc.md">
-        <toc-element topic="몇가지-참고할-만한-리눅스-커맨드.md"/>
-        <toc-element topic="macOS에서-참고할-만한-커맨드.md"/>
+        <toc-element topic="some_references_to_linux_commands.md"/>
+        <toc-element topic="some_references_to_macos_commands.md"/>
         <toc-element topic="2015-12-14-hello-animated-sin-gif.md"/>
     </toc-element>
 </instance-profile>
