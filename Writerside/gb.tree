@@ -30,6 +30,7 @@
         <toc-element topic="Tutorial.md"/>
     </toc-element>
     <toc-element topic="_Music.md">
+        <toc-element topic="2016-09-05-musical-scale.md"/>
         <toc-element topic="2016-08-13-artificial-rhythmic-groupings.md"/>
     </toc-element>
     <toc-element topic="etc.md">

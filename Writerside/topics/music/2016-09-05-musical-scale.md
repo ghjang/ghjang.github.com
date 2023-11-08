@@ -1,0 +1,3 @@
+# Scale, Scale, Scale,...
+
+**NOTE: It will be written later.** ~ :)
