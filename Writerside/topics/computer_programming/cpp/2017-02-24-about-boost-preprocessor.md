@@ -1,17 +1,13 @@
----
-title: "About Preprocessor Metaprogramming by Using Boost.Preprocessor"
-description: ""
-category: Computer Programming
-tags: [C++, C++ TMP]
----
+# About Preprocessor Metaprogramming by Using Boost.Preprocessor
 
-2017/02/17(금)과 2017/02/24(금) 2회에 걸쳐 참여중인 온라인 행아웃 C++ 스터디 그룹에서 **Boost.Preprocessor를 이용한 Preprocessor Metaprogramming**에 대해 발표 했었다. 아래는 발표했던 화면을 녹화한 영상이다.
+2017/02/17(금)과 2017/02/24(금) 2회에 걸쳐 참여중인 온라인 행아웃 C++ 스터디 그룹에서 **Boost.Preprocessor를 이용한
+Preprocessor Metaprogramming**에 대해 발표 했었다. 아래는 발표했던 화면을 녹화한 영상이다.
 
 ---
 
 ## 발표 자료
 
-+ <https://github.com/ghjang/personal_study/tree/master/cpp/Boost.Preprocessor>
++ cpp/Boost.Preprocessor : <https://github.com/ghjang/personal_study/tree/master/cpp/Boost.Preprocessor>
 
 ---
 
@@ -27,8 +23,7 @@ tags: [C++, C++ TMP]
 
 ---
 
-## 참고
+## 참고사항
 
 + [Boost.Preprocessor](http://www.boost.org/doc/libs/1_63_0/libs/preprocessor/doc/index.html)
-+ 발표에 사용한 소스 위치
-    - <https://github.com/ghjang/personal_study/tree/master/cpp/Boost.Preprocessor>
++ 발표에 사용한 소스 파일 위치 : <https://github.com/ghjang/personal_study/tree/master/cpp/Boost.Preprocessor>
