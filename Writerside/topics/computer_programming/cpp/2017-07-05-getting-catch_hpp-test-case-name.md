@@ -1,9 +1,4 @@
----
-title: "Getting catch.hpp's Test Case Name"
-description: ""
-category: Computer Programming
-tags: [C++, Catch, Testing]
----
+# Getting catch.hpp's Test Case Name
 
 `catch.hpp`의 `TEST_CASE` 매크로를 사용해 작성한 테스트 케이스의 코드에서 **지정한 테스트 케이스의 이름 자체**를 얻어 오는 방법을 간단히 설명한다.
 
@@ -190,5 +185,5 @@ TEST_CASE("test_case_0", "[my_test]")
 
 ## References
 
-+ <https://github.com/philsquared/Catch>: Catch C++ 테스트 프레임워크
-+ <https://github.com/ghjang/personal_study/tree/master/cpp/catch>: 간단한 Catch 리스너 테스트 코드를 포함함.
++ [Catch C++ 테스트 프레임워크](https://github.com/philsquared/Catch)
++ [간단한 Catch 리스너 테스트 코드](https://github.com/ghjang/personal_study/tree/master/cpp/catch)
