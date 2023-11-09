@@ -1,9 +1,4 @@
----
-title: "Mac OS X Keyboard Shortcuts"
-description: ""
-category: 
-tags: [Mac OS X]
----
+# Mac OS X Keyboard Shortcuts
 
 For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support.apple.com/en-us/HT201236).
 
