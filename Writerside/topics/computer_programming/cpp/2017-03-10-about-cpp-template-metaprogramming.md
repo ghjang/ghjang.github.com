@@ -1,13 +1,8 @@
----
-title: "About C++ Template Metaprogramming"
-description: ""
-category: Computer Programming
-tags: [C++, C++ TMP]
----
+# About C++ Template Metaprogramming
 
 ## 발표 자료
 
-+ <https://github.com/ghjang/cpp_practical_tmp_study>
++ cpp_practical_tmp_study : <https://github.com/ghjang/cpp_practical_tmp_study>
 
 ---
 
@@ -33,7 +28,7 @@ tags: [C++, C++ TMP]
 
 [![About C++ Template Metaprogramming - Part 4](https://img.youtube.com/vi/1E7mIwuL2x0/0.jpg)](http://www.youtube.com/watch?v=1E7mIwuL2x0)
 
-* <https://github.com/ghjang/skull>
+* skull : <https://github.com/ghjang/skull>
 
 ---
 
@@ -41,4 +36,4 @@ tags: [C++, C++ TMP]
 
 [![About C++ Template Metaprogramming - Part 5](https://img.youtube.com/vi/AVk_p6GZyR8/0.jpg)](http://www.youtube.com/watch?v=AVk_p6GZyR8)
 
-* <https://github.com/ghjang/skull>
+* skull : <https://github.com/ghjang/skull>
