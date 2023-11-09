@@ -1,9 +1,4 @@
----
-title: "Building Prototype clang for Metaclass"
-description: ""
-category: Computer Programming
-tags: [C++]
----
+# Building Prototype clang for Metaclass
 
 최근 *Herb Sutter*의 **Mataclass**관련 *Accu* 동영상을 보고 좀 놀랬다.
 

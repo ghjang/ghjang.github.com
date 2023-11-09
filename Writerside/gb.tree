@@ -14,6 +14,7 @@
         <toc-element topic="temp-memo.md"/>
     </toc-element>
     <toc-element topic="_Cpp.md">
+        <toc-element topic="2017-08-10-building_prototype_clang_for_metaclass.md"/>
         <toc-element topic="2017-07-29-dot-dot-dot-is-everywhere.md"/>
         <toc-element topic="2017-07-05-getting-catch_hpp-test-case-name.md"/>
         <toc-element topic="2017-03-10-about-cpp-template-metaprogramming.md"/>
