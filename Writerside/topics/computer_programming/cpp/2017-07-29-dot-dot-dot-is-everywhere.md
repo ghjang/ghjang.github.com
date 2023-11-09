@@ -1,9 +1,4 @@
----
-title: "dot-dot-dot is everywhere."
-description: ""
-category: Computer Programming
-tags: [C++, C++ TMP]
----
+# dot-dot-dot is everywhere
 
 C++에 관심이 좀 있다면 "`...`" 표기를 C++11부터 도처에서 볼 수 있다. 여기서는 머리 속 정리도 할 겸 "`...`" 표기가 얼마나 많이 C++에서 사용되고 있는지 나름대로 정리해 본다.
 
@@ -479,4 +474,4 @@ void f()
 
 parameter pack과 관련된 좀더 자세한 사항은 다음을 참고하라:
 
-* <http://en.cppreference.com/w/cpp/language/parameter_pack>
+* parameter_pack : <http://en.cppreference.com/w/cpp/language/parameter_pack>
