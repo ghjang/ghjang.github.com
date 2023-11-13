@@ -26,6 +26,7 @@ git에 대한 일반적인 사용법에 대해서는 아래 학습자료를 참�
 
 ![로컬 git 저장소 작업 폴더내 파일 상태 전이도](git_file_state_diagram.png){ width=1024 }
 
-- 'git rm --cached' 명령어와 관련해 이 글의 **'Tracked' 상태의 파일 'Untracked' 상태로 변경하기** 섹션의 내용 참조할 것.
-- 'git rm -f' 명령어와 관련해 이 글의 **[기타 참고사항](git-etc.md)** 페이지 참조할 것.
-- 'git commit -a' 명령어와 관련해 이 글의 **'Unstaged, Modified' 상태의 파일을 '스테이징' 단계 없이 곧바로 '커밋'하기** 섹션의 내용 참조할 것.
+- 'git rm --cached' 명령어와 관련해 **['Tracked' 상태의 파일 'Untracked' 상태로 변경하기](git-rm-cached.md)** 페이지 참조할 것.
+- 'git rm -f' 명령어와 관련해 **[기타 참고사항](git-etc.md)** 페이지 참조할 것.
+- 'git commit -a' 명령어와 관련해 **['Unstaged, Modified' 상태의 파일을 '스테이징' 단계 없이 곧바로 '커밋'하기](git-commit-a.md)** 페이지
+  참조할 것.
