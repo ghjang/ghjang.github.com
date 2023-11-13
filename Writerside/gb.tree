@@ -7,7 +7,7 @@
                  start-page="_Git.md">
 
     <toc-element topic="_Git.md">
-        <toc-element topic="about-some-git-configuration.md"/>
+        <toc-element topic="git-config.md"/>
         <toc-element topic="git-status.md"/>
         <toc-element topic="git-mv.md"/>
         <toc-element topic="how-to-import-source-files-to-github.md"/>
