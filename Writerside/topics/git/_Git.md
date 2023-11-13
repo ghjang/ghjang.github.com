@@ -54,20 +54,6 @@ git에 대한 일반적인 사용법에 대해서는 아래 학습자료를 참�
 - 'git rm -f' 명령어와 관련해 이 글의 **[기타 참고사항](git-etc.md)** 페이지 참조할 것.
 - 'git commit -a' 명령어와 관련해 이 글의 **'Unstaged, Modified' 상태의 파일을 '스테이징' 단계 없이 곧바로 '커밋'하기** 섹션의 내용 참조할 것.
 
-## 'Tracked' 상태의 파일 'Untracked' 상태로 변경하기
-
-'working directory'에 파일은 유지시키고 'Tracked' 상태의 파일을 'Untracked' 상태로 변경하고자 할 때 다음 명령어를 사용한다.
-이 글 상단의 '파일 상태 전이' 그림에서 'File Existing' 상태내의 파일에 대해서 이 명령어를 실행시킬 수 있다.
-'Deleted' 상태의 파일에서는 실행시킬 수 없다.
-
-```bash
-git rm --cached <file name>
-```
-
-명령어 실행후 최종적으로 해당 파일을 'staging area'에서 제거하기 위해서 'git commit' 명령어를 실행해야 한다.
-
-결과적으로 'git rm'이나 'rm'과는 'working directory'에 있는 파일은 삭제하지 않는다는 점 정도가 다른 차이점이다.
-
 ## '삭제' 커밋된 파일 복구하기
 
 'git commit'으로 일단 커밋된 내용은 이후에 '삭제'등의 명령어 실행 후 추가 커밋을 하더라도 '거의' 모두 복구가 가능하다고 한다.
