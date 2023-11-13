@@ -16,6 +16,9 @@
         <toc-element topic="git-rm-cached.md"/>
         <toc-element topic="git-mv.md"/>
         <toc-element topic="git-how-to-recover-removed-file.md"/>
+        <toc-element topic="git-how-to-remove-file-completely.md"/>
+        <toc-element topic="git-verbs-implying-merge.md"/>
+        <toc-element topic="git-rebasing.md"/>
         <toc-element topic="git-etc.md"/>
     </toc-element>
     <toc-element topic="_Cpp.md">
