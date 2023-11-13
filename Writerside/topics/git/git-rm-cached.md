@@ -1,4 +1,4 @@
-# 'Tracked' 상태의 파일 'Untracked' 상태로 변경하기
+# 'Tracked' 상태의 파일 'Untracked' 상태로 변경
 
 'working directory'에 파일은 유지시키고 'Tracked' 상태의 파일을 'Untracked' 상태로 변경하고자 할 때 다음 명령어를 사용한다.
 [Git](_Git.md) 페이지내 '파일 상태 전이' 그림에서 'File Existing' 상태내의 파일에 대해서 이 명령어를 실행시킬 수 있다.

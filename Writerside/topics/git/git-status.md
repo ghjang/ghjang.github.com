@@ -1,4 +1,4 @@
-# '저장소 상태' 파악하기(git status)
+# '저장소 상태' 확인(git status)
 
 ```bash
 git status

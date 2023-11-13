@@ -1,4 +1,4 @@
-# '파일 변경사항' 확인하기(git diff)
+# '파일 변경사항' 확인(git diff)
 
 실전에서는 'Visual Studio Code'나 'JetBrains'사의 툴들 처럼 GUI로 제공되는 'diff' 기능을 사용해 작업하게되겠지만,
 git 명령어를 통해서 확인하는 방법을 알아두는 것도 나쁘지 않다.
