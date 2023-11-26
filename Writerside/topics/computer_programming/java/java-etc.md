@@ -23,9 +23,15 @@ Scanner scanner = new Scanner(System.in);
 String input = scanner.nextLine();
 ```
 
-'정수' 값 따위를 입력받을 때는 `nextInt()` 메소드를 사용한다.
+'정수' 값 따위를 입력받을 때 사용 가능한 메쏘드가 있다. 예를 들어서 정수 값을 읽기 위한 `nextInt()` 메소드가 있다.
 
 ```java
 Scanner scanner = new Scanner(System.in);
 int input = scanner.nextInt();
 ```
+
+`Scanner`는 콘솔에서의 '공백' 문자를 기준으로 입력을 구분한다. 예를 들어서 `1 2 3`을 입력하면 `nextInt()` 메소드를 세 번 호출하면서
+각각 `1`, `2`, `3`을 읽어들인다. 물론 '정수'와 '문자열'을 섞어서 입력할 수도 있다. 입력에서 읽어 들이려는 데이터 형식에 맞는 메소드를 차례대로 호출하면
+각 형식에 맞는 값을 읽어들일 수 있다. 예를 들어서 `1 2 3 abc`를 입력하면 `nextInt()` 메소드를 세 번 호출하면서 각각 `1`, `2`, `3`을 읽어들이고
+`next()` 메소드를 호출하면서 `abc`를 읽어들인다.
+
