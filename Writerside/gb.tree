@@ -45,7 +45,10 @@
         <toc-element topic="2015-09-19-things-to-remember-when-using-c-template.md"/>
     </toc-element>
     <toc-element topic="_Java.md">
-        <toc-element topic="how-to-repeat-in-java.md"/>
+        <toc-element topic="java-how-to-repeat.md"/>
+        <toc-element topic="java-package-structure.md"/>
+        <toc-element topic="java-coding-convention.md"/>
+        <toc-element topic="java-etc.md"/>
     </toc-element>
     <toc-element topic="_Music.md">
         <toc-element topic="2016-09-05-musical-scale.md"/>
