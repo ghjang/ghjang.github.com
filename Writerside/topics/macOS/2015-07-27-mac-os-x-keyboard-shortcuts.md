@@ -1,4 +1,4 @@
-# Mac OS X Keyboard Shortcuts
+# macOS 키보드 단축키
 
 For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support.apple.com/en-us/HT201236).
 
@@ -41,18 +41,21 @@ For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support
 ## Capture
 
 ### Screen Capture as an Image File
-* **Capture**: Command + Shift + 4
+* **Capture**
+  - Command + Shift + 3 : Capture the entire screen
+  - Command + Shift + 4 : Capture a portion of the screen
+  - Command + Shift + 5 : Capture a portion of the screen, a window, or the entire screen
 
 ### Screen Activity Capture as a Movie File
 
 ----
 
 ## Finder
-* **Show/Hide Status Bar**: Command + /
-* **Show/Hide Path Bar**: Command + Option + P
 * **File Information**: Command + I
 * **Cut & Paste Files**: "Command + C" then "Option + Command + V"
-* **Delete**: fn + delete
+* **Delete**: Command + Backspace, fn + delete
+* **Show/Hide Status Bar**: Command + /
+* **Show/Hide Path Bar**: Command + Option + P
 
 ### Multiple File Selection
 * **Select Indivisual Files**: Hold Command down then click the files that you want to select.
