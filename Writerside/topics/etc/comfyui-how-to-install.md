@@ -58,17 +58,42 @@ conda remove -n comfyui --all
 여기서 `--all`은 해당 파이썬 가상 환경에 설치된 모든 패키지를 삭제하라는 옵션이다.
 
 
-## 3. ComfyUI 설치
+## 3. Windows OS에서 ComfyUI 설치
 
 '윈도OS'의 경우는 ComfyUI GitHub 저장소에서 '포터블'하게 설치할 수 있도록 '.7z' 파일로 압축된 파일을 제공하고 있다. 압축해제 후 곧바로
-실행이 가능하다. 아나콘다로 현재 시점에서 'ComfyUI'가 지원하는 가장 최신의 파이썬 버전인 '3.11'으로 가상 환경을 구성 및 활성화 후 'ComfyUI'를
-실행하면 된다. 'ComfyUI' 실행은 '터미널' 앱을 통해서 실행하면 된다. '터미널' 앱에서 'ComfyUI'가 설치된 폴더로 이동 후 다음과 같이 입력한다.
+실행이 가능하다. '파이썬 실행 파일'과 'ComfyUI' 저장소 자체를 포함하고 있다.
+
+압축해제 후 최상위 폴더에 있는 'README_VERY_IMPORTANT.txt' 파일을 열어서 안내에 따라 실행하면된다. 직접 읽어 보는게 좋겠다. 여기서는
+필요한 내용만 간략하게 설명한다.
+
+'터미널' 앱을 실행하고 압축해제한 최상위 폴더 위치에서 포터블 배포판에 포함된 'ComfyUI' 저장소등을 최신으로 업데이트 하기 위해서 다음과 같이
+커맨드를 실행한다.
 
 ```bash
-python main.py
+cd update
+update_comfyui.bat
 ```
 
-'윈도OS'가 아니거나 직접 '수동 설치'를 하고 싶다면 다음과 같이 한다.
+'update' 폴더로 이동하는 이유는 'update_comfyui.bat' 스크립트내에서 현재 폴더 위치를 'update' 폴더로 가정하여 '상대경로'로 작성되어
+있기 때문이다. 폴더를 이동하지 않고 'update_comfyui.bat' 스크립트를 실행하면 관련 파일을 찾을 수 없어 오류가 발생한다. 가능하면 최신의 상태로
+유지하는 것이 좋을 것이기 때문에 필요하다면 실행전 업데이트를 해주는 것이 맞겠다.
+
+업데이트 후 압축해제 폴더 최상위 위치에서 다음 명령어를 입력해서 'ComfyUI'를 실행할 수 있다.
+
+```bash
+run_nvidia_gpu.bat
+```
+
+'NVIDIA GPU'를 사용하는 경우에는 위 명령어를 입력해서 실행하면 된다. 'NVIDIA GPU'를 사용하지 않는 경우에는 다음 명령어를 입력해서 실행하면
+된다.
+
+```bash
+run_cpu.bat
+```
+
+## 4. ComfyUI 수동 설치
+
+'윈도OS'가 아니거나, '윈도OS'일 경우에도 직접 '수동 설치'를 하고 싶다면 다음과 같이 한다.
 
 우선 'ComfyUI' GitHub 저장소로부터 '저장소 복제'를 한다. 현재 시점에서 패키지 형태의 설치가 지원되지 않기 때문에 '저장소 복제'를 통해서
 'ComfyUI'를 설치해야 한다. 적당한 작업 폴더를 생성 후 다음과 같이 `git clone` 명령어를 입력한다.
@@ -76,3 +101,10 @@ python main.py
 ```bash
 git clone https://github.com/comfyanonymous/ComfyUI.git
 ```
+
+## 5. '모델' 파일 다운로드 및 설치
+
+1. Stable Diffusion 1.5 : <https://huggingface.co/runwayml/stable-diffusion-v1-5/blob/main/v1-5-pruned-emaonly.ckpt>
+2. Stable Diffusion XL 1.0
+    - base : <https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/blob/main/sd_xl_base_1.0.safetensors>
+    - refiner : <https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/blob/main/sd_xl_refiner_1.0.safetensors>
