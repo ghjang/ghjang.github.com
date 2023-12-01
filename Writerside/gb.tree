@@ -68,6 +68,7 @@
     </toc-element>
     <toc-element topic="_etc.md">
         <toc-element topic="comfyui-how-to-install.md"/>
+        <toc-element topic="ml-terms.md"/>
         <toc-element topic="2015-12-14-hello-animated-sin-gif.md"/>
         <toc-element topic="cpp-study-resource.md"/>
     </toc-element>
