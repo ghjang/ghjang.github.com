@@ -51,6 +51,8 @@ For more exhaustive shortcuts, refer to [Mac keyboard shortcuts](https://support
 ----
 
 ## Finder
+* **폴더 안으로 들어가기**: 폴더 선택 후 'Command + O'
+* **이전 방문 폴더로 이동**: 'Command + \[' 또는 'Command + \]'
 * **File Information**: Command + I
 * **Cut & Paste Files**: "Command + C" then "Option + Command + V"
 * **Delete**: Command + Backspace, fn + delete
