@@ -23,3 +23,5 @@
 ## Batch Size
 
 ## Denoise
+
+## Auto-Encoder
