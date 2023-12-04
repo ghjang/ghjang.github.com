@@ -35,3 +35,21 @@ int input = scanner.nextInt();
 각 형식에 맞는 값을 읽어들일 수 있다. 예를 들어서 `1 2 3 abc`를 입력하면 `nextInt()` 메소드를 세 번 호출하면서 각각 `1`, `2`, `3`을 읽어들이고
 `next()` 메소드를 호출하면서 `abc`를 읽어들인다.
 
+## `switch' 제어문에서 '문자열' 사용
+
+'JDK 7'부터는 `switch` 제어문에서 '문자열'을 사용할 수 있다.
+
+```java
+String str = "abc";
+switch (str) {
+case "abc":
+    System.out.println("abc");
+    break;
+case "def":
+    System.out.println("def");
+    break;
+default:
+    System.out.println("default");
+    break;
+}
+```
