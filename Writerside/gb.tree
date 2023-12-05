@@ -47,6 +47,7 @@
     <toc-element topic="_Java.md">
         <toc-element topic="java-dev-env.md"/>
         <toc-element topic="java-basic-type-and-operation.md"/>
+        <toc-element topic="java-type-manipulation.md"/>
         <toc-element topic="java-how-to-repeat.md"/>
         <toc-element topic="java-package-structure.md"/>
         <toc-element topic="java-coding-convention.md"/>
@@ -73,5 +74,7 @@
         <toc-element topic="productive-tools.md"/>
         <toc-element topic="cpp-study-resource.md"/>
         <toc-element topic="2015-12-14-hello-animated-sin-gif.md"/>
+        <toc-element topic="about-floating-point-number.md"/>
+        <toc-element topic="about-number-based-transformation.md"/>
     </toc-element>
 </instance-profile>
