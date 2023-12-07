@@ -69,6 +69,79 @@ outer: for (int i = 0; i < 10; i++) {
 }
 ```
 
+## 메소드 선언 특화
+
+'메소드 선언 특화(method declaration specialization)'는 상위 '클래스'나 '인터페이스'에 정의된 메소드 선언을 하위 클래스나 인터페이스에 재정의할
+때 메소드 시그너처 부분을 상위 클래스나 인터페이스와 호환에 문제가 없는 수준에서 좀더 구체적으로 바꾸어 선언하는 것이다. 메소드 시그너처의 '예외 지정'
+부분이나 '리턴 값' 부분을 '상속 관계'의 호환 타입으로 바꾸어 선언하는 것이다. 예를 들어서 다음과 같이 `Exception`을 상속한 `IOException`을
+`throws`하는 메소드를 `Exception`을 상속한 `FileNotFoundException`을 `throws`하는 메소드로 재정의할 수 있다.
+
+```java
+public class Parent {
+    public void method() throws Exception {
+        // ...
+    }
+}
+
+public class Child extends Parent {
+    public void method() throws FileNotFoundException {
+        // ...
+    }
+}
+```
+
+'리턴 값' 부분의 경우도 다음과 같이 가능하다.
+
+```java
+public class Parent {
+    public Object method() {
+        // ...
+    }
+}
+
+public class Child extends Parent {
+    public String method() {
+        // ...
+    }
+}
+```
+
+물론 '예외 지정'과 '리턴 값' 부분을 모두 특화해줄 수도 있다.
+
+```java
+public class Parent {
+    public Object method() throws Exception {
+        // ...
+    }
+}
+
+public class Child extends Parent {
+    public String method() throws FileNotFoundException {
+        // ...
+    }
+}
+```
+
+'클래스' 뿐만 아니라 '인터페이스'의 경우도 이러한 특화를 해줄 수 있다. 이 경우는 '메소드 오버라이딩'이라고 하기는 애매하다. '메소드 선언 특화'라고만
+하는 것이 좀더 맞는 것 같다. 인터페이스의 경우도 다음과 같이 '예외 지정'과 '리턴 값' 부분을 특화시키는 코드가 가능하다.
+
+```java
+public interface Parent {
+    Object method() throws Exception;
+}
+
+public interface Child extends Parent {
+    String method() throws FileNotFoundException;
+}
+```
+
+(당연하지만,) 이 예제 코드에서의 `Child` 인터페이스에는 `FileNotFoundException`만을 `throw`하는  `method()` 메소드 하나만 존재한다.
+상황에 따라서 이런 식으로 타입을 구체화 시키면 코드 해석이 쉬워지고 좀더 코드 작성 컨텍스트 의미에 맞게 코드를 짤 수 있다.
+
+참고로 '리턴 값' 부분에 적용된 이런 상속 관계의 호환 타입 특화는 'C++'같은 다른 언어에서도 가능하다. C++에서 이 것을 지칭하는 용어는
+'공변 반환 타입(covariant return type)'이다.
+
+
 ## 가비지 컬렉션
 
 '가비지 컬렉션(garbage collection)'은 '힙' 영역에 있는 객체 중에서 더 이상 사용되지 않는 객체를 찾아서 자동으로 메모리에서 제거하는 기능이다.
