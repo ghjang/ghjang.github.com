@@ -185,7 +185,7 @@ try (FileInputStream fis = new FileInputStream("file.txt")) {
 `throws IOException`을 선언하고 있다. 코드로 보면 다음과 같다.
 
 ```java
-public interface AutoCloseable {
+public interface AutoCloseable z{
     void close() throws Exception;
 }
 
