@@ -73,3 +73,7 @@ IDE를 실행하는 방식을 취할 수도 있다.
 ```bash
 brew install maven
 ```
+
+터미널에 출력되는 설치 과정을 살피면 `mvn` 커맨드 실행에 사용할 'OpenJDK'같이 설치되는 것을 볼 수 있다. 설치 완료후 `JAVA_HOME` 환경 변수를 별도로
+설정하지 않아도 `mvn` 커맨드가 정상적으로 실행된다. `mvn` 커맨드는 `which mvn` 명령어로 확인해 보면 `/opt/homebrew/bin/mvn`에 있는 것을 확인할
+수 있다. `/opt/homebrew/bin`은 `PATH` 환경 변수에 이미 추가되어 있어서 추가적인 `PATH` 환경 변수 설정 변경이 필요없다.
