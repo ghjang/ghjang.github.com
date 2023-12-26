@@ -4,8 +4,9 @@
 
 <instance-profile id="gb"
                  name="Scribbles"
-                 start-page="_Git.md">
+                 start-page="Overview.md">
 
+    <toc-element topic="Overview.md"/>
     <toc-element topic="_Git.md">
         <toc-element topic="git-somethings-good-to-remember.md"/>
         <toc-element topic="git-config.md"/>
