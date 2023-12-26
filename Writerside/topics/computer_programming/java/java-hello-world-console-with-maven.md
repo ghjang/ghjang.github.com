@@ -96,9 +96,116 @@
     </testResources>
     
     <!--
-        컴파일된 클래스 파일과 리소스 파일이 위치할 '베이스 폴더 경로'를 설정한다.
+        컴파일된 클래스 파일과 리소스 파일이 위치할 '출력 베이스 폴더 경로'를 설정한다.
         별도로 지정하지 않으면 'target'이 '기본값'으로 사용된다.
     -->
     <directory>out</directory>
 </build>
 ```
+
+## 'Hello Java World!' 콘솔 프로그램 빌드용 'pom.xml' 파일 작성
+
+메이븐의 '표준 프로젝트 폴더 구조'를 그대로 사용해 간단하게 'Hello Java World!' 자바 콘솔 프로그램을 빌드하는 방법에 대해서 설명한다.
+
+최소한의 'pom.xml' 파일에 포함될 내용은 대략 다음과 같다. '인텔리제이' IDE를 사용해서 자바 콘솔 프로젝트 생성시에 '메이븐'을 빌드 툴로 선택했을때
+생성되는 내용을 붙여넣은 것이다.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>hello_java_world</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+</project>
+```
+
+### 'project' 요소
+
+`project` 요소는 메이븐 프로젝트의 최상위 요소이다. 이 요소는 반드시 포함되어야 한다. 이 요소의 '속성' 설정은 제공된 템플릿의 것을 수정없이 그대로
+사용하면 된다.
+
+### 'modelVersion' 요소
+
+`modelVersion` 요소는 메이븐 모델의 버전을 지정한다. 이 요소는 반드시 포함되어야 한다. 이 요소의 '속성' 설정은 제공된 템플릿의 것을 수정없이 그대로
+사용하면 별다른 문제가 없겠다.
+
+### 'groupId, artifactId, version' 요소
+
+이 요소들은 메이븐으로 빌드하려는 프로젝트의 '고유 식별자'를 구성할 수 있게 해준다.
+
+`groupId` 요소에는 마치 '자바 패키지 명'처럼 보이는 문자열값을 자주 보게된다. 프로젝트를 진행하는 '그룹, 조직' 정보를 입력하는 것인데, 보통 회사 또는
+조직의 도메인 이름을 거꾸로 적어서 사용한다. '자바 패키지 명'과는 별도의 개념이다. 하지만 `groupId`에 '주 상위 자바 패키지 명' 접두사를 사용하는 경우가
+많다.
+
+`artifactId` 요소에는 `groupId`에 지정된 '그룹, 조직'이 진행하는 프로젝트의 '프로젝트 명'을 입력한다. 역시 '자바 패키지 명'과는 별도의 개념이다.
+
+`version` 요소에는 대상 프로젝트의 '버전'을 입력한다. '버전'은 보통 '메이저 버전', '마이너 버전', '패치 버전'으로 구성된다. 하지만 꼭 그런 규칙을
+따라야 하는 것은 아니다. 앞서의 예제 코드에서는 '1.0-SNAPSHOT'이라는 버전을 사용했다. 'SNAPSHOT'이라는 접미사는 '개발 버전'을 의미한다. 버전이 구분만
+될 수 있다면 어떤 문자열이라도 사용할 수 있다. 예를 들어서 '1.0.0', '1.0.0-SNAPSHOT', '1.0.0-RELEASE'등의 버전을 사용할 수 있다.
+
+'CI' 시스템을 사용해서 '자동빌드'를 구성한 경우 '버전'을 자동으로 생성하고 관리하는게 보통이다. 'CI' 시스템에서 어떤 스크립트를 통해서 빌드 진행시
+해당 'pom.xml' 파일의 `version` 요소값을 직접 갱신해주거나, 메이븐의 '환경변수' 참조 문법을 사용해 간접적으로 'CI'쪽에서 정의해준 버전 관련 '환경변수'
+정보로부터 버전값을 구성할 수도 있다. 
+
+`mvn package` 명령어를 사용해서 빌드를 수행하면 '출력 베이스 폴더(기본값 :  target)'에 'jar' 파일이 생성된다. 이 'jar' 파일의 이름은값
+`artifactId`에 지정된 값과 `version`에 지정된 값으로 구성된다. 예제 코드에서 보이는 것과 같이 `artifactId`가 `hello_java_world`이고
+`version`이 `1.0-SNAPSHOT`인 경우에 'hello_java_world-1.0-SNAPSHOT.jar' 파일이 생성된다. `{artifactId}-{version}.{packaging}`의
+형식으로 출력 파일의 이름이 구성된 것이다. `packaging`은 기본적으로는 'jar'로 지정된다. `packaging`에는 'jar', 'war' 등의 값이 올 수
+있다. 'jar' 파일은 '자바 라이브러리(java archive)'를 의미한다. 'war' 파일은 '웹 애플리케이션(web archive)'을 의미한다.
+
+`mvn install` 명령어를 실행해 생성된 패키지 파일을 '로컬 레포지토리'에 저장하면 '로컬 레포지토리'에는 다음과 같은 경로에 'jar' 파일이 저장된다.
+
+```
+<로컬 레포지토리 경로>/org/example/hello_java_world/1.0-SNAPSHOT/hello_java_world-1.0-SNAPSHOT.jar
+```
+
+'macOS'의 경우라면 별다른 '메이븐 설정(settings.xml)'을 변경하지 않았을때 '<로컬 레포지토리 경로>'는 '홈 디렉토리'이다. '로컬 페포지토리
+경로(`localRepository`)'를 원하는 베이스 경로로 바꾸고 싶다면 'settings.xml' 파일을 수정하면 된다. 'settings.xml' 파일은 메이븐 설치 폴더의
+'conf' 폴더에 위치한다.
+
+```
+~/.m2/repository/org/example/hello_java_world/1.0-SNAPSHOT/hello_java_world-1.0-SNAPSHOT.jar
+```
+
+### 'properties' 요소
+
+`properties` 요소의 내용은 '필수'적인 것은 아니다. 하지만 추후 유지보수를 위해서 명시적으로 사용할 자바 버전을 지정해주는 것이 좋다.
+'source'와 'target'에 대해서 서로 다른 버전을 지정하는 것이 가능하다. 이것의 의미는 지정된 버전의 JDK 규격으로 작성된 소스 코드를 'target'에 지정된
+버전으로 (크로스) 컴파일한다는 의미이다. 예를 들어서 높은 버전의 JDK를 이용해서 낮은 버전의 JVM을 타겟팅하는 '.class' 파일 생성이 가능하다. 물론 소스
+코드에는 타겟 JVM에서 지원하지 않는 기능을 사용하지 않아야 한다. 참고로 생성되는 '.class' 파일 내부에 어떤 버전의 JDK 규격으로 타겟해서 컴파일된 것인지에
+대한 버전 정보가 포함되어 있다. 그리고 'UTF-8'로 인코딩된 소스 코드를 사용한다면 `project.build.sourceEncoding` 요소를 지정해주는 것이 맞겠다.
+
+`properties` 요소 하위에는 '커스텀 속성'을 추가적으로 정의할 수도 있다. 예를 들어서 다음과 같이 '프로젝트 버전'을 '커스텀 속성'으로 정의할 수 있다.
+
+```xml
+<properties>
+    <project.version>1.0.0</project.version>
+</properties>
+```
+
+이렇게 정의된 '커스텀 속성'은 '프로젝트 루트 폴더'내의 'pom.xml' 파일에서 다음과 같이 참조할 수 있다.
+
+```xml
+<version>${project.version}</version>
+```
+
+당연히 어떤 설정값의 부분 표현으로 사용할 수도 있다. 예를 들어서 다음과 같이 '프로젝트 버전'을 '커스텀 속성'으로 정의하고 그 값을 다른 설정값의 부분 표현으로
+사용할 수 있다.
+
+```xml
+<file.name>xxx-${project.version}.yyy</file.name>
+```
+
+'pom.xml' 파일에서 특정 표현값을 반복해서 참조할 경우 그 값을 커스텀 속성으로 정의해서 좀더 간결하게 중복을 제거해 설정을 표현할 수 있다. (자바 소스 코드
+리팩터링의 관점에서 생각해보면 일종의 '변수 추출'이라고 볼 수 있다.)
