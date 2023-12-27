@@ -1,7 +1,9 @@
-# Maven 빌드 설정 구성
-'Hello Java World!' 콘솔 프로그램을 'Maven(메이븐) 빌드 툴'로 빌드하기 위해서는 '메이븐 프로젝트 폴더 구조'를 따라서 소스 코드를 배치해야 한다.
+# Maven 빌드 설정/빌드/실행
+
+먼저 작성했던 'HelloWorld.java' 파일을 수동으로 컴파일하고 실행하지 않고 메이븐 빌드 툴을 사용해서 '빌드/실행'하는 방법에 대해서 설명한다.
 
 ## 표준 프로젝트 폴더 구조
+'Hello Java World!' 콘솔 프로그램을 'Maven(메이븐) 빌드 툴'로 빌드하기 위해서는 '메이븐 프로젝트 폴더 구조'를 따라서 소스 코드를 배치해야 한다.
 메이븐 빌드 툴에서 암묵적으로 가정하는 '표준 프로젝트 폴더 구조'는 대략 다음과 같다.
 
 ```
@@ -279,8 +281,28 @@ java -jar hello_java_world-1.0-SNAPSHOT.jar
 no main manifest attribute, in hello_java_world-1.0-SNAPSHOT.jar
 ```
 
-프로그램 실행을 위한 'entry point'인 `main` 메쏘드를 'jar' 패키징 파일내에서 찾을 수 없다는 의미이다. 'jar' 파일을 생성할때 'entry point'를
-지정해주지 않았기 때문이다. 'jar' 파일을 생성할때 'entry point'를 지정해주기 위해서는 'pom.xml' 파일에 다음과 같은 내용을 추가해주면 된다.
+프로그램 실행을 위한 'entry point'인 `main` 메쏘드를 'jar' 패키징 파일내에서 찾을 수 없다는 의미이다. 'jar' 파일을 생성할때 실행 'entry point'에
+대한 '메타'적인 정보를 지정해주지 않았기 때문이다. 이런 문제를 해결하는 간단한 방법은 우선 'entry point'를 지정해주기 위해서는 `java` 커맨드 실행시에
+`-jar` 옵션을 사용하는 것이 아니라 `-cp` 옵션을 사용해서 해당 'jar' 파일을 '클래스 경로'에 추가로 지정해주고 'entry point'로 사용할 `main`
+메쏘드를 가지고 있는 '클래스 이름'을 직접 지정해주는 것이다. 예를 들어서 현재 작성을 진행중인 예제에 대해서 다음과 같이 실행하면 정상적으로
+'Hello Java World!' 메시지가 콘솔에 출력될 것이다.
+
+```bash
+java -cp hello_java_world-1.0-SNAPSHOT.jar HelloWorld
+```
+
+참고로 이 실행 방식을 사용하면 'jar' 파일 내부에 'MANIFEST.MF' 파일이 존재하지 않아도 된다. 'MANIFEST.MF' 파일은 'jar' 파일 내부에 '메타'적인
+정보를 포함하는 약속된 규격의 파일이다. 다음 섹션에서 좀더 설명한다. 또 이 실행 방식의 경우 (딱히 그런 식의 구성은 필요없을 것으로 보이나,) 'entry
+point'로 사용 가능한 `main` 메쏘드가 여러 클래스에 존재하는 경우에 원하는 '클래스 이름'을 직접 지정해서 실행할 수도 있겠다.
+
+
+## '.jar' 파일내에 'entry point' 메타정보 포함을 위한 메이븐 설정
+
+`java` 커맨드를 사용해서 'jar' 파일을 실행할때 `-cp` 옵션을 사용해서 '클래스 경로'에 'jar' 파일을 추가로 지정해주고 'entry point'로 사용할
+`main` 메쏘드를 가지고 있는 '클래스 이름'을 직접 매번 지정해주는 방식은 번거롭다. 'jar' 파일 내부의 구현에 해당한고 볼 수도 있는 클래스 명을 노출시키는
+것도 그다지 바람직하지는 않다. 'jar' 파일을 생성할때 'entry point'로 사용할 클래스의 '클래스 이름'을 지정해줄 수 있는 방법이 있다. 이 방법을 사용하면
+이전에 오류를 발생시킨 `java -jar hello_java_world-1.0-SNAPSHOT.jar` 명령어를 사용해서 'jar' 파일을 실행할 수 있다. 'pom.xml' 파일에
+다음과 같은 내용을 포함하는 `build` 요소를 추가해주면 된다.
 
 ```xml
 <build>
@@ -343,7 +365,8 @@ no main manifest attribute, in hello_java_world-1.0-SNAPSHOT.jar
 'HelloWorld' 클래스는 '패키지'를 명시적으로 지정하지 않았기 때문에 'default package'에 위치한다. 따라서 `<mainClass>`값으로 'HelloWorld'를
 지정하면된다.
 
-`mvn package`를 재실행후 다시 생성된 'jar' 파일을 실행해보면 정상적으로 'Hello Java World!' 메시지가 콘솔에 출력되는 것을 확인할 수 있을 것이다.
+`mvn package`를 재실행후 다시 생성된 'jar' 파일을 `java -jar hello_java_world-1.0-SNAPSHOT.jar` 명령어로 실행해보면 정상적으로
+'Hello Java World!' 메시지가 콘솔에 출력되는 것을 확인할 수 있을 것이다.
 
 생성된 'jar' 파일의 내용물을 확인하기 위해서 다음의 명령어를 실행할 수 있다.
 
