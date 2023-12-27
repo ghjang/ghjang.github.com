@@ -49,6 +49,7 @@
         <toc-element topic="java-dev-env.md"/>
         <toc-element topic="java-hello-world-console.md">
             <toc-element topic="java-hello-world-console-with-maven.md"/>
+            <toc-element topic="java-hello-world-lib-with-maven.md"/>
         </toc-element>
         <toc-element topic="java-basic-type-and-operation.md"/>
         <toc-element topic="java-type-manipulation.md"/>
