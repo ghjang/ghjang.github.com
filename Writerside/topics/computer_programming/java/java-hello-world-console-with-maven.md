@@ -103,7 +103,7 @@
 </build>
 ```
 
-## 'Hello Java World!' 콘솔 프로그램 빌드용 'pom.xml' 파일 작성
+## 'Hello Java World!' 콘솔 프로그램 빌드용 기본 'pom.xml' 파일 작성
 
 메이븐의 '표준 프로젝트 폴더 구조'를 그대로 사용해 간단하게 'Hello Java World!' 자바 콘솔 프로그램을 빌드하는 방법에 대해서 설명한다.
 
@@ -176,6 +176,9 @@
 ~/.m2/repository/org/example/hello_java_world/1.0-SNAPSHOT/hello_java_world-1.0-SNAPSHOT.jar
 ```
 
+보다시피 `groupId`로 지정한 'org.example' 문자열 값에 '.'이 포함된 경우 '.' 문자를 기준으로 'org/example' 서브 폴더 구조가 생성되었다.
+앞서 언급한 것처럼 `groupId`는 '자바 패키지'와 딱히 관련이 없지만 폴더 구조를 구성할때는 '자바 패키지'와 비슷한 형태로 구성되었다.
+
 ### 'properties' 요소
 
 `properties` 요소의 내용은 '필수'적인 것은 아니다. 하지만 추후 유지보수를 위해서 명시적으로 사용할 자바 버전을 지정해주는 것이 좋다.
@@ -207,3 +210,216 @@
 
 'pom.xml' 파일에서 특정 표현값을 반복해서 참조할 경우 그 값을 커스텀 속성으로 정의해서 좀더 간결하게 중복을 제거해 설정을 표현할 수 있다. (자바 소스 코드
 리팩터링의 관점에서 생각해보면 일종의 '변수 추출'이라고 볼 수 있다.)
+
+## 'Hello Java World!' 콘솔 프로그램 소스 코드 작성/빌드/실행
+
+편의상 먼저 작성했던 'HelloWorld.java' 파일의 내용을 아래에 다시 붙였다.
+
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello Java World!");
+    }
+}
+```
+
+'Hello Java World!' 콘솔 프로그램 소스 코드 파일(HelloWorld.java)을 메이븐 '표준 프로젝트 폴더 구조'에 맞게 배치한다. '패키지'를 명시적으로
+지정하지 않았기 때문에 곧바로 'src/main/java' 폴더에 위치시키면 된다.
+
+```
+<project root folder>
+    |
+    +-- pom.xml
+    |
+    +-- src
+        |
+        +-- main
+            |
+            +-- java
+                |
+                +-- HelloWorld.java
+```
+
+메이븐으로 이 '자바 콘솔 어플리케이션'을 빌드하기 위해서 '터미널' 앱을 구동한 후 'pom.xml' 파일이 위치한 '프로젝트 루트 폴더'로 이동한 후 다음과 같이
+명령어를 실행한다.
+
+```bash
+mvn package
+```
+
+명령어 실행이 정상적으로 완료되면 'target' 폴더가 생성되고 그 하위에 'hello_java_world-1.0-SNAPSHOT.jar' 파일이 생성된 것을 확인할 수 있다.
+
+```
+<project root folder>
+    |
+    +-- pom.xml
+    |
+    +-- src
+    |   |
+    |   +-- main
+    |       |
+    |       +-- java
+    |           |
+    |           +-- HelloWorld.java
+    |
+    +-- target
+        |
+        +-- hello_java_world-1.0-SNAPSHOT.jar
+```
+
+생성된 'jar' 파일을 실행해보기 위해서 터미널 앱에서 'target' 폴더로 이동한 후 다음과 같이 명령어를 실행한다.
+
+```bash
+java -jar hello_java_world-1.0-SNAPSHOT.jar
+```
+
+그러면 현재의 'pom.xml' 파일 구성에서는 다음과 같은 오류 메시지가 출력될 것이다.
+
+```
+no main manifest attribute, in hello_java_world-1.0-SNAPSHOT.jar
+```
+
+프로그램 실행을 위한 'entry point'인 `main` 메쏘드를 'jar' 패키징 파일내에서 찾을 수 없다는 의미이다. 'jar' 파일을 생성할때 'entry point'를
+지정해주지 않았기 때문이다. 'jar' 파일을 생성할때 'entry point'를 지정해주기 위해서는 'pom.xml' 파일에 다음과 같은 내용을 추가해주면 된다.
+
+```xml
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.3.0</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>HelloWorld</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+```
+
+`build` 요소를 추가해 수정한 전체 'pom.xml' 파일 내용을 편의상 한번더 붙인다.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>hello_java_world</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>HelloWorld</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+```
+
+`<mainClass>` 요소에는 'entry point'로 사용할 클래스의 '클래스 이름'을 지정한다. '클래스 이름'은 '패키지'를 포함한 전체 이름이어야 한다.
+'HelloWorld' 클래스는 '패키지'를 명시적으로 지정하지 않았기 때문에 'default package'에 위치한다. 따라서 `<mainClass>`값으로 'HelloWorld'를
+지정하면된다.
+
+`mvn package`를 재실행후 다시 생성된 'jar' 파일을 실행해보면 정상적으로 'Hello Java World!' 메시지가 콘솔에 출력되는 것을 확인할 수 있을 것이다.
+
+생성된 'jar' 파일의 내용물을 확인하기 위해서 다음의 명령어를 실행할 수 있다.
+
+```bash
+jar tf hello_java_world-1.0-SNAPSHOT.jar
+```
+
+그러면 (적어도) 다음과 같은 내용이 출력될 것이다.
+
+```
+META-INF/
+META-INF/MANIFEST.MF
+HelloWorld.class
+```
+
+`v` 옵션을 추가해서 실행하면 '날짜, 파일 크기' 같은 좀더 자세한 내용을 확인할 수도 있다.
+
+```bash
+jar tvf hello_java_world-1.0-SNAPSHOT.jar
+```
+
+'.jar' 파일은 '.zip' 포맷이기 때문에 사용하는 압축툴을 이용해서 내용물을 확인할 수도 있다. '.zip' 포맷이니 물론 'jar'나 'unzip' 커맨드를 이용해서
+'압축해제'를 수행할 수도 있다. `jar` 커맨드를 사용해서 압축해제는 다음과 같이한다.
+
+```bash
+jar xvf hello_java_world-1.0-SNAPSHOT.jar
+```
+
+`unzip` 커맨드를 사용해서 압축해제는 다음과 같이한다.
+
+```bash
+unzip hello_java_world-1.0-SNAPSHOT.jar
+```
+
+두 명령어 모두 '특정 파일'만을 압축해제하는 옵션도 제공한다. 예를 들어서 'META-INF/MANIFEST.MF' 파일만을 압축해제하고 싶다면 다음과 같이 `jar`
+커맨드를 실행하면 된다.
+
+```bash
+jar xvf hello_java_world-1.0-SNAPSHOT.jar META-INF/MANIFEST.MF
+```
+
+명령어 실행이 완료된 후에 'META-INF/MANIFEST.MF' 파일이 생성된 것을 확인할 수 있다. `unzip` 커맨드를 사용해서도 동일한 작업을 수행할 수 있다.
+
+```bash
+unzip hello_java_world-1.0-SNAPSHOT.jar META-INF/MANIFEST.MF
+```
+
+`unzip` 명령어의 경우 `-p` 옵션을 사용하면 '특정 파일'의 내용을 로컬 파일로 저장하지 않고 표준 출력으로 확인할 수 있다. 예를 들어서
+'META-INF/MANIFEST.MF'의 내용을 콘솔에서 곧바로 확인하고 싶다면 다음과 같이 실행하면 된다. 내용 확인후 별도의 파일 삭제 작업을 할 필요가 없어
+편리하다.
+
+```bash
+unzip -p hello_java_world-1.0-SNAPSHOT.jar META-INF/MANIFEST.MF
+```
+
+`META-INF/MANIFEST.MF` 파일의 내용을 확인해보면 다음과 같다.
+
+```text
+Manifest-Version: 1.0
+Created-By: Maven JAR Plugin 3.3.0
+Build-Jdk-Spec: 21
+Main-Class: HelloWorld
+```
+
+'Main-Class' 속성이 존재하고 'HelloWorld'로 지정된 것을 확인할 수 있다. 이것이 'entry point'로 지정된 클래스의 '클래스 이름'이다. `java`
+커맨드로 생성된 'jar' 파일을 실행하면 대략 다음과 같은 순서의 작업이 일어난다고 볼 수 있다.
+
+1. 'jar' 파일 내부의 'META-INF/MANIFEST.MF' 파일을 읽어서 'Main-Class' 속성값을 찾는다.
+2. 'Main-Class' 속성값으로 지정된 '클래스 이름'을 찾는다. (여기서는 'HelloWorld'를 찾는다.)
+3. '클래스 이름'으로 지정된 '클래스 파일'을 찾는다.
+4. '클래스 파일'을 'JVM'으로 로딩한다.
+5. '클래스 파일' 내부의 `main` 메쏘드를 찾는다.
+6. `main` 메쏘드를 실행한다.
+
+메이븐과 같은 빌드 툴을 사용하지 않고 '자바 (콘솔) 어플리케이션'의 'jar' 파일내 'entry point' 지정을 위해서는 'jar' 파일을 생성할때 직접 적절한
+내용을 포함하는 'MANIFEST.MF' 파일을 같이 포함시켜야 했다. 메이븐과 같은 빌드 툴을 사용하여 이런 '메타'적인 파일을 직접 조작하지 않고 'pom.xml' 파일에
+적절한 설정을 추가해주면 빌드 툴이 알아서 'jar' 파일내에 'MANIFEST.MF' 파일을 생성하고 그 안에 'entry point' 지정을 위한 내용을 추가해주기 때문에
+여러모로 이해도 쉽고 편리하다.
+
