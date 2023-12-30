@@ -60,6 +60,11 @@
         <toc-element topic="java-etc.md"/>
     </toc-element>
     <toc-element topic="_JavaScript.md">
+        <toc-element topic="js-global-context.md"/>
+        <toc-element topic="js-variable-scope.md"/>
+        <toc-element topic="js-hoisting.md"/>
+        <toc-element topic="js-object.md"/>
+        <toc-element topic="js-function.md"/>
         <toc-element topic="js-script-tag.md"/>
         <toc-element topic="js-etc.md"/>
     </toc-element>
