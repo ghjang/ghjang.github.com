@@ -112,14 +112,14 @@
 최소한의 'pom.xml' 파일에 포함될 내용은 대략 다음과 같다. '인텔리제이' IDE를 사용해서 자바 콘솔 프로젝트 생성시에 '메이븐'을 빌드 툴로 선택했을때
 생성되는 내용을 붙여넣은 것이다.
 
-```
+```XML
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.example</groupId>
     <artifactId>hello_java_world</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -167,7 +167,7 @@
 `mvn install` 명령어를 실행해 생성된 패키지 파일을 '로컬 레포지토리'에 설치하면 '로컬 레포지토리'에는 다음과 같은 경로에 'jar' 파일이 저장된다.
 
 ```
-<로컬 레포지토리 경로>/org/example/hello_java_world/1.0-SNAPSHOT/hello_java_world-1.0-SNAPSHOT.jar
+<로컬 레포지토리 경로>/com/example/hello_java_world/1.0-SNAPSHOT/hello_java_world-1.0-SNAPSHOT.jar
 ```
 
 'macOS'의 경우라면 별다른 '메이븐 설정(settings.xml)'을 변경하지 않았을때 '<로컬 레포지토리 경로>'는 '홈 디렉토리'이다. '로컬 페포지토리
@@ -175,10 +175,10 @@
 'conf' 폴더에 위치한다.
 
 ```
-~/.m2/repository/org/example/hello_java_world/1.0-SNAPSHOT/hello_java_world-1.0-SNAPSHOT.jar
+~/.m2/repository/com/example/hello_java_world/1.0-SNAPSHOT/hello_java_world-1.0-SNAPSHOT.jar
 ```
 
-보다시피 `groupId`로 지정한 'org.example' 문자열 값에 '.'이 포함된 경우 '.' 문자를 기준으로 'org/example' 서브 폴더 구조가 생성되었다.
+보다시피 `groupId`로 지정한 'com.example' 문자열 값에 '.'이 포함된 경우 '.' 문자를 기준으로 'com/example' 서브 폴더 구조가 생성되었다.
 앞서 언급한 것처럼 `groupId`는 '자바 패키지'와 딱히 관련이 없지만 폴더 구조를 구성할때는 '자바 패키지'와 비슷한 형태로 구성되었다.
 
 ### 'properties' 요소
@@ -325,14 +325,14 @@ point'로 사용 가능한 `main` 메쏘드가 여러 클래스에 존재하는 
 
 `build` 요소를 추가해 수정한 전체 'pom.xml' 파일 내용을 편의상 한번더 붙인다.
 
-```
+```XML
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.example</groupId>
     <artifactId>hello_java_world</artifactId>
     <version>1.0-SNAPSHOT</version>
 
