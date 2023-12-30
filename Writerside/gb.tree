@@ -60,6 +60,7 @@
         <toc-element topic="java-etc.md"/>
     </toc-element>
     <toc-element topic="_JavaScript.md">
+        <toc-element topic="js-script-tag.md"/>
         <toc-element topic="js-etc.md"/>
     </toc-element>
     <toc-element topic="_python.md">
