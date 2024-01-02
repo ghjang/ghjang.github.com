@@ -141,6 +141,7 @@ mvn archetype:generate -DgroupId=com.example -DartifactId=hello_world_lib -Darch
     |   +-- pom.xml
     |   |
     |   +-- src
+    |       |
     |       +-- main
     |           |
     |           +-- java
@@ -152,6 +153,7 @@ mvn archetype:generate -DgroupId=com.example -DartifactId=hello_world_lib -Darch
         +-- pom.xml
         |
         +-- src
+            |
             +-- main
             |   |
             |   +-- java
