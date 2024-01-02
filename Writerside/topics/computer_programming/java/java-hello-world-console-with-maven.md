@@ -112,7 +112,7 @@
 최소한의 'pom.xml' 파일에 포함될 내용은 대략 다음과 같다. '인텔리제이' IDE를 사용해서 자바 콘솔 프로젝트 생성시에 '메이븐'을 빌드 툴로 선택했을때
 생성되는 내용을 붙여넣은 것이다.
 
-```XML
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -325,7 +325,7 @@ point'로 사용 가능한 `main` 메쏘드가 여러 클래스에 존재하는 
 
 `build` 요소를 추가해 수정한 전체 'pom.xml' 파일 내용을 편의상 한번더 붙인다.
 
-```XML
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
