@@ -405,4 +405,4 @@
 
 참고로 `properties` 요소에 정의된 `maven.compiler.release` 요소값 설정은 결과적으로 `maven-complier-plugin` 플러그인의 `source`와
 `target` 요소를 설정하는 것이된다. `project.build.sourceEncoding` 요소는 특정 플러그인에 소속된 것은 아니고 '프로젝트 전체'에 적용되는 설정이다.
-결과적으로 여러 플러그인에서 사용하는 '기본 인코딩'을 설정하는 것이된다.
+결과적으로 여러 플러그인에서 사용하는 '기본 인코딩'을 설정하는 것이 된다.
