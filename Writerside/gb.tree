@@ -19,7 +19,7 @@
         <toc-element topic="git-mv.md"/>
         <toc-element topic="git-how-to-recover-removed-file.md"/>
         <toc-element topic="git-how-to-remove-file-completely.md"/>
-        <toc-element topic="git-verbs-implying-merge.md"/>
+        <toc-element topic="git-merging.md"/>
         <toc-element topic="git-rebasing.md"/>
         <toc-element topic="git-config-alias.md"/>
         <toc-element topic="git-etc.md"/>
