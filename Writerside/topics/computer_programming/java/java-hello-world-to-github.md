@@ -43,7 +43,7 @@ git pull origin main --rebase
 실행하면 '발산 브랜치(divergent branch)' 관련 오류가 발생한다. 이 오류를 해결하기 위한 한가지 방법으로 여기서는 `--rebase` 옵션을 사용했다.
 
 참고로 최초에 신규 'hello_java_world' GitHub 저장소를 생성할 때 'README.md', 'LICENSE', '.gitignore' 파일을 생성하는 옵션을 선택하지 않고
-빈 원격 저장소를 생성했다면 `git pull origin main --rebase` 명령어를 실행할 필요는 없다.
+'빈 원격 저장소'를 생성했다면 `git pull origin main --rebase` 명령어를 자체를 실행할 필요는 없겠다.
 
 `git pull` 명령어 실행이 완료되면 로컬 저장소에 'README.md', 'LICENSE', '.gitignore' 파일이 생성된 것을 확인할 수 있다. 필요하다면 이 파일들을
 적절히 수정하고 커밋하면 된다.
@@ -59,4 +59,5 @@ git push -u origin main
 업로드된 적이 없기 때문에 이 명령어를 실행하면 '업스트림(upstream) 브랜치' 설정을 하겠다는 의미이다. 이 설정을 하면 이후에 `git push` 명령어를 실행할
 때 `-u` 옵션을 생략할 수 있다.
 
-이제 GitHub 사이트에서 'hello_java_world' 저장소의 내용을 확인해보면 로컬 저장소의 내용이 업로드된 것을 확인할 수 있을 것이다.
+이제 GitHub 사이트에서 ['hello_java_world' 저장소](https://github.com/ghjang/hello_java_world.git)의 내용을 확인해보면 로컬 저장소의
+내용이 업로드된 것을 확인할 수 있을 것이다.
